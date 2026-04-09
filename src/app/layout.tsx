@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { NextFontWithVariable } from 'next/dist/compiled/@next/font';
 import { Inter, Playfair_Display } from 'next/font/google';
 
-import { Footer, Navbar } from '@/components';
+import { DoubleTransitions, Footer, Navbar } from '@/components';
 
 import './globals.css';
 
@@ -26,6 +26,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang='en'>
       <body className={`${inter.variable} ${playfair.variable}`}>
+      <DoubleTransitions />
       <Navbar />
         <div className='mt-20 p-8'>
           {children}
