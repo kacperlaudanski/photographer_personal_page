@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 
 import { Footer, Navbar, PageCurtain } from '@/components';
+import { PageTransitionProvider } from '@/context';
 
 import './globals.css';
 
@@ -25,12 +26,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang='en'>
       <body className={`${inter.variable} ${playfair.variable}`}>
-        <PageCurtain />
-        <Navbar />
-        <div className='mt-20 p-8'>
-          {children}
-        </div>
-        <Footer />
+        <PageTransitionProvider>
+          <PageCurtain />
+          <Navbar />
+          <div className='mt-20 p-8'>
+            {children}
+          </div>
+          <Footer />
+        </PageTransitionProvider>
       </body>
     </html>
   );
