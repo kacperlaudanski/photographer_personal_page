@@ -7,13 +7,6 @@ import { TransitionPhase } from '@/enums';
 import { PageTransitionContextValue } from '@/interfaces';
 import { getPageTitle } from '@/utils';
 
-const getYTarget = (phase: TransitionPhase): string => {
-  if (phase === TransitionPhase.Covering) { return '0%'; }
-  if (phase === TransitionPhase.Navigating) { return '0%'; }
-
-  return '-115%';
-};
-
 export const PageCurtain: React.FC = (): JSX.Element | null => {
   const { phase, destinationPath, onCoverComplete, onUncoverComplete }: PageTransitionContextValue = usePageTransition();
 
@@ -29,12 +22,20 @@ export const PageCurtain: React.FC = (): JSX.Element | null => {
     }
   };
 
+  const getYTarget = (phase: TransitionPhase): string => {
+    if (phase === TransitionPhase.Covering || phase === TransitionPhase.Navigating) {
+      return '0%';
+    }
+  
+    return '-115%';
+  };
+
   return (
     <motion.div
       className='fixed inset-x-0 top-0 z-100 h-[115vh] bg-[#1e1e1e] rounded-bl-[50%_120px] rounded-br-[50%_120px] pointer-events-none overflow-hidden flex items-center justify-center'
       initial={{ y: '-115%' }}
       animate={{ y: getYTarget(phase) }}
-      transition={{ duration: 0.96, ease: [0.76, 0, 0.24, 1] }}
+      transition={{ duration: 1.3, ease: [0.76, 0, 0.24, 1] }}
       onAnimationComplete={handleAnimationComplete}
     >
       <motion.h1
