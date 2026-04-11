@@ -32,7 +32,7 @@ export const PageCurtain: React.FC = (): JSX.Element | null => {
 
   return (
     <motion.div
-      className='fixed inset-x-0 top-0 z-100 h-[115vh] bg-[#1e1e1e] rounded-bl-[50%_120px] rounded-br-[50%_120px] pointer-events-none overflow-hidden flex items-center justify-center'
+      className='fixed inset-x-0 top-0 z-100 h-[115vh] bg-[#1e1e1e] rounded-bl-[50%_120px] rounded-br-[50%_120px] pointer-events-none overflow-hidden flex items-center justify-center pb-[15vh]'
       initial={{ y: '-115%' }}
       animate={{ y: getYTarget(phase) }}
       transition={{ duration: 1.3, ease: [0.76, 0, 0.24, 1] }}
