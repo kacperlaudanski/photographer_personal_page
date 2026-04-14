@@ -1,65 +1,56 @@
 'use client';
-import { motion,  } from 'framer-motion';
-import { usePathname } from 'next/navigation';
-import React, { JSX, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import React, { JSX } from 'react';
 
-import { titleVariants } from './pageCurtain.consts';
-
-const ROUTE_TITLES: Record<string, string> = {
-  '/': 'Portfolio',
-  '/about': 'O mnie',
-  '/contact': 'Kontakt',
-};
-
-const getPageTitle = (pathname: string): string => {
-  if (pathname in ROUTE_TITLES) {
-    return ROUTE_TITLES[pathname];
-  }
-
-  if (pathname.startsWith('/sessions/')) {
-    const slug: string = pathname.replace('/sessions/', '');
-    return slug
-      .split('-')
-      .map((word: string): string => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-  }
-
-  return '';
-};
-
+import { usePageTransition } from '@/context';
+import { TransitionPhase } from '@/enums';
+import { PageTransitionContextValue } from '@/interfaces';
+import { getPageTitle } from '@/utils';
 
 export const PageCurtain: React.FC = (): JSX.Element | null => {
-  const pathname: string = usePathname();
-  const [animKey, setAnimKey] = useState<number | null>(null);
+  const { phase, destinationPath, onCoverComplete, onUncoverComplete }: PageTransitionContextValue = usePageTransition();
 
-  useEffect((): void => {
-    setAnimKey((prev: number | null): number => prev === null ? 1 : prev + 1);
-  }, [pathname]);
-
-  if (animKey === null) {
+  if (phase === TransitionPhase.Idle) {
     return null;
   }
 
+  const handleAnimationComplete = (): void => {
+    if (phase === TransitionPhase.Covering) {
+      onCoverComplete();
+    } else if (phase === TransitionPhase.Uncovering) {
+      onUncoverComplete();
+    }
+  };
+
+  const getYTarget = (phase: TransitionPhase): string => {
+    if (phase === TransitionPhase.Covering || phase === TransitionPhase.Navigating) {
+      return '0%';
+    }
+  
+    return '-115%';
+  };
+
   return (
     <motion.div
-      key={animKey}
-      className='fixed inset-x-0 top-0 z-[100] h-[115vh] bg-[#1e1e1e] rounded-bl-[50%_120px] rounded-br-[50%_120px] pointer-events-none overflow-hidden flex items-center justify-center'
+      className='fixed inset-x-0 top-0 z-100 h-[115vh] bg-[#1e1e1e] rounded-bl-[50%_120px] rounded-br-[50%_120px] pointer-events-none overflow-hidden flex items-center justify-center pb-[15vh]'
       initial={{ y: '-115%' }}
-      animate={{ y: ['-115%', '0%', '0%', '-115%'] }}
-      transition={{
-        duration: 1.8,
-        times: [0, 0.38, 0.62, 1],
-        ease: [0.76, 0, 0.24, 1],
-      }}
+      animate={{ y: getYTarget(phase) }}
+      transition={{ duration: 1.3, ease: [0.76, 0, 0.24, 1] }}
+      onAnimationComplete={handleAnimationComplete}
     >
-      <div className='absolute inset-[-200%] w-[400%] h-[400%] opacity-[0.18] pointer-events-none' />
       <motion.h1
         className='relative z-10 text-white text-7xl font-black italic font-serif'
-        variants={titleVariants}
-        initial='initial'
-        animate='animate'
+        initial={{ opacity: 0, y: 16 }}
+        animate={phase === TransitionPhase.Uncovering
+          ? { opacity: 0, y: -16 }
+          : { opacity: 1, y: 0 }
+        }
+        transition={phase === TransitionPhase.Uncovering
+          ? { duration: 0.25, ease: 'easeIn' }
+          : { delay: 0.55, duration: 0.3, ease: 'easeOut' }
+        }
       >
-        {getPageTitle(pathname)}
+        {getPageTitle(destinationPath)}
       </motion.h1>
     </motion.div>
   );
