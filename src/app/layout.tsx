@@ -32,7 +32,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <div className='mt-20 p-8'>
             {children}
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </PageTransitionProvider>
       </body>
     </html>

@@ -17,10 +17,10 @@ export const Navbar: React.FC = (): JSX.Element => {
 
   return (
     <div className='flex items-center justify-between backdrop-blur-sm p-8 fixed w-full top-0 z-50'>
-      <Image src='/assets/logo.png' alt='Logo' width={120} height={40} />
+      <Image src='/assets/logo.png' alt='Logo' width={30} height={20} />
       <nav className='flex gap-12'>
-        <Link href={routes.about} onClick={handleNavClick(routes.about)} className='text-yellow-500 hover:text-yellow-700'>O mnie</Link>
-        <Link href={routes.contact} onClick={handleNavClick(routes.contact)} className='text-yellow-500 hover:text-yellow-700'>Kontakt</Link>
+        <Link href={routes.about} onClick={handleNavClick(routes.about)} className='text-emerald-700 hover:text-emerald-900'>O mnie</Link>
+        <Link href={routes.contact} onClick={handleNavClick(routes.contact)} className='text-emerald-700 hover:text-emerald-900'>Kontakt</Link>
       </nav>
     </div>
   );
