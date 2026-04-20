@@ -16,7 +16,7 @@ export const Navbar: React.FC = (): JSX.Element => {
   };
 
   return (
-    <div className='flex items-center justify-between backdrop-blur-sm p-8 fixed w-full top-0 z-50'>
+    <div className='flex items-center justify-between p-8 w-full'>
       <Image src='/assets/logo.png' alt='Logo' width={30} height={20} />
       <nav className='flex gap-12'>
         <Link href={routes.about} onClick={handleNavClick(routes.about)} className='text-emerald-700 hover:text-emerald-900'>O mnie</Link>

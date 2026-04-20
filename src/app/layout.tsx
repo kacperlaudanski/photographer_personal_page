@@ -29,7 +29,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <PageTransitionProvider>
           <PageCurtain />
           <Navbar />
-          <div className='mt-20 p-8'>
+          <div>
             {children}
           </div>
           {/* <Footer /> */}

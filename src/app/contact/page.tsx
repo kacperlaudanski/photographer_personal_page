@@ -1,59 +1,74 @@
+'use client';
+import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 import React from 'react';
-
+ 
+const photoVariants: Variants = {
+  hidden: { opacity: 0, x: -40 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.8, ease: 'easeOut' },
+  },
+};
+ 
 const Contact = () => {
   return (
-    <div className='-m-8 flex h-[calc(80vh)]'>
-     <div className='relative w-1/2 overflow-hidden'>
-      <Image
-        src='/assets/contact-hero.jpg'
-        alt='Kontakt'
-        fill
-        className='object-cover'
-      />
-      <div className='absolute inset-0 bg-black/30' />
-      <h1 className='absolute bottom-0 right-0 font-serif italic text-gray-100 text-8xl font-black tracking-tight leading-[0.65] m-0'>
-        Kontakt
-      </h1>
-    </div>
-    <div className='w-1/2 flex items-center justify-center bg-[#1e1e1e] px-16'>
-      <form className='w-full max-w-md flex flex-col gap-6'>
-        <h2 className='font-serif italic text-white text-3xl mb-2'>Napisz do mnie</h2>
-        <div className='flex flex-col gap-1'>
-          <label className='text-white/50 text-xs uppercase tracking-widest'>Imię</label>
-          <input
-            type='text'
-            placeholder='Jan Kowalski'
-            className='bg-transparent border-b border-white/20 text-white placeholder:text-white/20 py-2 outline-none focus:border-yellow-500 transition-colors'
-          />
-        </div>
-        <div className='flex flex-col gap-1'>
-          <label className='text-white/50 text-xs uppercase tracking-widest'>Email</label>
-          <input
-            type='email'
-            placeholder='jan@example.com'
-            className='bg-transparent border-b border-white/20 text-white placeholder:text-white/20 py-2 outline-none focus:border-yellow-500 transition-colors'
-          />
-        </div>
-        <div className='flex flex-col gap-1'>
-          <label className='text-white/50 text-xs uppercase tracking-widest'>Wiadomość</label>
-          <textarea
-            rows={5}
-            placeholder='Cześć, chciałbym/chciałabym...'
-            className='bg-transparent border-b border-white/20 text-white placeholder:text-white/20 py-2 outline-none focus:border-yellow-500 transition-colors resize-none'
-          />
-        </div>
-        <button
-          type='submit'
-          className='mt-2 self-start text-yellow-500 border border-yellow-500/40 px-8 py-3 text-sm uppercase tracking-widest hover:bg-yellow-500 hover:text-black transition-colors'
+    <section className='flex text-stone-800'>
+      <div className='flex items-center px-15'>
+        <motion.div
+          className='overflow-hidden'
+          variants={photoVariants}
+          initial='hidden'
+          animate='visible'
         >
-          Wyślij
-        </button>
-      </form>
-    </div>
-
-  </div>
-  );
+          
+          <div className='flex gap-4 items-center justify-center'>
+            <div className='rounded-xl overflow-hidden relative'>
+              <motion.div
+                className='h-full w-10 bg-white absolute top-0 left-24.5'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0, delay: 1 }}
+              />
+              <Image
+                alt='contact'
+                src='/assets/contact-hero.jpg'
+                height={500}
+                width={500}
+              />
+              <motion.div
+                className='h-full w-10 bg-white absolute top-0 right-4.5'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0, delay: 1.3 }}
+              />
+              <motion.div
+                className='h-10 w-full bg-white absolute top-75'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0, delay: 1.6 }}
+              />
+            </div>
+          </div>
+        </motion.div>
+      </div>
+      <div className='flex flex-col p-8 flex-1'>
+        <h1 className='leading-tight tracking-tight font-serif'>
+          <span className='text-6xl'>
+            Każde zdjęcie to{' '}
+            <span className='bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent'>
+              okno
+            </span>
+          </span>
+          <br />
+          <span className='text-gray-400 text-3xl font-light tracking-wide mt-6 block'>
+            Jeśli chcesz otworzyć kolejne, napisz.
+          </span>
+        </h1>
+      </div>
+    </section>
+ );
 };
 
 export default Contact;
