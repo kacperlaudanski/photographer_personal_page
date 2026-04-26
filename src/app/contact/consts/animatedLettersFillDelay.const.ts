@@ -1,0 +1,1 @@
+export const animatedLettersFillDelays = [4.2, 3.9, 4.4, 4];
