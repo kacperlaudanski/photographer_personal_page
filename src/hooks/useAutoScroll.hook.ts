@@ -1,3 +1,4 @@
+'use client';
 import { MotionValue } from 'motion';
 import { useMotionValue, useSpring } from 'motion/react';
 import { RefObject, useCallback, useEffect, useRef } from 'react';

@@ -19,8 +19,8 @@ export const Navbar: React.FC = (): JSX.Element => {
     <div className='flex items-center justify-between p-8 w-full'>
       <Image src='/assets/logo.png' alt='Logo' width={30} height={20} />
       <nav className='flex gap-12'>
-        <Link href={routes.about} onClick={handleNavClick(routes.about)} className='text-emerald-700 hover:text-emerald-900'>O mnie</Link>
-        <Link href={routes.contact} onClick={handleNavClick(routes.contact)} className='text-emerald-700 hover:text-emerald-900'>Kontakt</Link>
+        <Link href={routes.about} onClick={handleNavClick(routes.about)} className='text-[#2EA56E]'>O mnie</Link>
+        <Link href={routes.contact} onClick={handleNavClick(routes.contact)} className='text-[#2EA56E]'>Kontakt</Link>
       </nav>
     </div>
   );
