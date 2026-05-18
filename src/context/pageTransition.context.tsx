@@ -13,14 +13,14 @@ export const PageTransitionProvider: React.FC<{ children: React.ReactNode }> = (
   const router: ReturnType<typeof useRouter> = useRouter();
   const pathname: string = usePathname();
   const pendingHref: React.RefObject<string | null> = useRef<string | null>(null);
-  const phaseRef: React.RefObject<TransitionPhase> = useRef<TransitionPhase>(phase);
-  phaseRef.current = phase;
+  const [trackedPathname, setTrackedPathname] = useState<string>(pathname);
 
-  useEffect((): void => {
-    if (phaseRef.current === TransitionPhase.Navigating) {
+  if (pathname !== trackedPathname) {
+    setTrackedPathname(pathname);
+    if (phase === TransitionPhase.Navigating) {
       setPhase(TransitionPhase.Uncovering);
     }
-  }, [pathname]);
+  }
 
   useEffect((): (() => void) | void => {
     if (phase === TransitionPhase.Navigating) {

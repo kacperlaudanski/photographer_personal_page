@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 
-import { Footer, Navbar, PageCurtain } from '@/components';
+import { Cursor, Footer, Navbar, PageCurtain } from '@/components';
 import { PageTransitionProvider } from '@/context';
 
 import './globals.css';
@@ -29,10 +29,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <PageTransitionProvider>
           <PageCurtain />
           <Navbar />
-          <div className='mt-20 p-8'>
+          <div className='px-15 py-8'>
             {children}
+            <Cursor />
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </PageTransitionProvider>
       </body>
     </html>
