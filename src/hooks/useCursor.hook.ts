@@ -17,13 +17,13 @@ export const useCursor = (lerp: number = 0.17) => {
       mouseCoords.y = event.clientY;
 
       if (!initializedRef.current) {
-        ringCoords.x = mouseCoords.x
-        ringCoords.y = mouseCoords.y
-        initializedRef.current = true
+        ringCoords.x = mouseCoords.x;
+        ringCoords.y = mouseCoords.y;
+        initializedRef.current = true;
       }
 
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate(${mouseCoords.x}px, ${mouseCoords.y}px)`
+        dotRef.current.style.transform = `translate(${mouseCoords.x}px, ${mouseCoords.y}px)`;
       }
     };
 
@@ -33,7 +33,7 @@ export const useCursor = (lerp: number = 0.17) => {
         ringCoords.y += (mouseCoords.y - ringCoords.y) * lerp;
       
         if (ringRef.current) {
-          ringRef.current.style.transform = `translate(${ringCoords.x}px, ${ringCoords.y}px)`
+          ringRef.current.style.transform = `translate(${ringCoords.x}px, ${ringCoords.y}px)`;
         }
       }
       
@@ -47,7 +47,7 @@ export const useCursor = (lerp: number = 0.17) => {
       window.removeEventListener('mousemove', onMove);
       cancelAnimationFrame(rafRef.current);
     } 
-  });
+  }, [lerp]);
 
   return { dotRef, ringRef };
 };
