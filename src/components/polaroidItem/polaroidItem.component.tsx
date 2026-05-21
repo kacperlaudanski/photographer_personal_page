@@ -13,7 +13,7 @@ export const PolaroidItem: React.FC<PolaroidItemProps> = (props: PolaroidItemPro
         <div className={styles.visibleId}>{visibleId}</div>
         <div className={styles.iconBox}>
           <div className={styles.icon}>
-            <Icon />
+            <Icon size={20} />
           </div>
         </div>
       </div>

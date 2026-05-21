@@ -1,15 +1,12 @@
 'use client';
-import { motion } from 'framer-motion';
 import React from 'react'
 import { TypeAnimation } from 'react-type-animation';
-import { FaUser, FaFilm, FaRing, FaUsers, FaCircle } from 'react-icons/fa';
 
-import { animatedLetters } from './consts';
 // zmienic path
-import { animatedLettersFillDelays } from '../contact/consts';
-import { PolaroidItem } from '@/components';
-import { PolaroidItemVariant } from '@/enums';
-import { sessionItems } from '@/consts';
+import { PolaroidItem, StatCard } from '@/components';
+import { personalStats, sessionItems } from '@/consts';
+
+import styles from './page.module.css';
 
 const About = () => {
   return (
@@ -26,46 +23,7 @@ const About = () => {
             <h1 className='leading-tight tracking-tight font-serif'>
               <span className='text-3xl md:text-7xl text-gray-800'>
                 Cześć,{' '}<br />
-                jestem <span className='font-family-caveat bg-clip-text text-transparent text-8xl'
-                  style={{ 
-                  backgroundImage: 'linear-gradient(to right, #3b82f6, #a855f7, #ec4899)',
-                }}
-              >Aleksandra</span>
-                {/* <svg
-                  className='w-20 h-30 md:w-36 md:h-16'
-                  viewBox='0 0 800 200'
-                  style={{
-                    display: 'inline',
-                    verticalAlign: 'text-bottom',
-                    marginBottom: '4px',
-                  }}
-                >
-                  <defs>
-                    <linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='0%' gradientUnits='userSpaceOnUse'>
-                      <stop offset='0%' stopColor='#3b82f6' />
-                      <stop offset='50%' stopColor='#a855f7' />
-                      <stop offset='100%' stopColor='#ec4899' />
-                    </linearGradient>
-                  </defs>
-                    <g transform='translate(50, 120)'>
-                      {animatedLetters.map((letter, i) => (
-                        <motion.path
-                          key={i}
-                          d={letter.d}
-                          fill='url(#grad)'
-                          fillRule='evenodd'
-                          stroke='url(#grad)'
-                          strokeWidth='1.5'
-                          initial={{ pathLength: 0, fillOpacity: 0 }}
-                          animate={{ pathLength: 1, fillOpacity: 1 }}
-                          transition={{
-                            pathLength: { duration: 0.8, delay: letter.delay },
-                            fillOpacity: { duration: 0, delay: animatedLettersFillDelays[i] },
-                          }}
-                        />
-                      ))}
-                    </g>
-                </svg> */}
+                jestem<span className={styles.name}>{' '}Aleksandra</span>
               </span>
             </h1>
           </div>
@@ -89,9 +47,11 @@ const About = () => {
             </p>
           </div>
           <div className='flex flex-col gap-4 text-sm tracking-widest text-gray-400'>
-            <span>→</span>
-            <span>MOJE SESJE · 02</span>
             <div className='flex gap-4'>
+              <span>→</span>
+              <span>MOJE SESJE · 02</span>
+            </div>
+            <div className='flex gap-4 mt-6'>
               {sessionItems.map((item) => (
                 <PolaroidItem
                   key={item.visibleId}
@@ -103,13 +63,18 @@ const About = () => {
                 />
               ))}
             </div>
+            <div className='flex gap-4 mt-10'>
+              {personalStats.map((stat) => (
+                <StatCard count={stat.count} icon={stat.icon} key={stat.text} text={stat.text} />
+              ))}
+            </div>
           </div>
         </div>
         {/* kolaz */}
         <div className='relative w-1/2 shrink-0'>
           <div className='grid grid-cols-2 gap-2'>
             {/* główne zdjęcie - pełna szerokość */}
-            <div className='col-span-2 relative bg-stone-300 rounded-md aspect-3/4 flex flex-col items-center justify-center gap-2 text-stone-500'>
+            <div className='col-span-2 relative bg-stone-300 rounded-md max-h-150 w-full aspect-3/4 flex flex-col items-center justify-center gap-2 text-stone-500'>
               <span className='text-sm'>portret · pionowy</span>
               <span className='text-xs underline cursor-pointer'>or browse files</span>
               <span className='absolute top-[-30] right-[-50] text-6xl italic text-pink-500 font-family-caveat'>

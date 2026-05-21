@@ -3,6 +3,7 @@
 :root {
   --background: #F1F0EE;
   --foreground: #f5f5f5;
+  --font-counter: 'JetBrains Mono', ui-monospace, monospace;
 }
 
 @theme inline {
