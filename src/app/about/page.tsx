@@ -3,8 +3,8 @@ import React from 'react'
 import { TypeAnimation } from 'react-type-animation';
 
 // zmienic path
-import { PolaroidItem, StatCard } from '@/components';
-import { personalStats, sessionItems } from '@/consts';
+import { PolaroidItem, StatCard, TimelineEntry } from '@/components';
+import { personalStats, sessionItems, timelineItems } from '@/consts';
 
 import styles from './page.module.css';
 
@@ -94,7 +94,26 @@ const About = () => {
         </div>
       </div>
       {/* sekcja ściezki */}
-      <div>
+      <div className='flex flex-col gap-6 mt-10'>
+        <div className='flex gap-6 items-end'>
+          <div className='text-gray-800 font-serif text-2xl'>
+            Moja <span className={styles.route}>droga</span>
+          </div>
+          <div className='h-0.5 flex-1 border-b border-gray-300' />
+          <div className='text-sm tracking-widest text-gray-400 font-mono'>
+            {timelineItems[0].year} → {timelineItems[timelineItems.length - 1].year}
+          </div>
+        </div>
+        <div className='grid grid-cols-5 gap-4'>
+          {timelineItems.map((item) => (
+            <TimelineEntry
+              description={item.description}
+              header={item.header}
+              key={item.year}
+              year={item.year}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
