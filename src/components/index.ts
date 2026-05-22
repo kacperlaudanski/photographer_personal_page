@@ -6,3 +6,4 @@ export { Cursor } from './cursor/cursor.component';
 export { PolaroidItem } from './polaroidItem/polaroidItem.component';
 export { StatCard } from './statCard/statCard.component';
 export { TimelineEntry } from './timelineEntry/timelineEntry.component';
+export { CtaBanner } from './ctaBanner/ctaBanner.component';

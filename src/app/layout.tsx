@@ -35,7 +35,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <PageTransitionProvider>
           <PageCurtain />
           <Navbar />
-          <div className='px-15 py-8'>
+          <div className='px-8 py-8 md:px-15'>
             {children}
             <Cursor />
           </div>

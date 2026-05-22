@@ -3,7 +3,7 @@ import React from 'react'
 import { TypeAnimation } from 'react-type-animation';
 
 // zmienic path
-import { PolaroidItem, StatCard, TimelineEntry } from '@/components';
+import { CtaBanner, PolaroidItem, StatCard, TimelineEntry } from '@/components';
 import { personalStats, sessionItems, timelineItems } from '@/consts';
 
 import styles from './page.module.css';
@@ -12,7 +12,7 @@ const About = () => {
   return (
     <div className='flex flex-col gap-6'>
       {/* sekcja głowna + kolaz zdjec */}
-      <div className='flex gap-10 justify-between'>
+      <div className='flex flex-col-reverse lg:flex-row gap-6 lg:gap-10 justify-between'>
         {/* sekcja z info */}
         <div className='flex flex-col gap-10'>
           <div className='flex items-center gap-4 text-sm tracking-widest text-gray-400'>
@@ -21,7 +21,7 @@ const About = () => {
           </div>
           <div>
             <h1 className='leading-tight tracking-tight font-serif'>
-              <span className='text-3xl md:text-7xl text-gray-800'>
+              <span className='text-4xl md:text-6xl text-gray-800'>
                 Cześć,{' '}<br />
                 jestem<span className={styles.name}>{' '}Aleksandra</span>
               </span>
@@ -51,7 +51,7 @@ const About = () => {
               <span>→</span>
               <span>MOJE SESJE · 02</span>
             </div>
-            <div className='flex gap-4 mt-6'>
+            <div className='flex gap-4 mt-6 overflow-x-auto pb-8 pt-4 px-2 [scrollbar-width:none]'>
               {sessionItems.map((item) => (
                 <PolaroidItem
                   key={item.visibleId}
@@ -63,7 +63,7 @@ const About = () => {
                 />
               ))}
             </div>
-            <div className='flex gap-4 mt-10'>
+            <div className='flex flex-col md:flex-row gap-4 mt-10'>
               {personalStats.map((stat) => (
                 <StatCard count={stat.count} icon={stat.icon} key={stat.text} text={stat.text} />
               ))}
@@ -71,13 +71,13 @@ const About = () => {
           </div>
         </div>
         {/* kolaz */}
-        <div className='relative w-1/2 shrink-0'>
+        <div className='relative w-full block sm:hidden xl:block lg:w-2/5 lg:shrink-0 lg:self-start'>
           <div className='grid grid-cols-2 gap-2'>
             {/* główne zdjęcie - pełna szerokość */}
             <div className='col-span-2 relative bg-stone-300 rounded-md max-h-150 w-full aspect-3/4 flex flex-col items-center justify-center gap-2 text-stone-500'>
               <span className='text-sm'>portret · pionowy</span>
               <span className='text-xs underline cursor-pointer'>or browse files</span>
-              <span className='absolute top-[-30] right-[-50] text-6xl italic text-pink-500 font-family-caveat'>
+              <span className='absolute top-[-30] md:right-[-50] text-6xl italic text-pink-500 font-family-caveat'>
                 Aleksandra.
               </span>
             </div>
@@ -90,6 +90,12 @@ const About = () => {
               <span className='text-sm'>ręce · aparat</span>
               <span className='text-xs underline cursor-pointer'>or browse files</span>
             </div>
+          </div>
+          <div className='max-w-100 flex items-center gap-3 mt-6 pl-1 h-15'>
+            <div className='w-0.5 bg-pink-400 self-stretch shrink-0' />
+            <p className='text-stone-500 italic font-family-caveat text-xl leading-snug'>
+              „Najlepsze zdjęcia robi się wtedy, kiedy ktoś przestaje wiedzieć, że ma być fotografowany.&quot;
+            </p>
           </div>
         </div>
       </div>
@@ -104,7 +110,7 @@ const About = () => {
             {timelineItems[0].year} → {timelineItems[timelineItems.length - 1].year}
           </div>
         </div>
-        <div className='grid grid-cols-5 gap-4'>
+        <div className='flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]'>
           {timelineItems.map((item) => (
             <TimelineEntry
               description={item.description}
@@ -114,6 +120,10 @@ const About = () => {
             />
           ))}
         </div>
+      </div>
+      {/* CTA */}
+      <div className='md:mt-20'>
+        <CtaBanner />
       </div>
     </div>
   );

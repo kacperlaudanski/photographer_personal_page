@@ -8,7 +8,7 @@ export const TimelineEntry: React.FC<TimelineEntryProps> = (props: TimelineEntry
   const { header, description, year }: TimelineEntryProps = props;
 
   return (
-    <div className='flex flex-col gap-2 transition-transform duration-500 ease-out hover:-translate-y-2 bg-white p-6 rounded-lg flex-1'>
+    <div className='min-w-3xs flex flex-col shrink-0 gap-2 transition-transform duration-500 ease-out hover:-translate-y-2 bg-white p-6 rounded-lg flex-1'>
       <div className={styles.year}>
         <SlotCounter
           value={year}
