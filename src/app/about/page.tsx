@@ -68,9 +68,6 @@ const About = () => (
           <div className='col-span-2 relative bg-stone-300 rounded-md max-h-150 w-full aspect-3/4 flex flex-col items-center justify-center gap-2 text-stone-500'>
             <span className='text-sm'>portret · pionowy</span>
             <span className='text-xs underline cursor-pointer'>or browse files</span>
-            <span className='absolute top-[-30] md:right-[-50] text-6xl italic text-pink-500 font-family-caveat'>
-              Aleksandra.
-            </span>
           </div>
           <div className='bg-stone-300 rounded-md aspect-square flex flex-col items-center justify-center gap-2 text-stone-500'>
             <span className='text-sm'>kadr · zbliżenie</span>

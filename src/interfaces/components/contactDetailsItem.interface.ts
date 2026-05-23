@@ -1,3 +1,4 @@
+import { ContactVariant } from '@/consts/contactItemVariants.const';
 import { ComponentType } from 'react';
 
 export interface ContactDetailsItem {
@@ -5,4 +6,6 @@ export interface ContactDetailsItem {
   title: string;
   description: string;
   href: string;
+  index: number;
+  variant?: ContactVariant;
 }

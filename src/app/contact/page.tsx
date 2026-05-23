@@ -1,11 +1,12 @@
 'use client';
 import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
-import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
-import { ContactDetails, Form } from './components';
+import { Form } from './components';
 import { animatedLetters, animatedLettersFillDelays, contactItems } from './consts';
+import { ContactDetailsItem } from './components/contactDetailsItem/contactDetailsItem.component';
+import { ContactDetailsItem as ContactDetailsItemInterface } from '@/interfaces';
 
 const photoVariants: Variants = {
   hidden: { opacity: 0, x: -40 },
@@ -17,8 +18,8 @@ const photoVariants: Variants = {
 };
 
 const Contact = () => (
-  <section className='flex flex-col md:flex-row text-stone-800'>
-    <div className='flex items-center px-15'>
+  <section className='flex flex-col md:flex-row text-stone-800 min-h-screen'>
+    <div className='w-full md:w-auto flex md:hidden lg:flex justify-center md:pt-6 mb-10 mr-15 lg:sticky lg:top-0 lg:h-screen'>
       <motion.div
         className='overflow-hidden'
         variants={photoVariants}
@@ -28,7 +29,7 @@ const Contact = () => (
         <div className='flex gap-4 items-center justify-center'>
           <div className='rounded-xl overflow-hidden relative'>
             <motion.div
-              className='h-full w-10 bg-[#f5f5f5] absolute top-0 left-24.5'
+              className='h-full w-10 bg-[#F1F0EE] absolute top-0 left-24.5'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0, delay: 1 }}
@@ -38,15 +39,16 @@ const Contact = () => (
               src='/assets/contact-hero.jpg'
               height={500}
               width={500}
+              className='w-full md:w-95 lg:w-125 h-auto object-cover rounded-xl'
             />
             <motion.div
-              className='h-full w-10 bg-[#f5f5f5] absolute top-0 right-4.5'
+              className='h-full w-10 bg-[#F1F0EE] absolute top-0 right-4.5'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0, delay: 1.3 }}
             />
             <motion.div
-              className='h-10 w-full bg-[#f5f5f5] absolute top-75'
+              className='h-10 w-full bg-[#F1F0EE] absolute top-75'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0, delay: 1.6 }}
@@ -55,7 +57,11 @@ const Contact = () => (
         </div>
       </motion.div>
     </div>
-    <div className='flex flex-col gap-12 p-8 flex-1'>
+    <div className='flex flex-col gap-4 flex-1'>
+      <div className='flex items-center gap-4 text-md tracking-widest text-gray-400 font-family-jet-brains'>
+        <span>→</span>
+        <span>KONTAKT · 02</span>
+      </div>
       <h1 className='leading-tight tracking-tight font-serif'>
         <span className='text-3xl md:text-6xl'>
           Każde zdjęcie to{' '}
@@ -93,8 +99,8 @@ const Contact = () => (
             ))}
           </svg>
         </span>
-        <br />
-        <span className='text-gray-400 text-xl md:text-3xl font-light tracking-wide mt-6 block'>
+      </h1>
+      <span className='text-gray-400 text-xl md:text-3xl italic font-light tracking-wide md:mt-4 md:mb-4 block font-serif'>
         <TypeAnimation
           sequence={[
             'Jeśli chcesz otworzyć kolejne, napisz.',
@@ -111,10 +117,23 @@ const Contact = () => (
           style={{ display: 'inline-block' }}
           repeat={Infinity}
         />
-        </span>
-      </h1>
-      <ContactDetails items={contactItems} />
-      <Form />
+      </span>
+      <div className='items-stretch flex gap-4 flex-col md:flex-row'>
+        {contactItems.map((item: ContactDetailsItemInterface) => (
+          <ContactDetailsItem
+            description={item.description}
+            href={item.href}
+            icon={item.icon}
+            index={item.index}
+            key={item.title}
+            title={item.title}
+            variant={item.variant}
+          />
+        ))}
+      </div>
+      <div className='mt-8'>
+        <Form />
+      </div>
     </div>
   </section>
 );

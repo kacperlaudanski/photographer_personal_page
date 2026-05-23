@@ -1,2 +1,2 @@
 export { Form } from './form/form.component';
-export { ContactDetails } from './contactDetails/contactDetails.component';
+export { ContactDetailsItem } from './contactDetailsItem/contactDetailsItem.component';
