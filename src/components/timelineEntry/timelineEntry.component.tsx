@@ -19,12 +19,12 @@ export const TimelineEntry: React.FC<TimelineEntryProps> = (props: TimelineEntry
           animateOnVisible={{ triggerOnce: true, rootMargin: '0px 0px -100px 0px' }}
         />
       </div>
-    <p className='font-bold text-gray-800 mt-2'>
-      {header}
-    </p>
-    <p className='text-gray-500 text-sm leading-relaxed'>
-      {description}
-    </p>
-  </div>
+      <p className='font-bold text-gray-800 mt-2'>
+        {header}
+      </p>
+      <p className='text-gray-500 text-sm leading-relaxed'>
+        {description}
+      </p>
+    </div>
   );
 };
