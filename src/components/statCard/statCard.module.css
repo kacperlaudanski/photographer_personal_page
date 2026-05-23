@@ -1,0 +1,7 @@
+.counter {
+  font-size: 52px;
+  font-weight: 700;
+  color: #f0ece0;
+  line-height: 1;
+  font-family: var(--font-counter);
+}

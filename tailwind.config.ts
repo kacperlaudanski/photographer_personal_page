@@ -12,6 +12,7 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-inter)', 'sans-serif'],
         serif: ['var(--font-playfair)', 'serif'],
+        caveat: ['var(--font-caveat)']
       },
       perspective: {
         1000: '1000px',

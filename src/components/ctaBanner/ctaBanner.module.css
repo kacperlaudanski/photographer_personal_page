@@ -1,0 +1,44 @@
+.ctaText {
+  font-family: var(--font-caveat);
+  background: linear-gradient(to right, #3b82f6, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 3rem;
+}
+
+.ctaButton {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: linear-gradient(to right, #a855f7, #ec4899);
+  color: white;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 100px;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+  }
+}
+
+.ctaButton:hover {
+  opacity: 0.9;
+}
+
+.label {
+  /* fix naming */
+  font-family: var(--font-counter);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f472b6;
+}
