@@ -33,26 +33,27 @@ export const Form: React.FC = (): JSX.Element => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className='flex flex-col gap-4'>
+      <div className='flex flex-col gap-8'>
         {alert && (
           <Alert severity={alert.severity} onClose={() => setAlert(null)}>
             {alert.message}
           </Alert>
         )}
-        <div className='flex gap-4'>
+        <div className='flex flex-col md:flex-row gap-8'>
           <Controller
             control={control}
             name='name'
             render={({ field }: ControllerProps<'name'>): JSX.Element => (
-              <div className='flex flex-col flex-1 gap-1'>
-                <label className='text-[10px] font-semibold tracking-widest text-gray-500'>
+              <div className='flex flex-col flex-1 gap-2'>
+                <label className='flex items-center gap-2 text-[14px] font-jet-brains font-semibold font-family-jet-brains tracking-widest text-gray-400'>
+                  <span className='text-gray-300'>—</span>
                   IMIĘ
                 </label>
                 <input
                   {...field}
                   className={clsx(
-                    'h-11 rounded-md border px-3 text-xs placeholder:text-gray-300',
-                    errors.name ? 'border-red-600' : 'border-gray-300'
+                    'h-11 border-b px-3 text-sm font-caveat placeholder:text-xl placeholder:text-gray-300 placeholder:font-family-caveat bg-transparent focus:outline-none transition-colors duration-200',
+                    errors.name ? 'border-red-400 focus:border-red-400' : 'border-gray-300 focus:border-[#7c3aed]'
                   )}
                   placeholder='Jan'
                   type='text'
@@ -67,15 +68,16 @@ export const Form: React.FC = (): JSX.Element => {
             control={control}
             name='email'
             render={({ field }: ControllerProps<'email'>): JSX.Element => (
-              <div className='flex flex-col flex-1 gap-1'>
-                <label className='text-[10px] font-semibold tracking-widest text-gray-500'>
+              <div className='flex flex-col flex-1 gap-2'>
+                <label className='flex items-center gap-2 text-[14px] font-jet-brains font-semibold font-family-jet-brains tracking-widest text-gray-400'>
+                  <span className='text-gray-300'>—</span>
                   EMAIL
                 </label>
                 <input
                   {...field}
                   className={clsx(
-                    'h-11 rounded-md border px-3 text-xs placeholder:text-gray-300',
-                    errors.email ? 'border-red-600' : 'border-gray-300'
+                    'h-11 border-b px-3 text-sm font-caveat placeholder:text-xl placeholder:text-gray-300 placeholder:font-family-caveat bg-transparent focus:outline-none transition-colors duration-200',
+                    errors.name ? 'border-red-400 focus:border-red-400' : 'border-gray-300 focus:border-[#7c3aed]'
                   )}
                   placeholder='jankowalski@email.pl'
                   type='text'
@@ -91,15 +93,16 @@ export const Form: React.FC = (): JSX.Element => {
           control={control}
           name='message'
           render={({ field }: ControllerProps<'message'>) => (
-            <div className='flex flex-col flex-1 gap-1'>
-              <label className='text-[10px] font-semibold tracking-widest text-gray-500'>
+            <div className='flex flex-col flex-1 gap-2'>
+              <label className='flex items-center gap-2 text-[14px] font-jet-brains font-semibold font-family-jet-brains tracking-widest text-gray-400'>
+                <span className='text-gray-300'>—</span>
                 WIADOMOŚĆ
               </label>
               <textarea
                 {...field}
                 className={clsx(
-                  'rounded-md border h-20 p-3 text-xs placeholder:text-gray-300',
-                  errors.message ? 'border-red-600' : 'border-gray-300'
+                  'h-24 border-b px-3 text-sm font-caveat placeholder:text-xl placeholder:text-gray-300 placeholder:font-family-caveat bg-transparent focus:outline-none transition-colors duration-200',
+                  errors.name ? 'border-red-400 focus:border-red-400' : 'border-gray-300 focus:border-[#7c3aed]'
                 )}
                 placeholder='Wpisz wiadomość...'
               />
@@ -109,9 +112,8 @@ export const Form: React.FC = (): JSX.Element => {
             </div>
           )}
         />
-        {/* TODO: fix styling */}
         <button
-          className='w-full md:w-auto md:self-start h-11 px-3 text-sm text-white rounded-md cursor-pointer mt-4'
+          className='w-full md:w-auto md:self-start h-12 px-8 text-sm font-semibold font-family-jet-brains text-white rounded-full cursor-pointer mt-4 flex justify-center items-center gap-3'
           onMouseEnter={(e: MouseEvent<HTMLButtonElement>) => (e.currentTarget.style.backgroundPosition = 'right')}
           onMouseLeave={(e: MouseEvent<HTMLButtonElement>) => (e.currentTarget.style.backgroundPosition = 'left')}
           style={{
@@ -123,6 +125,7 @@ export const Form: React.FC = (): JSX.Element => {
           type='submit'
         >
           Wyślij wiadomość
+          <span>→</span>
         </button>
       </div>
     </form>
