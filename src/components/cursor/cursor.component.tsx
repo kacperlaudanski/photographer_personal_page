@@ -11,12 +11,12 @@ export const Cursor: React.FC = (): JSX.Element => {
     <>
       <div
         ref={dotRef}
-        className='fixed pointer-events-none z-9999 will-change-transform rounded-full bg-[#e040fb] hidden md:block'
+        className='fixed pointer-events-none z-9999 will-change-transform rounded-full bg-[#e040fb]'
         style={{ width: 6, height: 6, top: -3, left: -3 }}
       />
       <div
         ref={ringRef}
-        className='fixed pointer-events-none z-9999 will-change-transform rounded-full border border-[#e040fb] hidden md:block'
+        className='fixed pointer-events-none z-9999 will-change-transform rounded-full border border-[#e040fb]'
         style={{ width: 36, height: 36, top: -18, left: -18 }}
       />
     </>
