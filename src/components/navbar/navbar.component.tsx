@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React, { JSX, useEffect, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 
@@ -7,14 +8,17 @@ import { PageTransitionContextValue } from '@/interfaces';
 import { usePageTransition } from '@/context';
 import { routes } from '@/lib';
 import clsx from 'clsx';
-import { gridBackground } from '@/consts';
+import { gridBackground, navItems } from '@/consts';
+import { MobileNavbarItem } from '../mobileNavbarItem/mobileNavbarItem.component';
 
 export const Navbar: React.FC = (): JSX.Element => {
   const { navigate }: PageTransitionContextValue = usePageTransition();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const pathname = usePathname();
 
   const handleNavClick = (href: string) => (e: React.MouseEvent<HTMLAnchorElement>): void => {
     e.preventDefault();
+    setIsOpen(false);
     navigate(href);
   };
 
@@ -44,10 +48,18 @@ export const Navbar: React.FC = (): JSX.Element => {
     <div className='flex items-center justify-between p-8 w-full z-50 absolute top-0'>
       <div className='font-family-caveat text-2xl'>aleksandra robak</div>
       <nav className='hidden lg:flex gap-12'>
-        <Link href={routes.about} onClick={handleNavClick(routes.about)} className='text-[#2EA56E]'>
+        <Link
+          href={routes.about}
+          onClick={handleNavClick(routes.about)}
+          className={clsx(pathname === '/' ? 'text-[#f7c7ef]' : 'text-[#2EA56E]')}
+        >
           O mnie
         </Link>
-        <Link href={routes.contact} onClick={handleNavClick(routes.contact)} className='text-[#2EA56E]'>
+        <Link
+          href={routes.contact}
+          onClick={handleNavClick(routes.contact)}
+          className={clsx(pathname === '/' ? 'text-[#f7c7ef]' : 'text-[#2EA56E]')}
+        >
           Kontakt
         </Link>
       </nav>
@@ -59,7 +71,7 @@ export const Navbar: React.FC = (): JSX.Element => {
       <aside
         className={clsx(
           'fixed top-0 left-0 bg-amber-300 h-screen w-full p-9',
-          'flex transition-transform duration-300 ease-in-out',
+          'flex transition-transform duration-300 ease-in-out flex-col',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
         style={gridBackground}
@@ -72,6 +84,23 @@ export const Navbar: React.FC = (): JSX.Element => {
           >
             <IoMdClose />
           </button>
+        </div>
+        <div className='flex items-center gap-4 text-sm mt-8 tracking-widest text-gray-400 font-family-jet-brains'>
+          <span>→</span>
+          <span>NAWIGACJA</span>
+        </div>
+        <div className='mt-6'>
+          {navItems.map((navItem, index) => (
+            <MobileNavbarItem
+              description={navItem.description}
+              id={index}
+              isActive={pathname === navItem.href}
+              key={navItem.label}
+              onClick={handleNavClick(navItem.href)}
+              path={navItem.href}
+              title={navItem.label}
+            />
+          ))}
         </div>
       </aside>
     </div>

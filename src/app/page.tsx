@@ -34,7 +34,8 @@ export default async function Home() {
         <span className='md:flex hidden'>Poznań · 52.24°N 16.93°E</span>
         <span className='flex items-center gap-3'>
           <span className='w-8 bg-white/30' />
-            Scroll, żeby przyspieszyć
+            Scroll, żeby
+            <span className='inline-block animate-bounce'>przyspieszyć</span>
           <span className='w-8 bg-white/30' />
         </span>
         <span className='md:flex hidden'>240 sesji · 60 ślubów · od 2017</span>
