@@ -5,6 +5,9 @@ export interface ImageCardProps {
   index: number;
   total: number;
   scrollProgress: MotionValue<number>;
+  baseX?: number;
+  baseY?: number;
+  rotate?: number;
 }
 
 export interface ImageCoords {

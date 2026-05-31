@@ -6,7 +6,7 @@ import { RefObject, useCallback, useEffect, useRef } from 'react';
 import { UseAutoScroll, UseAutoScrollSettings } from '@/interfaces';
 
 export const useAutoScroll: (settings?: UseAutoScrollSettings) => UseAutoScroll = (settings: UseAutoScrollSettings = {}): UseAutoScroll => {
-  const { autoSpeed = 0.0005, pauseDuration = 500, wheelSensitivity = 0.0005 }: UseAutoScrollSettings = settings;
+  const { autoSpeed = 0.002, pauseDuration = 500, wheelSensitivity = 0.0005 }: UseAutoScrollSettings = settings;
   const progress: MotionValue<number> = useMotionValue<number>(0);
   const smoothProgress: MotionValue<number> = useSpring(progress, { stiffness: 1000, damping: 100, mass: 1 });
   const previousTimestamp: RefObject<number | null> = useRef(null);

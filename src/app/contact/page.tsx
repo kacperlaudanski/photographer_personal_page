@@ -18,7 +18,7 @@ const photoVariants: Variants = {
 };
 
 const Contact = () => (
-  <section className='flex flex-col md:flex-row text-stone-800 min-h-screen'>
+  <section className='flex flex-col md:flex-row text-stone-800 px-4 md:px-10 py-4 pt-25'>
     <div className='w-full md:w-auto flex md:hidden lg:flex justify-center md:pt-6 mb-10 mr-15 lg:sticky lg:top-0 lg:h-screen'>
       <motion.div
         className='overflow-hidden'

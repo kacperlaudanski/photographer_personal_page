@@ -16,11 +16,15 @@ export const Navbar: React.FC = (): JSX.Element => {
   };
 
   return (
-    <div className='flex items-center justify-between p-8 w-full'>
+    <div className='flex items-center justify-between p-8 w-full z-50 absolute top-0'>
       <Image src='/assets/logo.png' alt='Logo' width={30} height={20} />
       <nav className='flex gap-12'>
-        <Link href={routes.about} onClick={handleNavClick(routes.about)} className='text-[#2EA56E]'>O mnie</Link>
-        <Link href={routes.contact} onClick={handleNavClick(routes.contact)} className='text-[#2EA56E]'>Kontakt</Link>
+        <Link href={routes.about} onClick={handleNavClick(routes.about)} className='text-[#2EA56E]'>
+          O mnie
+        </Link>
+        <Link href={routes.contact} onClick={handleNavClick(routes.contact)} className='text-[#2EA56E]'>
+          Kontakt
+        </Link>
       </nav>
     </div>
   );

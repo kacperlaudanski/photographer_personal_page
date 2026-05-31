@@ -36,11 +36,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html className={`${inter.variable} ${playfair.variable} ${caveat.variable} ${jetBrains.variable}`} lang='en'>
-      <body>
+      <body className='relative'>
         <PageTransitionProvider>
           <PageCurtain />
           <Navbar />
-          <div className='px-4 py-8 md:px-10'>
+          <div>
             {children}
             <Cursor />
           </div>
