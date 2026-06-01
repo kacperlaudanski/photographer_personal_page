@@ -1,8 +1,10 @@
-import { Path } from "@/enums";
+import { Route } from "@/enums";
+
+/* do wywalenia */
 
 export const routes = {
-  home: Path.Home,
-  session: (slug: string): string => `${Path.Sessions}/${slug}`,
-  about: Path.About,
-  contact: Path.Contact,
+  home: Route.Home,
+  session: (slug: string): string => `${Route.Portfolio}/${slug}`,
+  about: Route.About,
+  contact: Route.Contact,
 } as const;

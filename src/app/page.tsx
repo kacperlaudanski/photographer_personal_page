@@ -4,24 +4,13 @@ import { client } from '../lib';
 import { Gallery } from '@/components';
 
 import styles from './page.module.css';
+import { gridBackground } from '@/consts';
 
 export default async function Home() {
   const sessions = await client.fetch(`*[_type == 'session']{title, "slug": slug.current}`);
 
   return (
-    <main className='relative h-screen w-full'
-      style={{
-        backgroundColor: '#1a1a1a',
-        backgroundImage: `
-          linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
-          linear-gradient(rgba(0,0,0,0.2) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,0,0,0.2) 1px, transparent 1px)
-        `,
-        backgroundSize: '6px 6px',
-        backgroundPosition: '-1px -1px, -1px -1px, 0 0, 0 0',
-      }}
-    >
+    <main className='relative h-screen w-full' style={gridBackground}>
       <div className='absolute inset-0 z-20 pointer-events-none bg-black/60' />
       <div className='absolute inset-0 z-30 flex flex-col gap-3 items-center justify-center text-center pointer-events-none p-6'>
         <div className='flex items-center gap-3 mb-4'>
@@ -45,7 +34,8 @@ export default async function Home() {
         <span className='md:flex hidden'>Poznań · 52.24°N 16.93°E</span>
         <span className='flex items-center gap-3'>
           <span className='w-8 bg-white/30' />
-            Scroll, żeby przyspieszyć
+            Scroll, żeby
+            <span className='inline-block animate-bounce'>przyspieszyć</span>
           <span className='w-8 bg-white/30' />
         </span>
         <span className='md:flex hidden'>240 sesji · 60 ślubów · od 2017</span>
