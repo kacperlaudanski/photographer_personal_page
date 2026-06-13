@@ -1,14 +1,14 @@
 'use client';
+import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { JSX, useEffect, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 
-import { PageTransitionContextValue } from '@/interfaces';
 import { usePageTransition } from '@/context';
-import { routes } from '@/lib';
-import clsx from 'clsx';
 import { gridBackground, navItems } from '@/consts';
+import { PageTransitionContextValue } from '@/interfaces';
+
 import { MobileNavbarItem } from '../mobileNavbarItem/mobileNavbarItem.component';
 
 export const Navbar: React.FC = (): JSX.Element => {
@@ -45,23 +45,19 @@ export const Navbar: React.FC = (): JSX.Element => {
   });
 
   return (
-    <div className='flex items-center justify-between p-8 w-full z-50 absolute top-0'>
-      <div className='font-family-caveat text-2xl'>aleksandra robak</div>
+    <div className='flex items-center justify-between p-4 md:p-8 w-full z-50 absolute top-0'>
+      <div className='font-family-caveat text-2xl text-gray-500'>aleksandra robak</div>
       <nav className='hidden lg:flex gap-12'>
-        <Link
-          href={routes.about}
-          onClick={handleNavClick(routes.about)}
-          className={clsx(pathname === '/' ? 'text-[#f7c7ef]' : 'text-[#2EA56E]')}
-        >
-          O mnie
-        </Link>
-        <Link
-          href={routes.contact}
-          onClick={handleNavClick(routes.contact)}
-          className={clsx(pathname === '/' ? 'text-[#f7c7ef]' : 'text-[#2EA56E]')}
-        >
-          Kontakt
-        </Link>
+        {navItems.slice(1).map((navItem) => (
+          <Link
+            href={navItem.href}
+            key={navItem.href}
+            onClick={handleNavClick(navItem.href)}
+            className={clsx(pathname === '/' ? 'text-[#f7c7ef]' : 'text-[#2EA56E]')}
+          >
+            {navItem.label}
+          </Link>
+        ))}
       </nav>
       <button className='lg:hidden flex justify-center items-end gap-1.5 flex-col' onClick={(): void => setIsOpen(true)}>
         <span className='w-6 h-px bg-white' />

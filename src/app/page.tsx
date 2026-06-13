@@ -1,13 +1,11 @@
 import React from 'react';
 
-import { client } from '../lib';
 import { Gallery } from '@/components';
 
 import styles from './page.module.css';
 import { gridBackground } from '@/consts';
 
 export default async function Home() {
-  const sessions = await client.fetch(`*[_type == 'session']{title, "slug": slug.current}`);
 
   return (
     <main className='relative h-screen w-full' style={gridBackground}>
