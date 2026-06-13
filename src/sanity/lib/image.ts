@@ -1,0 +1,13 @@
+import { createImageUrlBuilder, SanityImageSource } from '@sanity/image-url'
+
+import { client } from './client';
+
+const builder = createImageUrlBuilder(client);
+
+export const urlFor = (source: SanityImageSource | undefined | null) => {
+  if (!source) {
+    return;
+  }
+
+  return builder.image(source);
+};
