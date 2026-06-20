@@ -4,25 +4,26 @@ import { TypeAnimation } from 'react-type-animation';
 import { CtaBanner, PolaroidItem, StatCard, TimelineEntry } from '@/components';
 import { personalStats, sessionItems, timelineItems } from '@/consts';
 
-import styles from './page.module.css';
-
 const About = () => (
   <div className='flex flex-col gap-6 px-4 md:px-10 py-10 pt-25'>
     <div className='flex flex-col-reverse lg:flex-row gap-6 lg:gap-10 justify-between'>
       <div className='flex flex-col gap-10'>
-        <div className='flex items-center gap-4 text-sm tracking-widest text-gray-400'>
+        <div className='flex items-center gap-4 text-sm tracking-widest text-gray-400 font-mono'>
           <span>→</span>
           <span>O MNIE · 01</span>
         </div>
         <div>
-          <h1 className='leading-tight tracking-tight font-serif'>
+          <h1 className='leading-tight tracking-tight font-display'>
             <span className='text-4xl md:text-6xl text-gray-800'>
               Cześć,{' '}<br />
-              jestem<span className={styles.name}>{' '}Aleksandra</span>
+              jestem{' '}
+              <span className='text-gradient-brand font-handwrite'>
+                Aleksandra
+              </span>
             </span>
           </h1>
         </div>
-        <p className='font-serif text-gray-400 text-lg'>
+        <p className='font-display text-gray-400 text-lg'>
           <TypeAnimation
             sequence={[ 'Każde zdjęcie to okno — nie chcę pokazywać widoku, chcę pokazać kogoś, kto przez nie patrzy.' ]}
             wrapper='span'
@@ -31,7 +32,7 @@ const About = () => (
             cursor={false}
           />
         </p>
-        <div className='flex flex-col text-gray-800 gap-3 text-lg'>
+        <div className='flex flex-col text-gray-800 gap-3 text-lg font-body'>
           <p>
             Fotografuję od ośmiu lat, choć aparat trzymałam w rękach dużo dłużej — jeszcze ten taty, z czasów licealnych ucieczek po Tomaszowie Mazowieckim.
           </p>
@@ -40,7 +41,7 @@ const About = () => (
           </p>
         </div>
         <div className='flex flex-col gap-4 text-sm tracking-widest text-gray-400'>
-          <div className='flex gap-4'>
+          <div className='flex gap-4 font-mono'>
             <span>→</span>
             <span>MOJE SESJE · 02</span>
           </div>
@@ -80,7 +81,7 @@ const About = () => (
         </div>
         <div className='max-w-100 flex items-center gap-3 mt-6 pl-1 h-15'>
           <div className='w-0.5 bg-pink-400 self-stretch shrink-0' />
-          <p className='text-stone-500 italic font-family-caveat text-xl leading-snug'>
+          <p className='text-stone-500 italic font-handwrite text-xl leading-snug'>
             „Najlepsze zdjęcia robi się wtedy, kiedy ktoś przestaje wiedzieć, że ma być fotografowany.&quot;
           </p>
         </div>
@@ -88,8 +89,8 @@ const About = () => (
     </div>
     <div className='flex flex-col gap-6 mt-10'>
       <div className='flex gap-6 items-end'>
-        <div className='text-gray-800 font-serif text-2xl'>
-          Moja <span className={styles.route}>droga</span>
+        <div className='text-gray-800 font-display text-4xl'>
+          Moja <span className='text-gradient-brand font-handwrite'>droga</span>
         </div>
         <div className='h-0.5 flex-1 border-b border-gray-300' />
         <div className='text-sm tracking-widest text-gray-400 font-mono'>

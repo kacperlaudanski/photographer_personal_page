@@ -11,14 +11,14 @@ export const MobileNavbarItem: React.FC<MobileNavbarItemProps> = (props: MobileN
       <div className='flex items-center justify-between'>
         {/* content */}
         <div className='flex items-center gap-8'>
-          <div className='text-sm font-family-jet-brains'>
+          <div className='text-sm font-mono'>
             {id}
           </div>
           <div className='flex flex-col gap-2'>
-            <div className='text-5xl font-serif'>
+            <div className='text-5xl font-display'>
               {title}
             </div>
-            <div className='text-xl font-family-caveat'>
+            <div className='text-xl font-handwrite'>
               {description}
             </div>
           </div>

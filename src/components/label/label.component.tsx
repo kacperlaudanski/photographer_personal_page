@@ -22,7 +22,7 @@ export const Label = (props: LabelData) => {
   const { text, variant }: LabelData = props;
 
   return (
-    <div className={clsx('flex items-center border px-3 py-1 rounded-full text-[10px] font-medium font-family-jet-brains', labelVariant[variant])}>
+    <div className={clsx('flex items-center border px-3 py-1 rounded-full text-[10px] font-medium font-mono', labelVariant[variant])}>
       <div className={clsx('w-1 h-1 rounded-full', dotVariant[variant])} />
       <span className='ml-2'>{text}</span>
     </div>

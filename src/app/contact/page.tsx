@@ -58,11 +58,11 @@ const Contact = () => (
       </motion.div>
     </div>
     <div className='flex flex-col gap-4 flex-1'>
-      <div className='flex items-center gap-4 text-md tracking-widest text-gray-400 font-family-jet-brains'>
+      <div className='flex items-center gap-4 text-md tracking-widest text-gray-400 font-mono'>
         <span>→</span>
         <span>KONTAKT · 02</span>
       </div>
-      <h1 className='leading-tight tracking-tight font-serif'>
+      <h1 className='leading-tight tracking-tight font-display'>
         <span className='text-3xl md:text-6xl'>
           Każde zdjęcie to{' '}
           <svg
@@ -100,7 +100,7 @@ const Contact = () => (
           </svg>
         </span>
       </h1>
-      <span className='text-gray-400 text-xl md:text-3xl italic font-light tracking-wide md:mt-4 md:mb-4 block font-serif'>
+      <span className='text-gray-400 text-xl md:text-3xl italic font-light tracking-wide md:mt-4 md:mb-4 block font-display'>
         <TypeAnimation
           sequence={[
             'Jeśli chcesz otworzyć kolejne, napisz.',

@@ -1,7 +1,6 @@
 import React, { JSX } from 'react';
 import SlotCounter from 'react-slot-counter';
 
-import styles from './statCard.module.css';
 import { StatCardProps } from './statCard.types';
 
 export const StatCard: React.FC<StatCardProps> = (props: StatCardProps): JSX.Element => {
@@ -9,7 +8,7 @@ export const StatCard: React.FC<StatCardProps> = (props: StatCardProps): JSX.Ele
 
   return (
     <div className='bg-[#1a1a1a] rounded-2xl px-10 py-8 inline-flex flex-col items-center gap-3 flex-1 transition-transform duration-500 ease-out hover:-translate-y-2'>
-      <div className={styles.counter}>
+      <div className='font-mono text-5xl text-white font-bold'>
         <SlotCounter
           duration={1.2}
           useMonospaceWidth

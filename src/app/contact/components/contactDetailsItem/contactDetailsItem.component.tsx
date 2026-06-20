@@ -19,16 +19,16 @@ export const ContactDetailsItem: React.FC<ContactDetailsItemInterface> = (itemDa
         v.bg,
       )}
     >
-      <span className={clsx('absolute top-3 right-4 text-[10px] tracking-widest font-jet-brains opacity-60', v.accent)}>
+      <span className={clsx('absolute top-3 right-4 text-[10px] tracking-widest font-mono opacity-60', v.accent)}>
         NO. {no}
       </span>
       <div className={clsx('p-2.5 w-11 h-11 rounded-full flex items-center justify-center', v.iconBg)}>
         <Icon className='text-white' size={20} />
       </div>
-      <div className={clsx('text-[10px] font-semibold tracking-widest font-jet-brains', v.accent)}>
+      <div className={clsx('text-[10px] font-semibold tracking-widest font-mono', v.accent)}>
         {title}
       </div>
-      <div className='text-sm leading-tight tracking-tight font-serif text-gray-700 whitespace-nowrap'>
+      <div className='text-sm leading-tight tracking-tight font-display text-gray-700 whitespace-nowrap'>
         {description}
       </div>
     </a>

@@ -46,7 +46,9 @@ export const Navbar: React.FC = (): JSX.Element => {
 
   return (
     <div className='flex items-center justify-between p-4 md:p-8 w-full z-50 absolute top-0'>
-      <div className='font-family-caveat text-2xl text-gray-500'>aleksandra robak</div>
+      <div className='font-handwrite text-2xl text-gray-500'>
+        <Link href='/'>aleksandra robak</Link>
+      </div>
       <nav className='hidden lg:flex gap-12'>
         {navItems.slice(1).map((navItem) => (
           <Link
@@ -73,7 +75,6 @@ export const Navbar: React.FC = (): JSX.Element => {
         style={gridBackground}
       >
         <div className='flex justify-between w-full'>
-          <div className='font-family-caveat text-2xl'>aleksandra robak</div>
           <button
             className='w-10 h-10 border border-gray-200 bg-gray-200/10 rounded-full flex justify-center items-center'
             onClick={(): void => setIsOpen(false)}
@@ -81,7 +82,7 @@ export const Navbar: React.FC = (): JSX.Element => {
             <IoMdClose />
           </button>
         </div>
-        <div className='flex items-center gap-4 text-sm mt-8 tracking-widest text-gray-400 font-family-jet-brains'>
+        <div className='flex items-center gap-4 text-sm mt-8 tracking-widest text-gray-400 font-mono'>
           <span>→</span>
           <span>NAWIGACJA</span>
         </div>

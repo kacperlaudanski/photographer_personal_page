@@ -39,7 +39,7 @@ export const PageCurtain: React.FC = (): JSX.Element | null => {
       onAnimationComplete={handleAnimationComplete}
     >
       <motion.h1
-        className='relative z-10 text-white text-7xl font-black italic font-serif'
+        className='relative z-10 text-white text-7xl font-display'
         initial={{ opacity: 0, y: 16 }}
         animate={phase === TransitionPhase.Uncovering
           ? { opacity: 0, y: -16 }

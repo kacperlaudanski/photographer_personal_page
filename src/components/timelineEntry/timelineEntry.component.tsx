@@ -1,7 +1,6 @@
 import React, { JSX } from 'react';
 import SlotCounter from 'react-slot-counter';
 
-import styles from './timelineEntry.module.css';
 import { TimelineEntryProps } from './timelineEntry.types';
 
 export const TimelineEntry: React.FC<TimelineEntryProps> = (props: TimelineEntryProps): JSX.Element => {
@@ -9,7 +8,7 @@ export const TimelineEntry: React.FC<TimelineEntryProps> = (props: TimelineEntry
 
   return (
     <div className='min-w-3xs flex flex-col shrink-0 gap-2 transition-transform duration-500 ease-out hover:-translate-y-2 bg-white p-6 rounded-lg flex-1'>
-      <div className={styles.year}>
+      <div className='font-display text-accent-pink text-3xl'>
         <SlotCounter
           value={year}
           startValue={9999}
