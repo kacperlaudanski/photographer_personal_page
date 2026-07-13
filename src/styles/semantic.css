@@ -11,18 +11,17 @@
   --font-handwrite: var(--font-caveat);
   --font-mono: var(--font-jetbrains);
 
-  --color-surface-raised: var(--color-neutral-0);
   --color-surface: var(--color-neutral-100);
+  --color-surface-raised: var(--color-neutral-0);
   --color-surface-muted: var(--color-neutral-200);
 
-  --color-text: var(--color-neutral-800);
-  --color-text-muted: var(--color-neutral-500);
-  --color-text-subtle: var(--color-neutral-400);
-  --color-text-disabled: var(--color-neutral-300);
-  --color-text-on-accent: var(--color-neutral-0);
+  --color-default: var(--color-neutral-800);
+  --color-muted: var(--color-neutral-500);
+  --color-subtle: var(--color-neutral-400);
+  --color-faint: var(--color-neutral-300);
+  --color-on-accent: var(--color-neutral-0);
 
-  --color-border: var(--color-neutral-300);
-  --color-border-focus: var(--color-accent-purple);
+  --color-focus: var(--color-accent-purple);
 
   --color-accent: var(--color-pink-500);
   --color-accent-soft: var(--color-pink-300);
@@ -30,7 +29,14 @@
   --color-accent-active: var(--color-pink-600);
 
   --color-danger: var(--color-red-500);
-  --color-danger-border: var(--color-red-300);
+  --color-danger-soft: var(--color-red-300);
+
+  --color-on-media: var(--color-neutral-0);
+  --color-on-media-muted: color-mix(in oklch, var(--color-neutral-0) 60%, transparent);
+  --color-on-media-subtle: color-mix(in oklch, var(--color-neutral-0) 40%, transparent);
+  --color-on-media-faint: color-mix(in oklch, var(--color-neutral-0) 30%, transparent);
+
+  --color-overlay-scrim: color-mix(in oklch, var(--color-neutral-950) 60%, transparent);
 }
 
 @theme inline {
@@ -38,14 +44,13 @@
   --color-surface-raised: var(--color-surface-raised);
   --color-surface-muted: var(--color-surface-muted);
 
-  --color-text: var(--color-text);
-  --color-text-muted: var(--color-text-muted);
-  --color-text-subtle: var(--color-text-subtle);
-  --color-text-disabled: var(--color-text-disabled);
-  --color-text-on-accent: var(--color-text-on-accent);
+  --color-default: var(--color-default);
+  --color-muted: var(--color-muted);
+  --color-subtle: var(--color-subtle);
+  --color-faint: var(--color-faint);
+  --color-on-accent: var(--color-on-accent);
 
-  --color-border-default: var(--color-border);
-  --color-border-focus: var(--color-border-focus);
+  --color-focus: var(--color-focus);
 
   --color-accent: var(--color-accent);
   --color-accent-soft: var(--color-accent-soft);
@@ -53,12 +58,19 @@
   --color-accent-active: var(--color-accent-active);
 
   --color-danger: var(--color-danger);
-  --color-danger-border: var(--color-danger-border);
+  --color-danger-soft: var(--color-danger-soft);
 
   --font-body: var(--font-body);
   --font-display: var(--font-display);
   --font-handwrite: var(--font-handwrite);
   --font-mono: var(--font-mono);
+
+  --color-on-media: var(--color-on-media);
+  --color-on-media-muted: var(--color-on-media-muted);
+  --color-on-media-subtle: var(--color-on-media-subtle);
+  --color-on-media-faint: var(--color-on-media-faint);
+
+  --color-overlay-scrim: var(--color-overlay-scrim);
 
   --background-image-gradient-brand: var(--gradient-brand);
 }

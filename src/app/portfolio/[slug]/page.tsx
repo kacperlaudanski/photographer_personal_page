@@ -29,7 +29,7 @@ export const Page = async (props: PageParams<PortfolioParams>) => {
   }
 
   return (
-    <div className='flex flex-col text-stone-800 px-4 md:px-10 py-4 pt-25'>
+    <div className='flex flex-col text-default px-4 md:px-10 py-4 pt-25'>
       page {session.title}
     </div>
   );
