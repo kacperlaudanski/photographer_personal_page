@@ -22,3 +22,12 @@ export const allSessionsQuery = groq`*[_type == 'session' && defined(slug.curren
     }
   },
 }`;
+
+export const aboutDataQuery = groq`*[_type == 'about'][0]{
+  timeline[]{ year, header, description },
+  sessionTypes[]{ label, iconName }
+}`;
+
+export const galleryQuery = groq`*[_id == 'gallery'][0]{
+  images[]{ _key, asset, alt }
+}`;

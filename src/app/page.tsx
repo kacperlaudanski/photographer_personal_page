@@ -2,8 +2,17 @@ import React from 'react';
 
 import { Gallery } from '@/components';
 import { gridBackground } from '@/consts';
+import { GalleryImage } from '@/interfaces';
+import { GalleryQueryResult, getGallery, urlFor } from '@/sanity';
 
 export default async function Home() {
+  const galleryData: GalleryQueryResult = await getGallery();
+
+  const galleryImages: GalleryImage[] = (galleryData?.images ?? []).map((img) => ({
+    key: img._key,
+    src: urlFor(img)?.url() ?? '',
+    alt: img.alt ?? '',
+  }));
 
   return (
     <main className='relative h-screen w-full' style={gridBackground}>
@@ -27,7 +36,7 @@ export default async function Home() {
           pokazać kogoś, kto przez nie patrzy.
         </p>
       </div>
-      <Gallery />
+      <Gallery images={galleryImages} />
       <div className='text-sm absolute bottom-0 left-0 right-0 z-30 flex items-center justify-center md:justify-between px-8 py-5 tracking-[0.2em] text-on-media-faint uppercase font-mono text-center'>
         <span className='md:flex hidden'>Poznań · 52.24°N 16.93°E</span>
         <span className='flex items-center gap-3'>

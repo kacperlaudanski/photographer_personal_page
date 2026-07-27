@@ -1,11 +1,15 @@
-'use client';
-import { TypeAnimation } from 'react-type-animation';
+// import { TypeAnimation } from 'react-type-animation';
 
 import { CtaBanner, PolaroidItem, StatCard, TimelineEntry } from '@/components';
-import { personalStats, sessionItems, timelineItems } from '@/consts';
+import { personalStats } from '@/consts';
+import { AboutDataQueryResult, getAboutData } from '@/sanity';
+import { iconMap, rotationPresets, variantPresets } from './consts';
 
-const About = () => (
-  <div className='flex flex-col gap-6 px-4 md:px-10 py-10 pt-25'>
+const About = async () => {
+  const pageData: AboutDataQueryResult = await getAboutData();
+
+  return (
+    <div className='flex flex-col gap-6 px-4 md:px-10 py-10 pt-25'>
     <div className='flex flex-col-reverse lg:flex-row gap-6 lg:gap-10 justify-between'>
       <div className='flex flex-col gap-10'>
         <div className='flex items-center gap-4 text-sm tracking-widest text-subtle font-mono'>
@@ -24,13 +28,13 @@ const About = () => (
           </h1>
         </div>
         <p className='font-display text-subtle text-lg'>
-          <TypeAnimation
+          {/* <TypeAnimation
             sequence={[ 'Każde zdjęcie to okno — nie chcę pokazywać widoku, chcę pokazać kogoś, kto przez nie patrzy.' ]}
             wrapper='span'
             speed={20}
             style={{ display: 'inline-block' }}
             cursor={false}
-          />
+          /> */}
         </p>
         <div className='flex flex-col text-default gap-3 text-lg font-body'>
           <p>
@@ -46,15 +50,15 @@ const About = () => (
             <span>MOJE SESJE · 02</span>
           </div>
           <div className='flex gap-4 mt-6 overflow-x-auto pb-8 pt-4 px-2 scrollbar-none'>
-            {sessionItems.map((item) => (
+            {pageData?.sessionTypes?.map((item, index) => (
               <PolaroidItem
-                key={item.visibleId}
-                variant={item.variant}
-                label={item.label}
-                visibleId={item.visibleId}
-                icon={item.icon}
-                style={{ transform: `rotate(${item.rotation}deg)` }}
-              />
+                key={item.label}
+                variant={variantPresets[index % variantPresets.length]}
+                label={item.label ?? ''}
+                visibleId={(index + 1).toString()}
+                icon={iconMap[item.iconName as keyof typeof iconMap]}
+                style={{ transform: `rotate(${rotationPresets[index % rotationPresets.length]}deg)` }}
+                />
             ))}
           </div>
           <div className='flex flex-col md:flex-row gap-4 mt-10'>
@@ -94,16 +98,16 @@ const About = () => (
         </div>
         <div className='h-0.5 flex-1 border-b border-faint' />
         <div className='text-sm tracking-widest text-subtle font-mono'>
-          {timelineItems[0].year} → {timelineItems[timelineItems.length - 1].year}
+          {pageData?.timeline?.[0].year} → {pageData?.timeline?.[pageData?.timeline.length - 1].year}
         </div>
       </div>
       <div className='flex gap-4 mt-6 overflow-x-auto pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none'>
-        {timelineItems.map((item) => (
+        {pageData?.timeline?.map((item) => (
           <TimelineEntry
-            description={item.description}
-            header={item.header}
+            description={item.description ?? ''}
+            header={item.header ?? ''}
             key={item.year}
-            year={item.year}
+            year={item.year ?? 0}
           />
         ))}
       </div>
@@ -112,6 +116,7 @@ const About = () => (
       <CtaBanner />
     </div>
   </div>
-);
+  )
+};
 
 export default About;

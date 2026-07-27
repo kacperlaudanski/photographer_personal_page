@@ -22,7 +22,7 @@ export const CtaBanner: React.FC = (): JSX.Element => (
         </p>
       </div>
     </div>
-    <Link href='/contact' className='bg-(image:--gradient-brand) rounded-full px-6 py-3 font-body text-white text-sm'>
+    <Link href='/contact' className='bg-gradient-brand rounded-full px-6 py-3 font-body text-white text-sm'>
       Wyślij wiadomość
     </Link>
   </div>

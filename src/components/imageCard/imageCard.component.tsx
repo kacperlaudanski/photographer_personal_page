@@ -33,8 +33,8 @@ export const ImageCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
       className='w-105 h-80 absolute left-1/2 top-1/2'
     >
       <div className='relative w-full h-full group'>
-        <div className='pointer-events-none absolute inset-0 bg-[url(/assets/cameraFrame.png)] bg-no-repeat bg-contain bg-center opacity-0 group-hover:opacity-100 transition-opacity' />
         <Image
+          draggable={false}
           src={src}
           className='w-full h-full object-cover shadow-2xl transition-[filter] duration-300'
           alt=''

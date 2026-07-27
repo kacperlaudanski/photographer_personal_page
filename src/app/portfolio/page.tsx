@@ -30,7 +30,7 @@ export const Portfolio = async () => {
       </div>
       <div className='flex flex-col gap-2'>
         <h1 className='mt-6 font-display text-5xl md:text-6xl'>
-          Wybrane
+          Wybrane {' '}
           <span className='text-gradient-brand font-handwrite'>kadry</span>
         </h1>
       </div>
@@ -55,4 +55,5 @@ export const Portfolio = async () => {
     </section>
   );
 };
+
 export default Portfolio;
