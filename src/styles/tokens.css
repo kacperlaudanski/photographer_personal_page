@@ -24,7 +24,9 @@
 
   --color-red-300: oklch(0.82 0.1 25);
   --color-red-500: oklch(0.62 0.18 25);
-  --color-red-600: oklch(0.52 0.2 25); 
+  --color-red-600: oklch(0.52 0.2 25);
+
+  --color-green-500: oklch(0.65 0.14 152);
   
   --color-pink-100: oklch(0.95 0.035 350);
   --color-pink-200: oklch(0.9 0.06 350);

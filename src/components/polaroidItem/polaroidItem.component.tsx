@@ -1,23 +1,23 @@
 import clsx from 'clsx';
-import React, { JSX } from 'react'
+import React, { JSX } from 'react';
 
-import styles from './polaroidItem.module.css';
+import { polaroidItemIconBoxColors, polaroidItemLabelColors } from '@/consts';
+
 import { PolaroidItemProps } from './polaroidItem.types';
 
 export const PolaroidItem: React.FC<PolaroidItemProps> = (props: PolaroidItemProps): JSX.Element => {
-  const { label, visibleId, icon: Icon, variant, style }: PolaroidItemProps = props;
+  const { label, icon: Icon, variant, style }: PolaroidItemProps = props;
 
   return (
-    <div className={clsx(styles.container, styles[variant])} style={style}>
-      <div className={styles.iconContainer}>
-        <div className={styles.visibleId}>{visibleId}</div>
-        <div className={styles.iconBox}>
-          <div className={styles.icon}>
-            <Icon size={20} />
-          </div>
+    <div className='flex flex-col shrink-0 rounded-sm p-2.5 pb-3.5 w-28 bg-surface-raised shadow-card' style={style}>
+      <div className='aspect-square rounded-sm bg-surface-accent flex items-center justify-center mb-2.5 relative overflow-hidden'>
+        <div className={clsx('flex items-center justify-center rounded-full h-12 w-12 text-on-accent', polaroidItemIconBoxColors[variant])}>
+          <Icon size={20} />
         </div>
       </div>
-      <span className={styles.label}>{label}</span>
+      <p className={clsx('font-handwrite text-xl text-center mt-1', polaroidItemLabelColors[variant])}>
+        {label}
+      </p>
     </div>
   );
 };

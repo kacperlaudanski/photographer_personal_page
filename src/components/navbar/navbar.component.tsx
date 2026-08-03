@@ -46,8 +46,10 @@ export const Navbar: React.FC = (): JSX.Element => {
 
   return (
     <div className='flex items-center justify-between p-4 md:p-8 w-full z-50 absolute top-0'>
-      <div className='font-handwrite text-2xl text-gray-500'>
-        <Link href='/'>aleksandra robak</Link>
+      <div className='font-handwrite text-2xl text-subtle'>
+        {pathname !== '/' && (
+          <Link href='/'>aleksandra robak</Link>
+        )}
       </div>
       <nav className='hidden lg:flex gap-12'>
         {navItems.slice(1).map((navItem) => (
@@ -55,7 +57,7 @@ export const Navbar: React.FC = (): JSX.Element => {
             href={navItem.href}
             key={navItem.href}
             onClick={handleNavClick(navItem.href)}
-            className={clsx(pathname === '/' ? 'text-[#f7c7ef]' : 'text-[#2EA56E]')}
+            className={clsx(pathname === '/' ? 'text-accent-soft' : 'text-success')}
           >
             {navItem.label}
           </Link>

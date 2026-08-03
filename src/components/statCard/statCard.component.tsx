@@ -7,21 +7,13 @@ export const StatCard: React.FC<StatCardProps> = (props: StatCardProps): JSX.Ele
   const { icon: Icon, text, count }: StatCardProps = props;
 
   return (
-    <div className='bg-[#1a1a1a] rounded-2xl px-10 py-8 inline-flex flex-col items-center gap-3 flex-1 transition-transform duration-500 ease-out hover:-translate-y-2'>
-      <div className='font-mono text-5xl text-white font-bold'>
-        <SlotCounter
-          duration={1.2}
-          useMonospaceWidth
-          startValue={0}
-          value={count}
-        />
+    <div className='bg-surface-dark rounded-2xl px-10 py-8 inline-flex flex-col items-center gap-3 flex-1 transition-transform duration-500 ease-out hover:-translate-y-2'>
+      <div className='font-mono text-5xl text-on-accent font-bold border-b border-muted pb-2'>
+        <SlotCounter duration={1.2} useMonospaceWidth startValue={0} value={count} />
       </div>
-      <div className='w-8 h-px bg-neutral-600' />
-      <div className='flex items-center gap-2 text-neutral-500 text-[11px] tracking-[0.15em] uppercase'>
-        <span className='text-[13px]'>
-          <Icon />
-        </span>
-        {text}
+      <div className='flex items-center gap-2 text-muted text-xs tracking-[0.15em] uppercase mt-2'>
+        <Icon />
+        <p>{text}</p>
       </div>
     </div>
   );

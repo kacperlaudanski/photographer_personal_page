@@ -55,10 +55,9 @@ const About = async () => {
                 key={item.label}
                 variant={variantPresets[index % variantPresets.length]}
                 label={item.label ?? ''}
-                visibleId={(index + 1).toString()}
                 icon={iconMap[item.iconName as keyof typeof iconMap]}
                 style={{ transform: `rotate(${rotationPresets[index % rotationPresets.length]}deg)` }}
-                />
+              />
             ))}
           </div>
           <div className='flex flex-col md:flex-row gap-4 mt-10'>
