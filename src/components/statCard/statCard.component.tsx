@@ -1,10 +1,9 @@
-import React, { JSX } from 'react';
 import SlotCounter from 'react-slot-counter';
 
 import { StatCardProps } from './statCard.types';
 
-export const StatCard: React.FC<StatCardProps> = (props: StatCardProps): JSX.Element => {
-  const { icon: Icon, text, count }: StatCardProps = props;
+export const StatCard = (props: StatCardProps) => {
+  const { icon: Icon, text, count } = props;
 
   return (
     <div className='bg-surface-dark rounded-2xl px-10 py-8 inline-flex flex-col items-center gap-3 flex-1 transition-transform duration-500 ease-out hover:-translate-y-2'>

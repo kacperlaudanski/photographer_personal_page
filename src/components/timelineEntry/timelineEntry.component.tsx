@@ -1,10 +1,9 @@
-import React, { JSX } from 'react';
 import SlotCounter from 'react-slot-counter';
 
 import { TimelineEntryProps } from './timelineEntry.types';
 
-export const TimelineEntry: React.FC<TimelineEntryProps> = (props: TimelineEntryProps): JSX.Element => {
-  const { header, description, year }: TimelineEntryProps = props;
+export const TimelineEntry = (props: TimelineEntryProps) => {
+  const { header, description, year } = props;
 
   return (
     <div className='min-w-3xs flex flex-col shrink-0 gap-2 transition-transform duration-500 ease-out hover:-translate-y-2 bg-surface-raised p-6 rounded-lg flex-1'>

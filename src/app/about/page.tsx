@@ -2,11 +2,12 @@
 
 import { CtaBanner, PolaroidItem, StatCard, TimelineEntry } from '@/components';
 import { personalStats } from '@/consts';
-import { AboutDataQueryResult, getAboutData } from '@/sanity';
+import { getAboutData } from '@/sanity';
+
 import { iconMap, rotationPresets, variantPresets } from './consts';
 
 const About = async () => {
-  const pageData: AboutDataQueryResult = await getAboutData();
+  const pageData = await getAboutData();
 
   return (
     <div className='flex flex-col gap-6 px-4 md:px-10 py-10 pt-25'>

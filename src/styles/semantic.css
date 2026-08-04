@@ -1,9 +1,9 @@
 :root {
   --gradient-brand: linear-gradient(
     in oklch to bottom right,
-    var(--color-accent-blue),
-    var(--color-accent-purple),
-    var(--color-accent-pink)
+    var(--color-blue-500),
+    var(--color-purple-500),
+    var(--color-pink-500)
   );
 
   --font-body: var(--font-inter);
@@ -24,11 +24,11 @@
   --color-faint: var(--color-neutral-300);
   --color-on-accent: var(--color-neutral-0);
 
-  --color-focus: var(--color-accent-purple);
+  --color-focus: var(--color-purple-500);
 
-  --color-accent: var(--color-pink-500);
   --color-accent-soft: var(--color-pink-300);
   --color-accent-hover: var(--color-pink-400);
+  --color-accent: var(--color-pink-500);
   --color-accent-active: var(--color-pink-600);
 
   --color-danger: var(--color-red-500);
@@ -43,10 +43,26 @@
 
   --color-overlay-scrim: color-mix(in oklch, var(--color-neutral-950) 60%, transparent);
 
-  --color-variant-purple: var(--color-accent-purple);
+  --color-variant-purple: var(--color-purple-500);
   --color-variant-pink: var(--color-pink-500);
-  --color-variant-blue: var(--color-accent-blue);
+  --color-variant-blue: var(--color-blue-500);
   --color-variant-purple-dark: var(--color-brand-700);
+
+  --color-variant-blue: var(--color-blue-500);
+  --color-variant-blue-text: var(--color-blue-600);
+  --color-variant-blue-soft: var(--color-blue-100);
+
+  --color-variant-purple: var(--color-purple-500);
+  --color-variant-purple-text: var(--color-purple-600);
+  --color-variant-purple-soft: var(--color-purple-100);
+
+  --color-variant-green: var(--color-green-500);
+  --color-variant-green-text: var(--color-green-600);
+  --color-variant-green-soft: var(--color-green-100);
+
+  --color-variant-pink: var(--color-pink-500);
+  --color-variant-pink-text: var(--color-pink-600);
+  --color-variant-pink-soft: var(--color-pink-100);
 }
 
 @theme inline {
@@ -89,12 +105,26 @@
 
   --background-image-gradient-brand: var(--gradient-brand);
 
-  --color-variant-purple: var(--color-variant-purple);
-  --color-variant-pink: var(--color-variant-pink);
-  --color-variant-blue: var(--color-variant-blue);
-  --color-variant-purple-dark: var(--color-variant-purple-dark);
-  --shadow-variant-purple: 0 10px 20px -8px color-mix(in oklch, var(--color-accent-purple) 50%, transparent);
+  --shadow-variant-purple: 0 10px 20px -8px color-mix(in oklch, var(--color-purple-600) 50%, transparent);
   --shadow-variant-pink: 0 10px 20px -8px color-mix(in oklch, var(--color-pink-500) 50%, transparent);
-  --shadow-variant-blue: 0 10px 20px -8px color-mix(in oklch, var(--color-accent-blue) 50%, transparent);
+  --shadow-variant-blue: 0 10px 20px -8px color-mix(in oklch, var(--color-blue-500) 50%, transparent);
   --shadow-variant-purple-dark: 0 10px 20px -8px color-mix(in oklch, var(--color-brand-700) 50%, transparent);
+
+  --color-variant-purple: var(--color-variant-purple);
+  --color-variant-purple-text: var(--color-variant-purple-text);
+  --color-variant-purple-soft: var(--color-variant-purple-soft);
+  --color-variant-purple-dark: var(--color-variant-purple-dark);
+
+  --color-variant-pink: var(--color-variant-pink);
+  --color-variant-pink-text: var(--color-variant-pink-text);
+  --color-variant-pink-soft: var(--color-variant-pink-soft);
+
+  --color-variant-blue: var(--color-variant-blue);
+  --color-variant-blue-text: var(--color-variant-blue-text);
+  --color-variant-blue-soft: var(--color-variant-blue-soft);
+
+  --color-variant-green: var(--color-variant-green);
+  --color-variant-green-text: var(--color-variant-green-text);
+  --color-variant-green-soft: var(--color-variant-green-soft);
+
 }

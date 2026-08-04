@@ -1,20 +1,14 @@
 'use client';
-import React, { JSX } from 'react';
-
 import { useAutoScroll } from '@/hooks';
-import { UseAutoScroll } from '@/interfaces';
 
 import { ImageCard } from '../imageCard/imageCard.component';
 
 import { GalleryProps } from './gallery.types';
+import { seededValue } from './gallery.utils';
 
-function seededValue(index: number, offset: number): number {
-  return Math.sin(index * 9301 + offset * 49297) * 0.5 + 0.5;
-}
-
-export const Gallery: React.FC<GalleryProps> = (props: GalleryProps): JSX.Element => {
-  const { images }: GalleryProps = props;
-  const { smoothProgress }: UseAutoScroll = useAutoScroll();
+export const Gallery = (props: GalleryProps) => {
+  const { images } = props;
+  const { smoothProgress } = useAutoScroll();
 
   return (
     <div className='relative w-full overflow-hidden'>

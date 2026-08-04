@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display, Caveat, JetBrains_Mono } from 'next/font/google';
 
-import { Cursor, Navbar, PageCurtain } from '@/components';
+import { Cursor, Navbar } from '@/components';
 import { PageTransitionProvider } from '@/context';
 
 import '../styles/globals.css';
@@ -38,7 +38,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html className={`${inter.variable} ${playfair.variable} ${caveat.variable} ${jetBrains.variable}`} lang='en'>
       <body className='relative'>
         <PageTransitionProvider>
-          <PageCurtain />
           <Navbar />
           <div>
             {children}

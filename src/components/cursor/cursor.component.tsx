@@ -1,11 +1,8 @@
 'use client';
-import { JSX } from 'react';
-
 import { useCursor } from '@/hooks';
-import { UseCursor } from '@/interfaces';
 
-export const Cursor: React.FC = (): JSX.Element => {
-  const { dotRef, ringRef }: UseCursor = useCursor();
+export const Cursor = () => {
+  const { dotRef, ringRef } = useCursor();
 
   return (
     <>

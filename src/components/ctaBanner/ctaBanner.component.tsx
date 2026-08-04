@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import React, { JSX } from 'react';
 
-export const CtaBanner: React.FC = (): JSX.Element => (
+export const CtaBanner = () => (
   <div className='flex flex-col md:flex-row relative justify-between md:items-center px-6 md:px-12 py-10 rounded-2xl bg-surface-accent overflow-hidden'>
     <div className='flex flex-col'>
       <span className='hidden lg:block absolute right-46 top-30 -rotate-15 -translate-y-1/2 text-[10rem] font-handwrite text-on-surface-accent select-none whitespace-nowrap'>

@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
-import { SessionCardProps } from './sessionCard.types';
 import { Label } from '../label/label.component';
 
-export const SessionCard: React.FC<SessionCardProps> = (props: SessionCardProps) => {
+import { SessionCardProps } from './sessionCard.types';
+
+export const SessionCard = (props: SessionCardProps) => {
   const {
     coverImage,
     secondaryImage,
@@ -19,7 +19,7 @@ export const SessionCard: React.FC<SessionCardProps> = (props: SessionCardProps)
     index,
     labels,
     priority,
-  }: SessionCardProps = props;
+  } = props;
 
   return (
     <div className={clsx('flex flex-col md:flex-row gap-8 md:gap-12', reversed ? 'md:flex-row-reverse' : 'md:flex-row')}>

@@ -3,10 +3,11 @@ import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 import { TypeAnimation } from 'react-type-animation';
 
+import { ContactDetailsItem as ContactDetailsItemInterface } from '@/interfaces';
+
 import { Form } from './components';
 import { animatedLetters, animatedLettersFillDelays, contactItems } from './consts';
-import { ContactDetailsItem } from './components/contactDetailsItem/contactDetailsItem.component';
-import { ContactDetailsItem as ContactDetailsItemInterface } from '@/interfaces';
+import { ContactDetailsItem } from '@/components';
 
 const photoVariants: Variants = {
   hidden: { opacity: 0, x: -40 },
