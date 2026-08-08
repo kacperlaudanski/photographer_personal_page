@@ -52,3 +52,12 @@
   --color-purple-500: oklch(0.7 0.22 310);
   --color-purple-600: oklch(0.58 0.23 310);
 }
+
+@keyframes letter-wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.3em);
+  }
+}

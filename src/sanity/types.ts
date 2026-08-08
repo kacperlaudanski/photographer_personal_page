@@ -95,13 +95,32 @@ export type Session = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  description?: string;
-  images?: Array<{
+  secondaryImage?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
+  };
+  tertiaryImage?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  description?: string;
+  images?: Array<{
+    image?: {
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+    caption?: string;
+    label?: string;
+    _type: "galleryImage";
     _key: string;
   }>;
   tags?: Array<string>;
@@ -229,7 +248,7 @@ export type AllSanitySchemaTypes =
 
 // Source: src/sanity/queries.ts
 // Variable: allSessionsQuery
-// Query: *[_type == 'session' && defined(slug.current)]{  _id,  title,  'slug': slug.current,  coverImage{    ...,    asset->{      _id,      metadata { lqip, dimensions },    }  },  description,  sessionsAmount,  tags,  images[]{    ...,    asset->{      _id,      metadata { lqip, dimensions },    }  },}
+// Query: *[_type == 'session' && defined(slug.current)]{  _id,  title,  'slug': slug.current,  coverImage{    ...,    asset->{      _id,      metadata { lqip, dimensions },    }  },  secondaryImage{    ...,    asset->{      _id,      metadata { lqip, dimensions },    }  },  tertiaryImage{    ...,    asset->{      _id,      metadata { lqip, dimensions },    }  },  description,  sessionsAmount,  tags,  images[]{    ...,    asset->{      _id,      metadata { lqip, dimensions },    }  },}
 export type AllSessionsQueryResult = Array<{
   _id: string;
   title: string | null;
@@ -247,10 +266,7 @@ export type AllSessionsQueryResult = Array<{
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
-  description: string | null;
-  sessionsAmount: number | null;
-  tags: Array<string> | null;
-  images: Array<{
+  secondaryImage: {
     asset: {
       _id: string;
       metadata: {
@@ -262,7 +278,36 @@ export type AllSessionsQueryResult = Array<{
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
+  } | null;
+  tertiaryImage: {
+    asset: {
+      _id: string;
+      metadata: {
+        lqip: string | null;
+        dimensions: SanityImageDimensions | null;
+      } | null;
+    } | null;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  description: string | null;
+  sessionsAmount: number | null;
+  tags: Array<string> | null;
+  images: Array<{
+    image?: {
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+    caption?: string;
+    label?: string;
+    _type: "galleryImage";
     _key: string;
+    asset: null;
   }> | null;
 }>;
 
@@ -291,7 +336,7 @@ export type GalleryQueryResult =
   | {
       images: Array<{
         _key: string;
-        asset: SanityImageAssetReference | null;
+        asset: null;
         alt: null;
       }> | null;
     }
@@ -308,7 +353,7 @@ export type GalleryQueryResult =
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == 'session' && defined(slug.current)]{\n  _id,\n  title,\n  'slug': slug.current,\n  coverImage{\n    ...,\n    asset->{\n      _id,\n      metadata { lqip, dimensions },\n    }\n  },\n  description,\n  sessionsAmount,\n  tags,\n  images[]{\n    ...,\n    asset->{\n      _id,\n      metadata { lqip, dimensions },\n    }\n  },\n}": AllSessionsQueryResult;
+    "*[_type == 'session' && defined(slug.current)]{\n  _id,\n  title,\n  'slug': slug.current,\n  coverImage{\n    ...,\n    asset->{\n      _id,\n      metadata { lqip, dimensions },\n    }\n  },\n  secondaryImage{\n    ...,\n    asset->{\n      _id,\n      metadata { lqip, dimensions },\n    }\n  },\n  tertiaryImage{\n    ...,\n    asset->{\n      _id,\n      metadata { lqip, dimensions },\n    }\n  },\n  description,\n  sessionsAmount,\n  tags,\n  images[]{\n    ...,\n    asset->{\n      _id,\n      metadata { lqip, dimensions },\n    }\n  },\n}": AllSessionsQueryResult;
     "*[_type == 'about'][0]{\n  timeline[]{ year, header, description },\n  sessionTypes[]{ label, iconName }\n}": AboutDataQueryResult;
     "*[_id == 'gallery'][0]{\n  images[]{ _key, asset, alt }\n}": GalleryQueryResult;
   }

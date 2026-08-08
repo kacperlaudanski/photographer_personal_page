@@ -28,6 +28,7 @@ export const SessionCard = (props: SessionCardProps) => {
       <Image
         src={coverImage.url}
         alt=''
+        draggable={false}
         width={500}
         height={300}
         sizes='(max-width: 768px) 100vw, 60vw'
@@ -42,6 +43,7 @@ export const SessionCard = (props: SessionCardProps) => {
         <Image
           src={secondaryImage.url}
           alt=''
+          draggable={false}
           width={250}
           height={150}
           sizes='(max-width: 768px) 50vw, 20vw'
@@ -54,6 +56,7 @@ export const SessionCard = (props: SessionCardProps) => {
         <Image
           src={tertiaryImage.url}
           alt=''
+          draggable={false}
           width={250}
           height={150}
           sizes='(max-width: 768px) 50vw, 20vw'

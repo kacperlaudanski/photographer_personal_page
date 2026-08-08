@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 
+import { gridBackground } from '@/consts';
 import { TransitionPhase } from '@/enums';
 import { getPageTitle } from '@/utils';
 
@@ -28,6 +29,7 @@ export const PageCurtain = (props: PageCurtainProps) => {
       animate={{ y: getYTarget(phase) }}
       transition={{ duration: 1.3, ease: [0.76, 0, 0.24, 1] }}
       onAnimationComplete={onAnimationComplete}
+      style={gridBackground}
     >
       <motion.h1
         className='relative z-10 text-on-accent text-7xl font-display'

@@ -15,7 +15,7 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  const handleNavClick = (href: string) => (e: MouseEvent<HTMLAnchorElement>): void => {
+  const handleNavClick = (href: string) => (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setIsOpen(false);
     navigate(href);
@@ -58,9 +58,17 @@ export const Navbar = () => {
             href={navItem.href}
             key={navItem.href}
             onClick={handleNavClick(navItem.href)}
-            className={clsx(pathname === '/' ? 'text-accent-soft' : 'text-success')}
+            className='text-accent font-display hover:underline group'
           >
-            {navItem.label}
+            {navItem.label.split('').map((letter, index) => (
+              <span
+                className='inline-block group-hover:animate-[letter-wave_0.6s_ease-in-out]'
+                key={index}
+                style={{ animationDelay: `${index * 30}ms` }}
+              >
+                {letter === ' ' ? '\u00A0' : letter}
+              </span>
+            ))}
           </Link>
         ))}
       </nav>

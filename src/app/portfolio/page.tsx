@@ -1,21 +1,18 @@
-import React from 'react';
-
 import { SessionCard } from '@/components';
 import { LabelVariant } from '@/enums';
-import { LabelData, SessionCardImage } from '@/interfaces';
-import { AllSessionsQueryResult, getAllSessions, urlFor } from '@/sanity';
+import { getAllSessions, urlFor } from '@/sanity';
 
 import { SanitySessionImage } from './types';
 
 export const Portfolio = async () => {
-  const sessions: AllSessionsQueryResult = await getAllSessions();
+  const sessions = await getAllSessions();
   const variants = Object.values(LabelVariant)
-  const mapTagsToLabel = (tag: string, index: number): LabelData => ({
+  const mapTagsToLabel = (tag: string, index: number) => ({
     text: tag,
     variant: variants[index % variants.length],
   });
 
-  const mapSanityImage = (image: SanitySessionImage | null | undefined): SessionCardImage => ({
+  const mapSanityImage = (image: SanitySessionImage | null | undefined) => ({
     url: urlFor(image)?.width(1200).quality(80).auto('format').url() ?? null,
     blurDataURL: image?.asset?.metadata?.lqip ?? '',
     width: image?.asset?.metadata?.dimensions?.width ?? 0,
@@ -38,8 +35,8 @@ export const Portfolio = async () => {
         {sessions.map((session, index) => (
           <SessionCard
             coverImage={mapSanityImage(session.coverImage)}
-            secondaryImage={mapSanityImage(session.images?.[0])}
-            tertiaryImage={mapSanityImage(session.images?.[1])}
+            secondaryImage={mapSanityImage(session.secondaryImage)}
+            tertiaryImage={mapSanityImage(session.tertiaryImage)}
             description={session.description ?? ''}
             header={session.title ?? ''}
             index={index + 1}

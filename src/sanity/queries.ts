@@ -11,6 +11,20 @@ export const allSessionsQuery = groq`*[_type == 'session' && defined(slug.curren
       metadata { lqip, dimensions },
     }
   },
+  secondaryImage{
+    ...,
+    asset->{
+      _id,
+      metadata { lqip, dimensions },
+    }
+  },
+  tertiaryImage{
+    ...,
+    asset->{
+      _id,
+      metadata { lqip, dimensions },
+    }
+  },
   description,
   sessionsAmount,
   tags,

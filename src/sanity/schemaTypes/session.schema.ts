@@ -1,4 +1,4 @@
-import { defineType, defineField } from 'sanity';
+import { defineType, defineField, defineArrayMember } from 'sanity';
 
 export const sessionSchema = defineType({
   name: 'session',
@@ -30,15 +30,52 @@ export const sessionSchema = defineType({
       type: 'image',
       options: { hotspot: true },
     }),
+    defineField({
+      name: 'secondaryImage',
+      title: 'Zdjęcie dodatkowe 1 (podgląd na liście)',
+      type: 'image',
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: 'tertiaryImage',
+      title: 'Zdjęcie dodatkowe 2 (podgląd na liście)',
+      type: 'image',
+      options: { hotspot: true },
+    }),
     defineField({ name: 'description', title: 'Opis', type: 'text' }),
     defineField({
       name: 'images',
       title: 'Galeria',
       type: 'array',
-      of: [{
-        type: 'image',
-        options: { hotspot: true },
-      }],
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'galleryImage',
+          title: 'Zdjęcie',
+          fields: [
+            defineField({
+              name: 'image',
+              title: 'Zdjęcie',
+              type: 'image',
+              options: { hotspot: true },
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'caption',
+              title: 'Podpis (np. Zabawa do świtu)',
+              type: 'string',
+            }),
+            defineField({
+              name: 'label',
+              title: 'Etykieta (do filtrowania)',
+              type: 'string',
+            }),
+          ],
+          preview: {
+            select: { media: 'image', title: 'caption', subtitle: 'label' },
+          },
+        }),
+      ],
     }),
     defineField({
       name: 'tags',
