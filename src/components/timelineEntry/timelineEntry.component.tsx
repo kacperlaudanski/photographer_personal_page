@@ -7,7 +7,7 @@ export const TimelineEntry = (props: TimelineEntryProps) => {
 
   return (
     <div className='min-w-3xs flex flex-col shrink-0 gap-2 transition-transform duration-500 ease-out hover:-translate-y-2 bg-surface-raised p-6 rounded-lg flex-1'>
-      <div className='font-display text-accent-pink text-3xl'>
+      <div className='font-display text-accent text-3xl'>
         <SlotCounter
           value={year}
           startValue={9999}
