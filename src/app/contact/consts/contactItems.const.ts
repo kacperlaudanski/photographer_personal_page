@@ -1,16 +1,16 @@
 import { FaInstagram, FaPhoneAlt } from 'react-icons/fa';
 import { IoIosMail } from 'react-icons/io';
 
-import { ContactDetailsItem } from '@/interfaces';
+import { ContactDetailsItemVariant } from '@/enums';
 
-export const contactItems: ContactDetailsItem[] = [
+export const contactItems = [
   {
     icon: FaInstagram,
     title: 'INSTAGRAM',
     description: '@alexandra.robak_photography',
     href: 'https://instagram.com/alexandra.robak_photography',
     index: 1,
-    variant: 'pink',
+    variant: ContactDetailsItemVariant.Pink,
   },
   {
     icon: FaPhoneAlt,
@@ -18,7 +18,7 @@ export const contactItems: ContactDetailsItem[] = [
     description: '+48 500 060 125',
     href: 'tel:+48500060125',
     index: 2,
-    variant: 'blue',
+    variant: ContactDetailsItemVariant.Blue,
   },
   {
     icon: IoIosMail,
@@ -26,6 +26,6 @@ export const contactItems: ContactDetailsItem[] = [
     description: 'aleksandrarobak3@gmail.com',
     href: 'mailto:aleksandrarobak3@gmail.com',
     index: 3,
-    variant: 'darkPurple',
+    variant: ContactDetailsItemVariant.DarkPurple,
   },
 ];

@@ -8,3 +8,4 @@ export { TimelineEntry } from './timelineEntry/timelineEntry.component';
 export { CtaBanner } from './ctaBanner/ctaBanner.component';
 export { SessionCard } from './sessionCard/sessionCard.component';
 export { ContactDetailsItem } from './contactDetailsItem/contactDetailsItem.component';
+export { Footer } from './footer/footer.component';

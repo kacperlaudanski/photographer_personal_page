@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display, Caveat, JetBrains_Mono } from 'next/font/google';
 
-import { Cursor, Navbar } from '@/components';
+import { Cursor, Footer, Navbar } from '@/components';
 import { PageTransitionProvider } from '@/context';
 
 import '../styles/globals.css';
@@ -43,6 +43,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             {children}
             <Cursor />
           </div>
+          <Footer />
         </PageTransitionProvider>
       </body>
     </html>

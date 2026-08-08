@@ -23,7 +23,7 @@ export const Portfolio = async () => {
   });
 
   return (
-    <section className='flex flex-col text-default px-4 md:px-10 py-4 pt-25'>
+    <section className='flex flex-col text-default px-4 md:px-10 py-25'>
       <div className='flex items-center gap-4 text-sm tracking-widest text-subtle font-mono'>
         <span>→</span>
         <span>PORTFOLIO · 01</span>
