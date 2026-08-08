@@ -22,6 +22,60 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
 
+export type Gallery = {
+  _id: string;
+  _type: "gallery";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  images?: Array<{
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "galleryImage";
+    _key: string;
+  }>;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
+export type About = {
+  _id: string;
+  _type: "about";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  timeline?: Array<{
+    year?: number;
+    header?: string;
+    description?: string;
+    _type: "timelineEntry";
+    _key: string;
+  }>;
+  sessionTypes?: Array<{
+    label?: string;
+    iconName?: "camera" | "film" | "ring" | "child" | "cake" | "baby";
+    _type: "sessionType";
+    _key: string;
+  }>;
+};
+
 export type Session = {
   _id: string;
   _type: "session";
@@ -51,22 +105,6 @@ export type Session = {
     _key: string;
   }>;
   tags?: Array<string>;
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
 };
 
 export type Slug = {
@@ -174,9 +212,11 @@ export type Geopoint = {
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
-  | Session
+  | Gallery
   | SanityImageCrop
   | SanityImageHotspot
+  | About
+  | Session
   | Slug
   | SanityImagePaletteSwatch
   | SanityImagePalette
@@ -226,10 +266,50 @@ export type AllSessionsQueryResult = Array<{
   }> | null;
 }>;
 
+// Source: src/sanity/queries.ts
+// Variable: aboutDataQuery
+// Query: *[_type == 'about'][0]{  timeline[]{ year, header, description },  sessionTypes[]{ label, iconName }}
+export type AboutDataQueryResult = {
+  timeline: Array<{
+    year: number | null;
+    header: string | null;
+    description: string | null;
+  }> | null;
+  sessionTypes: Array<{
+    label: string | null;
+    iconName: "baby" | "cake" | "camera" | "child" | "film" | "ring" | null;
+  }> | null;
+} | null;
+
+// Source: src/sanity/queries.ts
+// Variable: galleryQuery
+// Query: *[_id == 'gallery'][0]{  images[]{ _key, asset, alt }}
+export type GalleryQueryResult =
+  | {
+      images: null;
+    }
+  | {
+      images: Array<{
+        _key: string;
+        asset: SanityImageAssetReference | null;
+        alt: null;
+      }> | null;
+    }
+  | {
+      images: Array<{
+        _key: string;
+        asset: SanityImageAssetReference | null;
+        alt: string | null;
+      }> | null;
+    }
+  | null;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == 'session' && defined(slug.current)]{\n  _id,\n  title,\n  'slug': slug.current,\n  coverImage{\n    ...,\n    asset->{\n      _id,\n      metadata { lqip, dimensions },\n    }\n  },\n  description,\n  sessionsAmount,\n  tags,\n  images[]{\n    ...,\n    asset->{\n      _id,\n      metadata { lqip, dimensions },\n    }\n  },\n}": AllSessionsQueryResult;
+    "*[_type == 'about'][0]{\n  timeline[]{ year, header, description },\n  sessionTypes[]{ label, iconName }\n}": AboutDataQueryResult;
+    "*[_id == 'gallery'][0]{\n  images[]{ _key, asset, alt }\n}": GalleryQueryResult;
   }
 }

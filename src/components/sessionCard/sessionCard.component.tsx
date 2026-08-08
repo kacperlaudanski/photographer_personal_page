@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
-import { SessionCardProps } from './sessionCard.types';
 import { Label } from '../label/label.component';
 
-export const SessionCard: React.FC<SessionCardProps> = (props: SessionCardProps) => {
+import { SessionCardProps } from './sessionCard.types';
+
+export const SessionCard = (props: SessionCardProps) => {
   const {
     coverImage,
     secondaryImage,
@@ -19,9 +19,7 @@ export const SessionCard: React.FC<SessionCardProps> = (props: SessionCardProps)
     index,
     labels,
     priority,
-  }: SessionCardProps = props;
-
-  console.log(coverImage)
+  } = props;
 
   return (
     <div className={clsx('flex flex-col md:flex-row gap-8 md:gap-12', reversed ? 'md:flex-row-reverse' : 'md:flex-row')}>
@@ -69,15 +67,15 @@ export const SessionCard: React.FC<SessionCardProps> = (props: SessionCardProps)
       <div className='w-full flex flex-col gap-2 justify-center'>
         <div className='flex items-center gap-3 mb-4'>
           <div className={clsx('w-9 h-px bg-pink-500')} />
-          <span className='text-xs font-medium tracking-widest uppercase text-pink-500 font-family-jet-brains'>
+          <span className='text-xs font-medium tracking-widest uppercase text-pink-500 font-mono'>
             {index} 
           </span>
           <div className='w-0.5 h-0.5 bg-pink-500 rounded-full' />
-          <span className='text-xs font-medium tracking-widest uppercase text-pink-500 font-family-jet-brains'>
+          <span className='text-xs font-medium tracking-widest uppercase text-pink-500 font-mono'>
             {sessionNumber} realizacji
           </span>
         </div>
-        <h2 className='font-serif text-5xl text-gray-700 font-normal mb-4'>
+        <h2 className='font-display text-5xl text-gray-700 font-normal mb-4'>
           {header}
         </h2>
         <p className='text-sm italic text-neutral-500 leading-relaxed mb-6'>

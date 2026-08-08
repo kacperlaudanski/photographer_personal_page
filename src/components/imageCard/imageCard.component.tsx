@@ -1,24 +1,23 @@
-import { motion, MotionValue, useTransform } from 'motion/react';
-import React from 'react';
-import { ImageCardProps } from './imageCard.types';
+import { motion, useTransform } from 'motion/react';
 import Image from 'next/image';
 
 import { useMouseParalax } from '@/hooks';
-import { UseMouseParalax } from '@/interfaces';
 
-export const ImageCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
-  const { src, index, scrollProgress, total, baseX = 0, baseY = 0, rotate = 0 }: ImageCardProps = props;
-  const { x, y }: UseMouseParalax = useMouseParalax();
-  const z: MotionValue<number> = useTransform(scrollProgress, (value: number): number => {
-  const offset: number = index / total;
-  const loop: number = ((value + offset) % 1 + 1) % 1;
+import { ImageCardProps } from './imageCard.types';
+
+export const ImageCard = (props: ImageCardProps) => {
+  const { src, index, scrollProgress, total, baseX = 0, baseY = 0, rotate = 0 } = props;
+  const { x, y } = useMouseParalax();
+  const z= useTransform(scrollProgress, (value) => {
+  const offset = index / total;
+  const loop = ((value + offset) % 1 + 1) % 1;
 
     return -4000 + loop * 5000;
   });
-  const opacity: MotionValue<number> = useTransform(z, [-4000, -2000, 200, 600], [0, 1, 1, 0]);
+  const opacity = useTransform(z, [-4000, -2000, 200, 600], [0, 1, 1, 0]);
 
-  const offsetX: MotionValue<number> = useTransform(x, (value: number): number => baseX - value * 480);
-  const offsetY: MotionValue<number> = useTransform(y, (value: number): number => baseY - value * 480);
+  const offsetX = useTransform(x, (value) => baseX - value * 480);
+  const offsetY = useTransform(y, (value) => baseY - value * 480);
   
   return (
     <motion.div
@@ -33,8 +32,8 @@ export const ImageCard: React.FC<ImageCardProps> = (props: ImageCardProps) => {
       className='w-105 h-80 absolute left-1/2 top-1/2'
     >
       <div className='relative w-full h-full group'>
-        <div className='pointer-events-none absolute inset-0 bg-[url(/assets/cameraFrame.png)] bg-no-repeat bg-contain bg-center opacity-0 group-hover:opacity-100 transition-opacity' />
         <Image
+          draggable={false}
           src={src}
           className='w-full h-full object-cover shadow-2xl transition-[filter] duration-300'
           alt=''

@@ -1,4 +1,4 @@
-export const routeTitle: Record<string, string> = {
+export const routeTitle = {
   '/portfolio': 'Portfolio',
   '/about': 'O mnie',
   '/contact': 'Kontakt',

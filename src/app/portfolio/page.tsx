@@ -1,13 +1,10 @@
-import clsx from 'clsx';
 import React from 'react';
-import { TypeAnimation } from 'react-type-animation';
 
 import { SessionCard } from '@/components';
 import { LabelVariant } from '@/enums';
 import { LabelData, SessionCardImage } from '@/interfaces';
 import { AllSessionsQueryResult, getAllSessions, urlFor } from '@/sanity';
 
-import styles from './page.module.css';
 import { SanitySessionImage } from './types';
 
 export const Portfolio = async () => {
@@ -26,26 +23,18 @@ export const Portfolio = async () => {
   });
 
   return (
-    <section className='flex flex-col text-stone-800 px-4 md:px-10 py-4 pt-25'>
-      <div className='flex items-center gap-4 text-sm tracking-widest text-gray-400 font-family-jet-brains'>
+    <section className='flex flex-col text-default px-4 md:px-10 py-4 pt-25'>
+      <div className='flex items-center gap-4 text-sm tracking-widest text-subtle font-mono'>
         <span>→</span>
         <span>PORTFOLIO · 01</span>
       </div>
       <div className='flex flex-col gap-2'>
-        <h1 className='mt-6 font-serif text-5xl md:text-6xl'>
-          Wybrane <span className={clsx(styles.name, 'text-5xl md:text-6xl font-family-caveat')}>kadry</span>
+        <h1 className='mt-6 font-display text-5xl md:text-6xl'>
+          Wybrane {' '}
+          <span className='text-gradient-brand font-handwrite'>kadry</span>
         </h1>
-        <p className='text-gray-400 text-md md:text-lg font-serif italic'>
-          {/* <TypeAnimation
-            sequence={[ 'Mniej prac, każda większa. Tempo galerii — obraz i opis na zmianę.' ]}
-            wrapper='span'
-            speed={20}
-            style={{ display: 'inline-block' }}
-            cursor={false}
-          /> */}
-        </p>
       </div>
-      <div className='flex flex-col gap-20 mt-8 justify-center'>
+      <div className='flex flex-col gap-20 mt-16 justify-center'>
         {sessions.map((session, index) => (
           <SessionCard
             coverImage={mapSanityImage(session.coverImage)}
@@ -66,4 +55,5 @@ export const Portfolio = async () => {
     </section>
   );
 };
+
 export default Portfolio;

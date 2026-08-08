@@ -3,10 +3,11 @@ import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 import { TypeAnimation } from 'react-type-animation';
 
+import { ContactDetailsItem as ContactDetailsItemInterface } from '@/interfaces';
+
 import { Form } from './components';
 import { animatedLetters, animatedLettersFillDelays, contactItems } from './consts';
-import { ContactDetailsItem } from './components/contactDetailsItem/contactDetailsItem.component';
-import { ContactDetailsItem as ContactDetailsItemInterface } from '@/interfaces';
+import { ContactDetailsItem } from '@/components';
 
 const photoVariants: Variants = {
   hidden: { opacity: 0, x: -40 },
@@ -18,7 +19,7 @@ const photoVariants: Variants = {
 };
 
 const Contact = () => (
-  <section className='flex flex-col md:flex-row text-stone-800 px-4 md:px-10 py-4 pt-25'>
+  <section className='flex flex-col md:flex-row text-default px-4 md:px-10 py-4 pt-25'>
     <div className='w-full md:w-auto flex md:hidden lg:flex justify-center md:pt-6 mb-10 mr-15 lg:sticky lg:top-0 lg:h-screen'>
       <motion.div
         className='overflow-hidden'
@@ -29,7 +30,7 @@ const Contact = () => (
         <div className='flex gap-4 items-center justify-center'>
           <div className='rounded-xl overflow-hidden relative'>
             <motion.div
-              className='h-full w-10 bg-[#F1F0EE] absolute top-0 left-24.5'
+              className='h-full w-10 bg-surface absolute top-0 left-24.5'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0, delay: 1 }}
@@ -42,13 +43,13 @@ const Contact = () => (
               className='w-full md:w-95 lg:w-125 h-auto object-cover rounded-xl'
             />
             <motion.div
-              className='h-full w-10 bg-[#F1F0EE] absolute top-0 right-4.5'
+              className='h-full w-10 bg-surface absolute top-0 right-4.5'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0, delay: 1.3 }}
             />
             <motion.div
-              className='h-10 w-full bg-[#F1F0EE] absolute top-75'
+              className='h-10 w-full bg-surface absolute top-75'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0, delay: 1.6 }}
@@ -58,11 +59,11 @@ const Contact = () => (
       </motion.div>
     </div>
     <div className='flex flex-col gap-4 flex-1'>
-      <div className='flex items-center gap-4 text-md tracking-widest text-gray-400 font-family-jet-brains'>
+      <div className='flex items-center gap-4 text-md tracking-widest text-subtle font-mono'>
         <span>→</span>
         <span>KONTAKT · 02</span>
       </div>
-      <h1 className='leading-tight tracking-tight font-serif'>
+      <h1 className='leading-tight tracking-tight font-display'>
         <span className='text-3xl md:text-6xl'>
           Każde zdjęcie to{' '}
           <svg
@@ -100,7 +101,7 @@ const Contact = () => (
           </svg>
         </span>
       </h1>
-      <span className='text-gray-400 text-xl md:text-3xl italic font-light tracking-wide md:mt-4 md:mb-4 block font-serif'>
+      <span className='text-subtle text-xl md:text-3xl italic font-light tracking-wide md:mt-4 md:mb-4 block font-display'>
         <TypeAnimation
           sequence={[
             'Jeśli chcesz otworzyć kolejne, napisz.',

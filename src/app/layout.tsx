@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display, Caveat, JetBrains_Mono } from 'next/font/google';
 
-import { Cursor, Footer, Navbar, PageCurtain } from '@/components';
+import { Cursor, Navbar } from '@/components';
 import { PageTransitionProvider } from '@/context';
 
-import './globals.css';
+import '../styles/globals.css';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -25,7 +25,7 @@ const caveat = Caveat({
 
 const jetBrains = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-counter',
+  variable: '--font-jetbrains',
 });
 
 export const metadata: Metadata = {
@@ -38,13 +38,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html className={`${inter.variable} ${playfair.variable} ${caveat.variable} ${jetBrains.variable}`} lang='en'>
       <body className='relative'>
         <PageTransitionProvider>
-          <PageCurtain />
           <Navbar />
           <div>
             {children}
             <Cursor />
           </div>
-          {/* <Footer /> */}
         </PageTransitionProvider>
       </body>
     </html>

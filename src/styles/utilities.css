@@ -1,0 +1,17 @@
+@layer utilities {
+  .text-gradient-brand {
+    background-image: var(--gradient-brand);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .image-hover {
+    transition: transform 500ms;
+    will-change: transform;
+  }
+
+  .image-hover:hover {
+    transform: scale(1.03);
+  }
+}
