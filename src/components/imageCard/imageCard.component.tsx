@@ -15,7 +15,6 @@ export const ImageCard = (props: ImageCardProps) => {
     return -4000 + loop * 5000;
   });
   const opacity = useTransform(z, [-4000, -2000, 200, 600], [0, 1, 1, 0]);
-
   const offsetX = useTransform(x, (value) => baseX - value * 480);
   const offsetY = useTransform(y, (value) => baseY - value * 480);
   
@@ -35,7 +34,7 @@ export const ImageCard = (props: ImageCardProps) => {
         <Image
           draggable={false}
           src={src}
-          className='w-full h-full object-cover shadow-2xl transition-[filter] duration-300'
+          className='w-full h-full object-cover shadow-2xl transition-[filter] duration-300 select-none'
           alt=''
           width={900}
           height={600}

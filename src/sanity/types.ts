@@ -349,6 +349,18 @@ export type GalleryQueryResult =
     }
   | null;
 
+// Source: src/sanity/queries.ts
+// Variable: sessionData
+// Query: *[_type == 'session' && slug.current == $slug][0]{  title,  'images': images[]{    'url': image.asset->url,    caption,    label,  }}
+export type SessionDataResult = {
+  title: string | null;
+  images: Array<{
+    url: string | null;
+    caption: string | null;
+    label: string | null;
+  }> | null;
+} | null;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
@@ -356,5 +368,6 @@ declare module "@sanity/client" {
     "*[_type == 'session' && defined(slug.current)]{\n  _id,\n  title,\n  'slug': slug.current,\n  coverImage{\n    ...,\n    asset->{\n      _id,\n      metadata { lqip, dimensions },\n    }\n  },\n  secondaryImage{\n    ...,\n    asset->{\n      _id,\n      metadata { lqip, dimensions },\n    }\n  },\n  tertiaryImage{\n    ...,\n    asset->{\n      _id,\n      metadata { lqip, dimensions },\n    }\n  },\n  description,\n  sessionsAmount,\n  tags,\n  images[]{\n    ...,\n    asset->{\n      _id,\n      metadata { lqip, dimensions },\n    }\n  },\n}": AllSessionsQueryResult;
     "*[_type == 'about'][0]{\n  timeline[]{ year, header, description },\n  sessionTypes[]{ label, iconName }\n}": AboutDataQueryResult;
     "*[_id == 'gallery'][0]{\n  images[]{ _key, asset, alt }\n}": GalleryQueryResult;
+    "*[_type == 'session' && slug.current == $slug][0]{\n  title,\n  'images': images[]{\n    'url': image.asset->url,\n    caption,\n    label,\n  }\n}": SessionDataResult;
   }
 }

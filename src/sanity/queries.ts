@@ -45,3 +45,12 @@ export const aboutDataQuery = groq`*[_type == 'about'][0]{
 export const galleryQuery = groq`*[_id == 'gallery'][0]{
   images[]{ _key, asset, alt }
 }`;
+
+export const sessionData = groq`*[_type == 'session' && slug.current == $slug][0]{
+  title,
+  'images': images[]{
+    'url': image.asset->url,
+    caption,
+    label,
+  }
+}`;

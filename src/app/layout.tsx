@@ -38,12 +38,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html className={`${inter.variable} ${playfair.variable} ${caveat.variable} ${jetBrains.variable}`} lang='en'>
       <body className='relative'>
         <PageTransitionProvider>
-          <Navbar />
-          <div>
-            {children}
-            <Cursor />
+          <div className='flex min-h-screen flex-col'>
+            <Navbar />
+            <div className='flex flex-1 flex-col'>
+              {children}
+              <Cursor />
+            </div>
+            <ConditionalFooter />
           </div>
-          <ConditionalFooter />
         </PageTransitionProvider>
       </body>
     </html>
