@@ -13,3 +13,4 @@ export { ConditionalFooter } from './conditionalFooter/conditionalFooter.compone
 export { GallerySlider } from './gallerySlider/gallerySlider.component';
 export { ProgressBar } from './progressBar/progressBar.component';
 export { PortfolioGallery } from './portfolioGallery/portfolioGallery.component';
+export { ToggleButtonGroup } from './toggleButtonGroup/toggleButtonGroup.component';

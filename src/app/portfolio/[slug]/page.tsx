@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 
-import { PortfolioGallery } from '@/components';
+import { PortfolioGallery, ToggleButtonGroup } from '@/components';
 import { client, sessionData } from '@/sanity';
 import { PageParams } from '@/types';
 
@@ -27,7 +27,7 @@ export const Page = async (props: PageParams<PortfolioParams>) => {
       <span className='text-subtle text-xl md:text-xl italic font-light tracking-wide md:mt-4 md:mb-4 block font-display'>
         Przeciągnij taśmę, przewiń kółkiem albo użyj strzałek — klik na środkową klatkę otwiera podgląd.
       </span>
-      <div className='mt-27 mb-27 h-full'>
+      <div className='my-6 h-full'>
         <PortfolioGallery images={session.images} />
       </div>
     </div>
