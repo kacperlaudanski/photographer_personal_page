@@ -31,9 +31,7 @@ export const PortfolioGallery = (props: PortfolioGalleryProps) => {
   return (
     <div className='h-full'>
       {options && options.length >= 2 && (
-        <div>
-          <ToggleButtonGroup options={options} onChange={setCategory} value={category} />
-        </div>
+        <ToggleButtonGroup options={options} onChange={setCategory} value={category} />
       )}
       <div className='mt-6'>
         <GallerySlider
