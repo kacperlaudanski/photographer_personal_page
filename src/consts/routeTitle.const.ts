@@ -1,5 +1,5 @@
-export const routeTitle: Record<string, string> = {
-  '/': 'Portfolio',
+export const routeTitle = {
+  '/portfolio': 'Portfolio',
   '/about': 'O mnie',
   '/contact': 'Kontakt',
 };

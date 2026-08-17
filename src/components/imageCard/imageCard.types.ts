@@ -9,8 +9,3 @@ export interface ImageCardProps {
   baseY?: number;
   rotate?: number;
 }
-
-export interface ImageCoords {
-  x: number;
-  y: number;
-}

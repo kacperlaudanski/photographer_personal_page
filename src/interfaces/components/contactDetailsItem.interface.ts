@@ -1,4 +1,4 @@
-import { ContactVariant } from '@/consts/contactItemVariants.const';
+import { ContactDetailsItemVariant } from '@/enums';
 import { ComponentType } from 'react';
 
 export interface ContactDetailsItem {
@@ -7,5 +7,5 @@ export interface ContactDetailsItem {
   description: string;
   href: string;
   index: number;
-  variant?: ContactVariant;
+  variant?: ContactDetailsItemVariant;
 }

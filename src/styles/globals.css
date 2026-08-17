@@ -1,0 +1,38 @@
+@import 'tailwindcss';
+
+@import './tokens.css';
+@import './semantic.css';
+@import './utilities.css';
+
+@layer base {
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-family: var(--font-body);
+  }
+}
+
+html {
+  cursor: none;
+  overscroll-behavior: none;
+}
+
+a, button, [role="button"], input, label, select, textarea {
+  cursor: none;
+}
+
+.swiper {
+  width: 100%;
+  max-width: 100%;
+}
+
+.gallery-slide-inner {
+  opacity: 0.5;
+  filter: grayscale(40%);
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.swiper-slide-active .gallery-slide-inner {
+  opacity: 1;
+  filter: grayscale(0%);
+}

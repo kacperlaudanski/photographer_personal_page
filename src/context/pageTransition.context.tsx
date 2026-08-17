@@ -1,19 +1,20 @@
 'use client';
 import { usePathname, useRouter } from 'next/navigation';
-import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { createContext, ReactNode, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 
+import { PageCurtain } from '@/components';
 import { TransitionPhase } from '@/enums';
 import { PageTransitionContextValue } from '@/interfaces';
 
 const PageTransitionContext = createContext<PageTransitionContextValue | null>(null);
 
-export const PageTransitionProvider: React.FC<{ children: React.ReactNode }> = ({ children }): React.JSX.Element => {
-  const [phase, setPhase] = useState<TransitionPhase>(TransitionPhase.Idle);
-  const [destinationPath, setDestinationPath] = useState<string>('');
-  const router: ReturnType<typeof useRouter> = useRouter();
-  const pathname: string = usePathname();
-  const pendingHref: React.RefObject<string | null> = useRef<string | null>(null);
-  const [trackedPathname, setTrackedPathname] = useState<string>(pathname);
+export const PageTransitionProvider = ({ children }: { children: ReactNode }) => {
+  const [phase, setPhase] = useState(TransitionPhase.Idle);
+  const [destinationPath, setDestinationPath] = useState('');
+  const router = useRouter();
+  const pathname = usePathname();
+  const pendingHref = useRef<string | null>(null);
+  const [trackedPathname, setTrackedPathname] = useState(pathname);
 
   if (pathname !== trackedPathname) {
     setTrackedPathname(pathname);
@@ -22,9 +23,9 @@ export const PageTransitionProvider: React.FC<{ children: React.ReactNode }> = (
     }
   }
 
-  useEffect((): (() => void) | void => {
+  useEffect(() => {
     if (phase === TransitionPhase.Navigating) {
-      const timer: NodeJS.Timeout = setTimeout((): void => {
+      const timer: NodeJS.Timeout = setTimeout(() => {
         setPhase(TransitionPhase.Uncovering);
       }, 400);
 
@@ -32,7 +33,7 @@ export const PageTransitionProvider: React.FC<{ children: React.ReactNode }> = (
     }
   }, [phase]);
 
-  const navigate = useCallback((href: string): void => {
+  const navigate = useCallback((href: string) => {
     if (phase !== TransitionPhase.Idle) {
       return;
     }
@@ -42,7 +43,7 @@ export const PageTransitionProvider: React.FC<{ children: React.ReactNode }> = (
     setPhase(TransitionPhase.Covering);
   }, [phase]);
 
-  const onCoverComplete = useCallback((): void => {
+  const onCoverComplete = useCallback(() => {
     if (pendingHref.current) {
       router.push(pendingHref.current);
       pendingHref.current = null;
@@ -51,19 +52,33 @@ export const PageTransitionProvider: React.FC<{ children: React.ReactNode }> = (
     setPhase(TransitionPhase.Navigating);
   }, [router]);
 
-  const onUncoverComplete = useCallback((): void => {
+  const onUncoverComplete = useCallback(() => {
     setPhase(TransitionPhase.Idle);
   }, []);
 
+  const handleAnimationComplete = useCallback(() => {
+    if (phase === TransitionPhase.Covering) {
+      onCoverComplete();
+    } else if (phase === TransitionPhase.Uncovering) {
+      onUncoverComplete();
+    }
+  }, [phase, onCoverComplete, onUncoverComplete]);
+
+  const contextValue = useMemo(
+    () => ({ phase, destinationPath, navigate, onCoverComplete, onUncoverComplete }),
+    [phase, destinationPath, navigate, onCoverComplete, onUncoverComplete]
+  );
+
   return (
-    <PageTransitionContext.Provider value={{ phase, destinationPath, navigate, onCoverComplete, onUncoverComplete }}>
+    <PageTransitionContext.Provider value={contextValue}>
+      <PageCurtain phase={phase} destinationPath={destinationPath} onAnimationComplete={handleAnimationComplete} />
       {children}
     </PageTransitionContext.Provider>
   );
 };
 
-export const usePageTransition = (): PageTransitionContextValue => {
-  const ctx: PageTransitionContextValue | null = useContext(PageTransitionContext);
+export const usePageTransition = () => {
+  const ctx = useContext(PageTransitionContext);
 
   if (!ctx) {
     throw new Error('usePageTransition must be used within PageTransitionProvider');

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typegen": "sanity schema extract --path=./src/sanity/extract.json && sanity typegen generate"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -14,6 +15,8 @@
     "@hookform/resolvers": "^5.2.2",
     "@mui/material": "^9.0.0",
     "@sanity/client": "^7.14.1",
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^5.30.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.37.0",
     "motion": "^12.34.0",
@@ -27,6 +30,9 @@
     "react-slot-counter": "^3.3.3",
     "react-type-animation": "^3.2.0",
     "resend": "^6.12.2",
+    "sanity": "^5.30.0",
+    "swiper": "^14.1.0",
+    "yet-another-react-lightbox": "^3.32.2",
     "zod": "^4.3.6"
   },
   "devDependencies": {

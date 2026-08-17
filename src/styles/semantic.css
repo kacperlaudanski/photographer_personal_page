@@ -1,0 +1,132 @@
+:root {
+  --gradient-brand: linear-gradient(
+    in oklch to bottom right,
+    var(--color-blue-500),
+    var(--color-purple-500),
+    var(--color-pink-500)
+  );
+
+  --font-body: var(--font-inter);
+  --font-display: var(--font-playfair);
+  --font-handwrite: var(--font-caveat);
+  --font-mono: var(--font-jetbrains);
+
+  --color-surface: var(--color-neutral-100);
+  --color-surface-raised: var(--color-neutral-0);
+  --color-surface-muted: var(--color-neutral-200);
+  --color-surface-accent: var(--color-pink-100);
+  --color-surface-dark: var(--color-neutral-800);
+  --color-on-surface-accent: var(--color-pink-200);
+
+  --color-default: var(--color-neutral-800);
+  --color-muted: var(--color-neutral-500);
+  --color-subtle: var(--color-neutral-400);
+  --color-faint: var(--color-neutral-300);
+  --color-on-accent: var(--color-neutral-0);
+
+  --color-focus: var(--color-purple-500);
+
+  --color-accent-soft: var(--color-pink-300);
+  --color-accent-hover: var(--color-pink-400);
+  --color-accent: var(--color-pink-500);
+  --color-accent-active: var(--color-pink-600);
+
+  --color-danger: var(--color-red-500);
+  --color-danger-soft: var(--color-red-300);
+
+  --color-success: var(--color-green-500);
+
+  --color-on-media: var(--color-neutral-0);
+  --color-on-media-muted: color-mix(in oklch, var(--color-neutral-0) 60%, transparent);
+  --color-on-media-subtle: color-mix(in oklch, var(--color-neutral-0) 40%, transparent);
+  --color-on-media-faint: color-mix(in oklch, var(--color-neutral-0) 30%, transparent);
+
+  --color-overlay-scrim: color-mix(in oklch, var(--color-neutral-950) 60%, transparent);
+
+  --color-variant-purple: var(--color-purple-500);
+  --color-variant-pink: var(--color-pink-500);
+  --color-variant-blue: var(--color-blue-500);
+  --color-variant-purple-dark: var(--color-brand-700);
+
+  --color-variant-blue: var(--color-blue-500);
+  --color-variant-blue-text: var(--color-blue-600);
+  --color-variant-blue-soft: var(--color-blue-100);
+
+  --color-variant-purple: var(--color-purple-500);
+  --color-variant-purple-text: var(--color-purple-600);
+  --color-variant-purple-soft: var(--color-purple-100);
+
+  --color-variant-green: var(--color-green-500);
+  --color-variant-green-text: var(--color-green-600);
+  --color-variant-green-soft: var(--color-green-100);
+
+  --color-variant-pink: var(--color-pink-500);
+  --color-variant-pink-text: var(--color-pink-600);
+  --color-variant-pink-soft: var(--color-pink-100);
+}
+
+@theme inline {
+  --color-surface: var(--color-surface);
+  --color-surface-raised: var(--color-surface-raised);
+  --color-surface-muted: var(--color-surface-muted);
+  --color-surface-accent: var(--color-surface-accent);
+  --color-surface-dark: var(--color-surface-dark);
+  --color-on-surface-accent: var(--color-on-surface-accent);
+
+  --color-default: var(--color-default);
+  --color-muted: var(--color-muted);
+  --color-subtle: var(--color-subtle);
+  --color-faint: var(--color-faint);
+  --color-on-accent: var(--color-on-accent);
+
+  --color-focus: var(--color-focus);
+
+  --color-accent: var(--color-accent);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-active: var(--color-accent-active);
+
+  --color-danger: var(--color-danger);
+  --color-danger-soft: var(--color-danger-soft);
+
+  --color-success: var(--color-green-500);
+
+  --font-body: var(--font-body);
+  --font-display: var(--font-display);
+  --font-handwrite: var(--font-handwrite);
+  --font-mono: var(--font-mono);
+
+  --color-on-media: var(--color-on-media);
+  --color-on-media-muted: var(--color-on-media-muted);
+  --color-on-media-subtle: var(--color-on-media-subtle);
+  --color-on-media-faint: var(--color-on-media-faint);
+
+  --color-overlay-scrim: var(--color-overlay-scrim);
+
+  --background-image-gradient-brand: var(--gradient-brand);
+
+  --shadow-variant-purple: 0 10px 20px -8px color-mix(in oklch, var(--color-purple-600) 50%, transparent);
+  --shadow-variant-pink: 0 10px 20px -8px color-mix(in oklch, var(--color-pink-500) 50%, transparent);
+  --shadow-variant-blue: 0 10px 20px -8px color-mix(in oklch, var(--color-blue-500) 50%, transparent);
+  --shadow-variant-purple-dark: 0 10px 20px -8px color-mix(in oklch, var(--color-brand-700) 50%, transparent);
+
+  --color-variant-purple: var(--color-variant-purple);
+  --color-variant-purple-text: var(--color-variant-purple-text);
+  --color-variant-purple-soft: var(--color-variant-purple-soft);
+  --color-variant-purple-dark: var(--color-variant-purple-dark);
+
+  --color-variant-pink: var(--color-variant-pink);
+  --color-variant-pink-text: var(--color-variant-pink-text);
+  --color-variant-pink-soft: var(--color-variant-pink-soft);
+
+  --color-variant-blue: var(--color-variant-blue);
+  --color-variant-blue-text: var(--color-variant-blue-text);
+  --color-variant-blue-soft: var(--color-variant-blue-soft);
+
+  --color-variant-green: var(--color-variant-green);
+  --color-variant-green-text: var(--color-variant-green-text);
+  --color-variant-green-soft: var(--color-variant-green-soft);
+
+
+  --animate-letter-wave: wave 0.6s ease-in-out;
+}
