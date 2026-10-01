@@ -1,10 +1,17 @@
+import { Metadata } from 'next';
 // import { TypeAnimation } from 'react-type-animation';
 
 import { CtaBanner, PolaroidItem, StatCard, TimelineEntry } from '@/components';
-import { personalStats } from '@/consts';
+import { personalStats, routeTitle } from '@/consts';
+import { Route } from '@/enums';
 import { getAboutData } from '@/sanity';
 
 import { iconMap, rotationPresets, variantPresets } from './consts';
+
+export const metadata: Metadata = {
+  title: routeTitle[Route.About],
+  description: 'Poznaj mnie bliżej – moja droga w fotografii i rodzaje sesji, które realizuję.',
+};
 
 const About = async () => {
   const pageData = await getAboutData();

@@ -1,13 +1,13 @@
 'use client';
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants } from 'motion/react';
 import Image from 'next/image';
 import { TypeAnimation } from 'react-type-animation';
 
+import { ContactDetailsItem } from '@/components';
 import { ContactDetailsItem as ContactDetailsItemInterface } from '@/interfaces';
 
 import { Form } from './components';
 import { animatedLetters, animatedLettersFillDelays, contactItems } from './consts';
-import { ContactDetailsItem } from '@/components';
 
 const photoVariants: Variants = {
   hidden: { opacity: 0, x: -40 },

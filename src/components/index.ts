@@ -14,3 +14,6 @@ export { GallerySlider } from './gallerySlider/gallerySlider.component';
 export { ProgressBar } from './progressBar/progressBar.component';
 export { PortfolioGallery } from './portfolioGallery/portfolioGallery.component';
 export { ToggleButtonGroup } from './toggleButtonGroup/toggleButtonGroup.component';
+export { ImageCard } from './imageCard/imageCard.component';
+export { Label } from './label/label.component';
+export { MobileNavbarItem } from './mobileNavbarItem/mobileNavbarItem.component';
