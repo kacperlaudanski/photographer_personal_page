@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { MouseEvent } from 'react';
 
 import { navItems } from '@/consts';
 import { usePageTransition } from '@/context';
@@ -18,6 +19,11 @@ export const Footer = () => {
     </div>
   );
 
+  const handleRedirect = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    navigate(href);
+  };
+
   return (
     <div className='w-full px-4 py-8.5 md:px-13.5 bg-surface-dark'>
       <div className='flex flex-col md:flex-row gap-6 justify-between md:items-center border-b border-subtle pb-6'>
@@ -29,7 +35,7 @@ export const Footer = () => {
             <Link
               href={item.href}
               key={item.href}
-              onClick={() => navigate(item.href)}
+              onClick={(e) => handleRedirect(e, item.href)}
               className='text-accent hover:text-accent-soft transition-colors duration-300 text-sm font-display'
             >
               {item.label}
