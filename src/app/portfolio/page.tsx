@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 
 import { SessionCard } from '@/components';
-import { routeTitle } from '@/consts';
 import { LabelVariant, Route } from '@/enums';
 import { getAllSessions, urlFor } from '@/sanity';
+import { getPageTitle } from '@/utils';
 
 import { SanitySessionImage } from './types';
 
 export const metadata: Metadata = {
-  title: routeTitle[Route.Portfolio],
+  title: getPageTitle(Route.Portfolio),
   description: 'Wybrane sesje fotograficzne – portrety, reportaże, podróże i przyroda.',
 };
 

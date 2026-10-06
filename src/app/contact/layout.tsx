@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 
-import { routeTitle } from '@/consts';
 import { Route } from '@/enums';
+import { getPageTitle } from '@/utils';
 
 export const metadata: Metadata = {
-  title: routeTitle[Route.Contact],
+  title: getPageTitle(Route.Contact), 
   description: 'Napisz do mnie i umówmy się na sesję zdjęciową w Poznaniu i okolicach.',
 };
 

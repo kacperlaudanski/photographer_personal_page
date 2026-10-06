@@ -1,4 +1,5 @@
 import { navItems } from '@/consts';
+
 import { TransitionLink } from '../transitionLink/transitionLink.component';
 
 export const Footer = () => {
@@ -21,7 +22,7 @@ export const Footer = () => {
           „Najlepsze kadry dzieją się, kiedy nikt już nie pozuje.”
         </h3>
         <div className='flex flex-col md:flex-row gap-6 md:gap-12'>
-          {navItems.slice(1).map((item) => (
+          {navItems.map((item) => (
             <TransitionLink
               href={item.href}
               key={item.href}

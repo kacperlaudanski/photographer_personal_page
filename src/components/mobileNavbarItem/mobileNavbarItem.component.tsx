@@ -1,11 +1,12 @@
-import { MobileNavbarItemProps } from './mobileNavbarItem.types';
 import { TransitionLink } from '../transitionLink/transitionLink.component';
 
+import { MobileNavbarItemProps } from './mobileNavbarItem.types';
+
 export const MobileNavbarItem = (props: MobileNavbarItemProps) => {
-  const { title, description, isActive, id, path } = props;
+  const { title, description, isActive, id, path, onClick } = props;
 
   return (
-    <TransitionLink className='block w-full py-7 border-b border-subtle' href={path}>
+    <TransitionLink className='block w-full py-7 border-b border-subtle' href={path} onClick={onClick}>
       <div className='flex items-center justify-between'>
         <div className='flex items-center gap-8'>
           <div className='text-sm font-mono text-subtle'>

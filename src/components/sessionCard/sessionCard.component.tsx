@@ -2,9 +2,9 @@ import clsx from 'clsx';
 import Image from 'next/image';
 
 import { Label } from '../label/label.component';
+import { TransitionLink } from '../transitionLink/transitionLink.component';
 
 import { SessionCardProps } from './sessionCard.types';
-import { TransitionLink } from '../transitionLink/transitionLink.component';
 
 export const SessionCard = (props: SessionCardProps) => {
   const {

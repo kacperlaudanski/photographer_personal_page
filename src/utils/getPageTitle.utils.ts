@@ -1,11 +1,11 @@
-import { routeTitle } from '@/consts';
+import { navItems } from '@/consts';
 import { Route } from '@/enums';
 
-const hasRouteTitle = (pathname: string): pathname is keyof typeof routeTitle => Object.hasOwn(routeTitle, pathname);
-
 export const getPageTitle = (pathname: string): string => {
-  if (hasRouteTitle(pathname)) {
-    return routeTitle[pathname];
+  const navItem = navItems.find((item) => item.href === pathname);
+
+  if (navItem) {
+    return navItem.label;
   }
 
   if (pathname.startsWith(`${Route.Portfolio}/`)) {

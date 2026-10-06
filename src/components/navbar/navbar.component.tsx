@@ -5,10 +5,10 @@ import { useEffect, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 
 import { gridBackground, navItems } from '@/consts';
+import { Route } from '@/enums';
 
 import { MobileNavbarItem } from '../mobileNavbarItem/mobileNavbarItem.component';
 import { TransitionLink } from '../transitionLink/transitionLink.component';
-import { Route } from '@/enums';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +46,7 @@ export const Navbar = () => {
         )}
       </div>
       <nav className='hidden lg:flex gap-12'>
-        {navItems.slice(1).map((navItem) => (
+        {navItems.map((navItem) => (
           <TransitionLink
             href={navItem.href}
             key={navItem.href}

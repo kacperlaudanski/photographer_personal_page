@@ -2,14 +2,15 @@ import { Metadata } from 'next';
 // import { TypeAnimation } from 'react-type-animation';
 
 import { CtaBanner, PolaroidItem, StatCard, TimelineEntry } from '@/components';
-import { personalStats, routeTitle } from '@/consts';
+import { personalStats } from '@/consts';
 import { Route } from '@/enums';
 import { getAboutData } from '@/sanity';
+import { getPageTitle } from '@/utils';
 
 import { iconMap, rotationPresets, variantPresets } from './consts';
 
 export const metadata: Metadata = {
-  title: routeTitle[Route.About],
+  title: getPageTitle(Route.About),
   description: 'Poznaj mnie bliżej – moja droga w fotografii i rodzaje sesji, które realizuję.',
 };
 
