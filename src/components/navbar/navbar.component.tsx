@@ -91,7 +91,7 @@ export const Navbar = () => {
           <span>NAWIGACJA</span>
         </div>
         <div className='mt-6'>
-          {navItems.slice(1).map((navItem, index) => (
+          {navItems.map((navItem, index) => (
             <MobileNavbarItem
               description={navItem.description}
               id={index}

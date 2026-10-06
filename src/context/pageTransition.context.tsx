@@ -67,8 +67,8 @@ export const PageTransitionProvider = ({ children }: { children: ReactNode }) =>
   }, [phase, onCoverComplete, onUncoverComplete]);
 
   const contextValue = useMemo(
-    () => ({ phase, destinationPath, navigate, onCoverComplete, onUncoverComplete }),
-    [phase, destinationPath, navigate, onCoverComplete, onUncoverComplete]
+    () => ({ phase, destinationPath, navigate }),
+    [phase, destinationPath, navigate]
   );
 
   return (
