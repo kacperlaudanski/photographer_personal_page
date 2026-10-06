@@ -1,9 +1,11 @@
-import { routeTitle } from '@/consts';
+import { navItems } from '@/consts';
 import { Route } from '@/enums';
 
 export const getPageTitle = (pathname: string): string => {
-  if (pathname in routeTitle) {
-    return routeTitle[pathname];
+  const navItem = navItems.find((item) => item.href === pathname);
+
+  if (navItem) {
+    return navItem.label;
   }
 
   if (pathname.startsWith(`${Route.Portfolio}/`)) {

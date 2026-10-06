@@ -1,25 +1,18 @@
 'use client';
 import clsx from 'clsx';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { MouseEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 
-import { usePageTransition } from '@/context';
 import { gridBackground, navItems } from '@/consts';
+import { Route } from '@/enums';
 
 import { MobileNavbarItem } from '../mobileNavbarItem/mobileNavbarItem.component';
+import { TransitionLink } from '../transitionLink/transitionLink.component';
 
 export const Navbar = () => {
-  const { navigate } = usePageTransition();
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-
-  const handleNavClick = (href: string) => (e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    setIsOpen(false);
-    navigate(href);
-  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -46,18 +39,17 @@ export const Navbar = () => {
   return (
     <div className='flex items-center justify-between p-4 md:p-8 w-full z-50 absolute top-0'>
       <div className='font-handwrite text-2xl text-subtle'>
-        {pathname !== '/' && (
-          <Link href='/'>
+        {pathname !== Route.Home && (
+          <TransitionLink href={Route.Home}>
             aleksandra robak
-          </Link>
+          </TransitionLink>
         )}
       </div>
       <nav className='hidden lg:flex gap-12'>
-        {navItems.slice(1).map((navItem) => (
-          <Link
+        {navItems.map((navItem) => (
+          <TransitionLink
             href={navItem.href}
             key={navItem.href}
-            onClick={handleNavClick(navItem.href)}
             className='text-accent font-display hover:underline group'
           >
             {navItem.label.split('').map((letter, index) => (
@@ -69,7 +61,7 @@ export const Navbar = () => {
                 {letter === ' ' ? '\u00A0' : letter}
               </span>
             ))}
-          </Link>
+          </TransitionLink>
         ))}
       </nav>
       <button className='lg:hidden flex justify-center items-end gap-1.5 flex-col' onClick={() => setIsOpen(true)}>
@@ -99,13 +91,13 @@ export const Navbar = () => {
           <span>NAWIGACJA</span>
         </div>
         <div className='mt-6'>
-          {navItems.slice(1).map((navItem, index) => (
+          {navItems.map((navItem, index) => (
             <MobileNavbarItem
               description={navItem.description}
               id={index}
               isActive={pathname === navItem.href}
               key={navItem.label}
-              onClick={handleNavClick(navItem.href)}
+              onClick={() => setIsOpen(false)}
               path={navItem.href}
               title={navItem.label}
             />

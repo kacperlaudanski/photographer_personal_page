@@ -12,6 +12,7 @@ export const useAutoScroll: (settings?: UseAutoScrollSettings) => UseAutoScroll 
   const previousTimestamp: RefObject<number | null> = useRef(null);
   const isAutoScrollingRef: RefObject<boolean> = useRef(true);
   const autoTimeoutRef: RefObject<NodeJS.Timeout | null> = useRef<NodeJS.Timeout | null>(null);
+  const rafRef: RefObject<number> = useRef<number>(0);
 
   const handleWheel: (e: WheelEvent) => void = useCallback((e: WheelEvent): void => {
     isAutoScrollingRef.current = false;
@@ -44,22 +45,23 @@ export const useAutoScroll: (settings?: UseAutoScrollSettings) => UseAutoScroll 
         const animStep: number = autoSpeed * (deltaTime / 16.67);
         progress.set(progress.get() + animStep);
       }
-      requestAnimationFrame(updateScroll);
+
+      rafRef.current = requestAnimationFrame(updateScroll);
     }
 
     window.addEventListener('wheel', handleWheel, { passive: true });
     document.addEventListener('visibilitychange', onVisibilityChange);
-    const animFrame: number = requestAnimationFrame(updateScroll);
+    rafRef.current = requestAnimationFrame(updateScroll);
 
     return (): void => {
       window.removeEventListener('wheel', handleWheel);
       document.removeEventListener('visibilitychange', onVisibilityChange);
-      cancelAnimationFrame(animFrame);
+      cancelAnimationFrame(rafRef.current);
       if (autoTimeoutRef.current) {
         clearTimeout(autoTimeoutRef.current);
       }
     };
   }, [progress, handleWheel, autoSpeed]);
-  
+
   return { smoothProgress };
 };

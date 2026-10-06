@@ -1,4 +1,6 @@
-import Link from 'next/link';
+import { Route } from '@/enums';
+
+import { TransitionLink } from '../transitionLink/transitionLink.component';
 
 export const CtaBanner = () => (
   <div className='flex flex-col md:flex-row relative justify-between md:items-center px-6 md:px-12 py-10 rounded-2xl bg-surface-accent overflow-hidden'>
@@ -21,8 +23,8 @@ export const CtaBanner = () => (
         </p>
       </div>
     </div>
-    <Link href='/contact' className='bg-gradient-brand rounded-full px-6 py-3 font-body text-center mt-6 shrink-0 md:mt-0 text-on-accent text-sm'>
+    <TransitionLink href={Route.Contact} className='bg-gradient-brand rounded-full px-6 py-3 font-body text-center mt-6 shrink-0 md:mt-0 text-on-accent text-sm'>
       Wyślij wiadomość
-    </Link>
+    </TransitionLink>
   </div>
 );
