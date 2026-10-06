@@ -1,8 +1,10 @@
 import { routeTitle } from '@/consts';
 import { Route } from '@/enums';
 
+const hasRouteTitle = (pathname: string): pathname is keyof typeof routeTitle => Object.hasOwn(routeTitle, pathname);
+
 export const getPageTitle = (pathname: string): string => {
-  if (pathname in routeTitle) {
+  if (hasRouteTitle(pathname)) {
     return routeTitle[pathname];
   }
 

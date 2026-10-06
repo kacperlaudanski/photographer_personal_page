@@ -17,3 +17,4 @@ export { ToggleButtonGroup } from './toggleButtonGroup/toggleButtonGroup.compone
 export { ImageCard } from './imageCard/imageCard.component';
 export { Label } from './label/label.component';
 export { MobileNavbarItem } from './mobileNavbarItem/mobileNavbarItem.component';
+export { TransitionLink } from './transitionLink/transitionLink.component';

@@ -11,6 +11,7 @@ const PageTransitionContext = createContext<PageTransitionContextValue | null>(n
 export const PageTransitionProvider = ({ children }: { children: ReactNode }) => {
   const [phase, setPhase] = useState(TransitionPhase.Idle);
   const [destinationPath, setDestinationPath] = useState('');
+  const [destinationTitle, setDestinationTitle] = useState<string | undefined>();
   const router = useRouter();
   const pathname = usePathname();
   const pendingHref = useRef<string | null>(null);
@@ -33,13 +34,14 @@ export const PageTransitionProvider = ({ children }: { children: ReactNode }) =>
     }
   }, [phase]);
 
-  const navigate = useCallback((href: string) => {
+  const navigate = useCallback((href: string, title?: string) => {
     if (phase !== TransitionPhase.Idle) {
       return;
     }
 
     pendingHref.current = href;
     setDestinationPath(href);
+    setDestinationTitle(title);
     setPhase(TransitionPhase.Covering);
   }, [phase]);
 
@@ -71,7 +73,12 @@ export const PageTransitionProvider = ({ children }: { children: ReactNode }) =>
 
   return (
     <PageTransitionContext.Provider value={contextValue}>
-      <PageCurtain phase={phase} destinationPath={destinationPath} onAnimationComplete={handleAnimationComplete} />
+      <PageCurtain
+        phase={phase}
+        destinationPath={destinationPath}
+        destinationTitle={destinationTitle}
+        onAnimationComplete={handleAnimationComplete}
+      />
       {children}
     </PageTransitionContext.Provider>
   );

@@ -1,12 +1,7 @@
-'use client';
-import Link from 'next/link';
-import { MouseEvent } from 'react';
-
 import { navItems } from '@/consts';
-import { usePageTransition } from '@/context';
+import { TransitionLink } from '../transitionLink/transitionLink.component';
 
 export const Footer = () => {
-  const { navigate } = usePageTransition();
 
   const socialLinks = (
     <div className='flex gap-2 font-mono text-sm text-subtle'>
@@ -19,11 +14,6 @@ export const Footer = () => {
     </div>
   );
 
-  const handleRedirect = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    navigate(href);
-  };
-
   return (
     <div className='w-full px-4 py-8.5 md:px-13.5 bg-surface-dark'>
       <div className='flex flex-col md:flex-row gap-6 justify-between md:items-center border-b border-subtle pb-6'>
@@ -32,14 +22,13 @@ export const Footer = () => {
         </h3>
         <div className='flex flex-col md:flex-row gap-6 md:gap-12'>
           {navItems.slice(1).map((item) => (
-            <Link
+            <TransitionLink
               href={item.href}
               key={item.href}
-              onClick={(e) => handleRedirect(e, item.href)}
               className='text-accent hover:text-accent-soft transition-colors duration-300 text-sm font-display'
             >
               {item.label}
-            </Link>
+            </TransitionLink>
           ))}
         </div>
       </div>

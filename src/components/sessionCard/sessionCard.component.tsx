@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import { Label } from '../label/label.component';
 
 import { SessionCardProps } from './sessionCard.types';
+import { TransitionLink } from '../transitionLink/transitionLink.component';
 
 export const SessionCard = (props: SessionCardProps) => {
   const {
@@ -89,12 +89,12 @@ export const SessionCard = (props: SessionCardProps) => {
             <Label key={index} text={label.text} variant={label.variant} />
           ))}
         </div>
-        <Link href={path} className='inline-flex items-center gap-3 mt-5'>
+        <TransitionLink href={path} transitionTitle={header} className='inline-flex items-center gap-3 mt-5'>
           <span className='text-sm font-medium'>Otwórz serię</span>
           <span className='w-9 h-9 rounded-full bg-pink-500 flex items-center justify-center'>
             <span className='text-white text-sm'>→</span>
           </span>
-        </Link>
+        </TransitionLink>
       </div>
     </div>
   );
