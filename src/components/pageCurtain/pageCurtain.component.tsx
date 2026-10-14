@@ -1,7 +1,6 @@
 'use client';
 import { motion, Transition } from 'motion/react';
 
-import { gridBackground } from '@/consts';
 import { Route, TransitionPhase } from '@/enums';
 import { getPageTitle } from '@/utils';
 
@@ -40,12 +39,11 @@ export const PageCurtain = (props: PageCurtainProps) => {
 
   return (
     <motion.div
-      className='fixed inset-x-0 top-0 z-100 h-[115vh] bg-surface-dark rounded-bl-[50%_120px] rounded-br-[50%_120px] pointer-events-none overflow-hidden flex items-center justify-center pb-[15vh]'
+      className='bg-grid fixed inset-x-0 top-0 z-100 h-[115vh] rounded-bl-[50%_120px] rounded-br-[50%_120px] pointer-events-none overflow-hidden flex items-center justify-center pb-[15vh]'
       initial={{ y: '-115%' }}
       animate={getCurtainTarget()}
       transition={curtainTransition}
       onAnimationComplete={onAnimationComplete}
-      style={gridBackground}
     >
       <motion.h1
         className='relative z-10 text-on-accent text-7xl font-display'

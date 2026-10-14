@@ -1,5 +1,5 @@
 'use client';
-import { motion, Variants } from 'motion/react';
+import { motion } from 'motion/react';
 import Image from 'next/image';
 import { TypeAnimation } from 'react-type-animation';
 
@@ -9,21 +9,19 @@ import { ContactDetailsItem as ContactDetailsItemInterface } from '@/interfaces'
 import { Form } from './components';
 import { animatedLetters, animatedLettersFillDelays, contactItems } from './consts';
 
-const photoVariants: Variants = {
-  hidden: { opacity: 0, x: -40 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.8, ease: 'easeOut' },
-  },
-};
-
 const Contact = () => (
   <section className='flex flex-col md:flex-row text-default px-4 md:px-10 py-4 pt-25'>
     <div className='w-full md:w-auto flex md:hidden lg:flex justify-center md:pt-6 mb-10 mr-15 lg:sticky lg:top-0'>
       <motion.div
         className='overflow-hidden'
-        variants={photoVariants}
+        variants={{
+          hidden: { opacity: 0, x: -40 },
+          visible: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.8, ease: 'easeOut' },
+          }
+        }}
         initial='hidden'
         animate='visible'
       >
@@ -77,9 +75,9 @@ const Contact = () => (
           >
             <defs>
               <linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='0%' gradientUnits='userSpaceOnUse'>
-                <stop offset='0%' stopColor='#3b82f6' />
-                <stop offset='50%' stopColor='#a855f7' />
-                <stop offset='100%' stopColor='#ec4899' />
+                <stop offset='0%' style={{ stopColor: 'var(--color-blue-500)' }} />
+                <stop offset='50%' style={{ stopColor: 'var(--color-purple-500)' }} />
+                <stop offset='100%' style={{ stopColor: 'var(--color-pink-500)' }} />
               </linearGradient>
             </defs>
             {animatedLetters.map((letter, i) => (

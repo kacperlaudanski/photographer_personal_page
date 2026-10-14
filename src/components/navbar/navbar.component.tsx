@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 
-import { gridBackground, navItems } from '@/consts';
+import { navItems } from '@/consts';
 import { Route } from '@/enums';
 
 import { MobileNavbarItem } from '../mobileNavbarItem/mobileNavbarItem.component';
@@ -54,7 +54,7 @@ export const Navbar = () => {
           >
             {navItem.label.split('').map((letter, index) => (
               <span
-                className='inline-block group-hover:animate-[letter-wave_0.6s_ease-in-out]'
+                className='inline-block group-hover:animate-letter-wave'
                 key={index}
                 style={{ animationDelay: `${index * 30}ms` }}
               >
@@ -71,12 +71,11 @@ export const Navbar = () => {
       </button>
       <aside
         className={clsx(
-          'fixed top-0 left-0 h-screen w-full p-9',
+          'fixed top-0 left-0 h-screen w-full p-9 bg-grid lg:hidden',
           'flex transition-transform duration-300 ease-in-out flex-col',
           'overflow-y-auto overscroll-contain',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
-        style={gridBackground}
       >
         <div className='flex justify-end w-full'>
           <button

@@ -7,7 +7,7 @@ export const ProgressBar = (props: ProgressBarProps) => {
 
   return (
     <div className='flex flex-col items-center justify-center pt-10 w-full'>
-      <div className='mx-4 my-4 h-px bg-black/10 w-full'>
+      <div className='mx-4 my-4 h-px bg-faint/50 w-full'>
         <motion.div
           className='h-[1.5px] bg-variant-pink '
           animate={{ width: `${((activeIndex + 1) / totalAmount) * 100}%` }}
