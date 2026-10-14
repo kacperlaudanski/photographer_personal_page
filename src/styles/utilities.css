@@ -15,3 +15,14 @@
     transform: scale(1.03);
   }
 }
+
+@utility bg-grid {
+  background-color: var(--color-surface-grid);
+  background-image:
+    linear-gradient(var(--color-grid-line-light) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid-line-light) 1px, transparent 1px),
+    linear-gradient(var(--color-grid-line-dark) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid-line-dark) 1px, transparent 1px);
+  background-size: 6px 6px;
+  background-position: -1px -1px, -1px -1px, 0 0, 0 0;
+}

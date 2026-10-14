@@ -4,5 +4,5 @@ export interface MobileNavbarItemProps {
   id: number;
   isActive: boolean;
   path: string;
-  onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  onClick: () => void;
 }

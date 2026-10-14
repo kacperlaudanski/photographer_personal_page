@@ -1,11 +1,8 @@
-'use client';
-import Link from 'next/link';
-
 import { navItems } from '@/consts';
-import { usePageTransition } from '@/context';
+
+import { TransitionLink } from '../transitionLink/transitionLink.component';
 
 export const Footer = () => {
-  const { navigate } = usePageTransition();
 
   const socialLinks = (
     <div className='flex gap-2 font-mono text-sm text-subtle'>
@@ -25,15 +22,14 @@ export const Footer = () => {
           „Najlepsze kadry dzieją się, kiedy nikt już nie pozuje.”
         </h3>
         <div className='flex flex-col md:flex-row gap-6 md:gap-12'>
-          {navItems.slice(1).map((item) => (
-            <Link
+          {navItems.map((item) => (
+            <TransitionLink
               href={item.href}
               key={item.href}
-              onClick={() => navigate(item.href)}
               className='text-accent hover:text-accent-soft transition-colors duration-300 text-sm font-display'
             >
               {item.label}
-            </Link>
+            </TransitionLink>
           ))}
         </div>
       </div>

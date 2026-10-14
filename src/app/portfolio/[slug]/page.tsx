@@ -1,10 +1,35 @@
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { PortfolioGallery, ToggleButtonGroup } from '@/components';
-import { client, sessionData } from '@/sanity';
+import { PortfolioGallery } from '@/components';
+import { client, getSessionMetadata, sessionData, urlFor } from '@/sanity';
 import { PageParams } from '@/types';
 
 import { PortfolioParams } from './types';
+
+export const generateMetadata = async (props: PageParams<PortfolioParams>): Promise<Metadata> => {
+  const { slug } = await props.params;
+  const session = await getSessionMetadata(slug);
+
+  if (!session) {
+    return {};
+  }
+
+  const ogImage = session.coverImage
+    ? urlFor(session.coverImage)?.width(1200).height(630).fit('crop').auto('format').url()
+    : undefined;
+
+  return {
+    title: session.title ?? undefined,
+    description: session.description ?? undefined,
+    openGraph: ogImage
+      ? {
+          images: [{ url: ogImage, width: 1200, height: 630 }],
+        }
+      : undefined,
+  };
+};
+
 
 export const Page = async (props: PageParams<PortfolioParams>) => {
   const { slug }: PortfolioParams = await props.params;

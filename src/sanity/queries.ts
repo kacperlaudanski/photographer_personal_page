@@ -54,3 +54,9 @@ export const sessionData = groq`*[_type == 'session' && slug.current == $slug][0
     label,
   }
 }`;
+
+export const sessionMetadataQuery = groq`*[_type == 'session' && slug.current == $slug][0]{
+  title,
+  description,
+  coverImage
+}`;
