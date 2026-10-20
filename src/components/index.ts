@@ -18,3 +18,4 @@ export { ImageCard } from './imageCard/imageCard.component';
 export { Label } from './label/label.component';
 export { MobileNavbarItem } from './mobileNavbarItem/mobileNavbarItem.component';
 export { TransitionLink } from './transitionLink/transitionLink.component';
+export { Alert } from './alert/alert.component';

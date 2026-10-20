@@ -1,10 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Alert } from '@mui/material';
 import clsx from 'clsx';
+import { AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
+import { Alert } from '@/components';
 import { contactEmailSchema } from '@/emails';
+import { AlertVariant } from '@/enums';
 
 import { AlertState, FormValues } from './form.types';
 
@@ -13,7 +15,7 @@ export const Form = () => {
     defaultValues: { name: '', email: '', message: '' },
     resolver: zodResolver(contactEmailSchema),
   });
-  const [alert, setAlert] = useState<AlertState| null>(null);
+  const [alert, setAlert] = useState<AlertState | null>(null);
 
   const onSubmit = async (data: FormValues) => {
     const res = await fetch('/api/contact', {
@@ -23,23 +25,31 @@ export const Form = () => {
     });
     
     if (!res.ok) {
-      setAlert({ severity: 'error', message: 'Coś poszło nie tak. Spróbuj ponownie.' });
+      setAlert({ variant: AlertVariant.Error, title: 'Wystąpił błąd', message: 'Coś poszło nie tak. Spróbuj ponownie.' });
 
       return;
     }
 
-    setAlert({ severity: 'success', message: 'Wiadomość została wysłana!' });
+    setAlert({ variant: AlertVariant.Success, title: 'Wiadomość wysłana pomyślnie', message: 'Wiadomość została wysłana!' });
     reset();
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <div className='fixed bottom-4 inset-x-4 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-96 z-60'>
+        <AnimatePresence>
+          {!!alert && (
+            <Alert
+              autoHideDuration={5000}
+              message={alert.message}
+              onClose={() => setAlert(null)}
+              title={alert.title}
+              variant={alert.variant}
+            />
+          )}
+        </AnimatePresence>
+      </div>
       <div className='flex flex-col gap-8'>
-        {alert && (
-          <Alert severity={alert.severity} onClose={() => setAlert(null)}>
-            {alert.message}
-          </Alert>
-        )}
         <div className='flex flex-col md:flex-row gap-8'>
           <Controller
             control={control}
