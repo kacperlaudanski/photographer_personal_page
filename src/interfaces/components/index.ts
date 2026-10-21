@@ -4,3 +4,4 @@ export type { LabelData } from './labelData.interface';
 export type { SessionCardImage } from './sessionCardImage.interface';
 export type { GalleryImage } from './galleryImage.interface';
 export type { PortfolioGalleryImage } from './portfolioGalleryImage.interface';
+export type { CursorVariantConfig } from './cursorVariantConfig.interface';

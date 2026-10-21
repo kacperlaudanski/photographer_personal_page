@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 
 import { navItems } from '@/consts';
-import { Route } from '@/enums';
+import { CursorVariant, Route } from '@/enums';
 
 import { MobileNavbarItem } from '../mobileNavbarItem/mobileNavbarItem.component';
 import { TransitionLink } from '../transitionLink/transitionLink.component';
@@ -40,7 +40,7 @@ export const Navbar = () => {
     <div className='flex items-center justify-between p-4 md:p-8 w-full z-50 absolute top-0'>
       <div className='font-handwrite text-2xl text-subtle'>
         {pathname !== Route.Home && (
-          <TransitionLink href={Route.Home}>
+          <TransitionLink href={Route.Home} data-cursor={CursorVariant.Link}>
             aleksandra robak
           </TransitionLink>
         )}
@@ -48,6 +48,7 @@ export const Navbar = () => {
       <nav className='hidden lg:flex gap-12'>
         {navItems.map((navItem) => (
           <TransitionLink
+            data-cursor={CursorVariant.Link}
             href={navItem.href}
             key={navItem.href}
             className='text-accent font-display hover:underline group'

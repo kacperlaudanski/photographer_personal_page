@@ -5,6 +5,7 @@ import { Label } from '../label/label.component';
 import { TransitionLink } from '../transitionLink/transitionLink.component';
 
 import { SessionCardProps } from './sessionCard.types';
+import { CursorVariant } from '@/enums';
 
 export const SessionCard = (props: SessionCardProps) => {
   const {
@@ -89,7 +90,7 @@ export const SessionCard = (props: SessionCardProps) => {
             <Label key={index} text={label.text} variant={label.variant} />
           ))}
         </div>
-        <TransitionLink href={path} transitionTitle={header} className='group inline-flex items-center gap-3 mt-5'>
+        <TransitionLink data-cursor={CursorVariant.Open} href={path} transitionTitle={header} className='group inline-flex items-center gap-3 mt-5'>
           <span className='text-sm font-medium'>Otwórz serię</span>
           <span className='w-9 h-9 rounded-full bg-accent flex items-center justify-center group-hover:animate-float motion-reduce:animate-none'>
             <span className='text-on-accent text-sm'>→</span>

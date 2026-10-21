@@ -1,4 +1,4 @@
-import { Route } from '@/enums';
+import { CursorVariant, Route } from '@/enums';
 
 import { TransitionLink } from '../transitionLink/transitionLink.component';
 
@@ -23,7 +23,7 @@ export const CtaBanner = () => (
         </p>
       </div>
     </div>
-    <TransitionLink href={Route.Contact} className='bg-gradient-brand rounded-full px-6 py-3 font-body text-center mt-6 shrink-0 md:mt-0 text-on-accent text-sm'>
+    <TransitionLink data-cursor={CursorVariant.Link} href={Route.Contact} className='bg-gradient-brand rounded-full px-6 py-3 font-body text-center mt-6 shrink-0 md:mt-0 text-on-accent text-sm'>
       Wyślij wiadomość
     </TransitionLink>
   </div>

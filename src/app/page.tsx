@@ -3,6 +3,7 @@ import React from 'react';
 import { Gallery } from '@/components';
 import { GalleryImage } from '@/interfaces';
 import { GalleryQueryResult, getGallery, urlFor } from '@/sanity';
+import { CursorVariant } from '@/enums';
 
 export default async function Home() {
   const galleryData: GalleryQueryResult = await getGallery();
@@ -14,7 +15,7 @@ export default async function Home() {
   }));
 
   return (
-    <main className='relative h-screen w-full bg-grid'>
+    <main className='relative h-screen w-full bg-grid' data-cursor={CursorVariant.Scroll}>
       <div className='absolute inset-0 z-20 pointer-events-none bg-overlay-scrim' />
       <div className='absolute inset-0 z-30 flex flex-col gap-3 items-center justify-center text-center pointer-events-none p-6'>
         <div className='flex items-center gap-3 mb-4'>
