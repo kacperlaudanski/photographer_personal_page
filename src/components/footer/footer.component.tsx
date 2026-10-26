@@ -1,11 +1,11 @@
 import { navItems } from '@/consts';
+import { CursorVariant } from '@/enums';
 
 import { TransitionLink } from '../transitionLink/transitionLink.component';
 
 export const Footer = () => {
-
   const socialLinks = (
-    <div className='flex gap-2 font-mono text-sm text-subtle'>
+    <div data-cursor={CursorVariant.Link} className='flex gap-2 font-mono text-sm text-subtle'>
       <a href='...' className='text-accent hover:text-accent-soft transition-colors duration-300'>
         INSTAGRAM
       </a>
@@ -27,6 +27,7 @@ export const Footer = () => {
               href={item.href}
               key={item.href}
               className='text-accent hover:text-accent-soft transition-colors duration-300 text-sm font-display'
+              data-cursor={CursorVariant.Link}
             >
               {item.label}
             </TransitionLink>

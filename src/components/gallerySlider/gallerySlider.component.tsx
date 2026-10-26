@@ -58,12 +58,14 @@ export const GallerySlider = (props: GallerySliderProps) => {
       </Swiper>
       <button
         className='absolute left-2 top-1/2 z-10 h-10 w-10 place-items-center rounded-full bg-surface-raised shadow-md transition hover:scale-105'
+        data-cursor={CursorVariant.Link}
         onClick={() => swiperInstance?.slidePrev()}
       >
         <BsChevronLeft className='h-5 w-5 text-accent' />
       </button>
       <button
         className='absolute right-2 top-1/2 z-10 h-10 w-10 place-items-center rounded-full bg-surface-raised shadow-md transition hover:scale-105'
+        data-cursor={CursorVariant.Link}
         onClick={() => swiperInstance?.slideNext()}
       >
         <BsChevronRight className='h-5 w-5 text-accent' />

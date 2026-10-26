@@ -1,43 +1,33 @@
 'use client';
-import { RefObject, useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { useEffect, useEffectEvent, useRef, useState } from 'react';
 
-import { Coordinates } from '@/interfaces';
-import { CursorVariant } from '@/enums';
 import { cursorVariant } from '@/consts';
+import { usePageTransition } from '@/context';
+import { CursorVariant, TransitionPhase } from '@/enums';
+import { Coordinates } from '@/interfaces';
 
-const FINE_POINTER_QUERY = '(pointer: fine)';
+import { useHasFinePointer } from './useHasFinePointer.hook';
+
 const MAGNETIC_STRENGTH = 0.35;
 
-const cursorVariantValues: string[] = Object.values(CursorVariant);
+const isCursorVariant = (value: string | undefined): value is CursorVariant => !!value && Object.hasOwn(cursorVariant, value);
 
-const isCursorVariant = (value: string | undefined): value is CursorVariant => (
-  !!value && cursorVariantValues.includes(value)
-);
+export const useCursor = (lerp = 0.17) => {
+  const { phase } = usePageTransition();
+  const isTransitioning = phase !== TransitionPhase.Idle;
+  const getMagneticTarget = useEffectEvent(() => isTransitioning ? null : magneticTargetRef.current);
 
-const subscribeToPointer = (onChange: () => void): () => void => {
-  const mediaQuery: MediaQueryList = window.matchMedia(FINE_POINTER_QUERY);
-  mediaQuery.addEventListener('change', onChange);
+  const dotRef = useRef<HTMLDivElement | null>(null);
+  const ringRef = useRef<HTMLDivElement | null>(null);
+  const rafRef = useRef(0);
+  const initializedRef = useRef(false);
+  const magneticTargetRef = useRef<Element | null>(null);
 
-  return (): void => mediaQuery.removeEventListener('change', onChange);
-};
-
-const getHasFinePointer = (): boolean => window.matchMedia(FINE_POINTER_QUERY).matches;
-
-const getServerSnapshot = () => false;
-
-export const useCursor = (lerp: number = 0.17) => {
-  const dotRef: RefObject<HTMLDivElement | null> = useRef<HTMLDivElement>(null);
-  const ringRef: RefObject<HTMLDivElement | null> = useRef<HTMLDivElement>(null);
-  const rafRef: RefObject<number> = useRef<number>(0);
-  const initializedRef: RefObject<boolean> = useRef<boolean>(false);
-  const magneticTargetRef: RefObject<Element | null> = useRef<Element>(null);
-
-  const [variant, setVariant] = useState<CursorVariant>(CursorVariant.Default);
+  const [variant, setVariant] = useState(CursorVariant.Default);
   const [label, setLabel] = useState<string | null>(null);
-  const [isPressed, setIsPressed] = useState<boolean>(false);
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-
-  const isEnabled: boolean = useSyncExternalStore(subscribeToPointer, getHasFinePointer, getServerSnapshot);
+  const [isPressed, setIsPressed] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const isEnabled = useHasFinePointer();
 
   useEffect(() => {
     if (!isEnabled) {
@@ -47,7 +37,7 @@ export const useCursor = (lerp: number = 0.17) => {
     const mouseCoords: Coordinates = { x: 0, y: 0 };
     const ringCoords: Coordinates = { x: 0, y: 0 };
 
-    const onMove: (event: MouseEvent) => void = (event: MouseEvent): void => {
+    const onMove = (event: MouseEvent) => {
       mouseCoords.x = event.clientX;
       mouseCoords.y = event.clientY;
 
@@ -77,8 +67,8 @@ export const useCursor = (lerp: number = 0.17) => {
       magneticTargetRef.current = cursorVariant[nextVariant].magnetic ? element : null;
     };
 
-    const onDown = (): void => setIsPressed(true);
-    const onUp = (): void => setIsPressed(false);
+    const onDown = () => setIsPressed(true);
+    const onUp = () => setIsPressed(false);
 
     const onWindowOut = (event: MouseEvent): void => {
       if (!event.relatedTarget) {
@@ -92,16 +82,16 @@ export const useCursor = (lerp: number = 0.17) => {
       }
     };
 
-    const getRingTarget = (): Coordinates => {
-      const magneticTarget: Element | null = magneticTargetRef.current;
+    const getRingTarget = () => {
+      const magneticTarget = getMagneticTarget();
 
       if (!magneticTarget) {
         return mouseCoords;
       }
 
-      const rect: DOMRect = magneticTarget.getBoundingClientRect();
-      const centerX: number = rect.left + rect.width / 2;
-      const centerY: number = rect.top + rect.height / 2;
+      const rect = magneticTarget.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
 
       return {
         x: mouseCoords.x + (centerX - mouseCoords.x) * MAGNETIC_STRENGTH,
@@ -112,11 +102,14 @@ export const useCursor = (lerp: number = 0.17) => {
 
     const animate = () => {
       if (initializedRef.current) {
-        const target: Coordinates = getRingTarget();
-        ringCoords.x += (target.x - ringCoords.x) * lerp;
-        ringCoords.y += (target.y - ringCoords.y) * lerp;
+        const target = getRingTarget();
+        const deltaX = target.x - ringCoords.x;
+        const deltaY = target.y - ringCoords.y;
+        const isSettled = Math.abs(deltaX) < 0.1 && Math.abs(deltaY) < 0.1;
       
-        if (ringRef.current) {
+        if (!isSettled && ringRef.current) {
+          ringCoords.x += deltaX * lerp;
+          ringCoords.y += deltaY * lerp;
           ringRef.current.style.transform = `translate(${ringCoords.x}px, ${ringCoords.y}px)`;
         }
       }
@@ -143,5 +136,13 @@ export const useCursor = (lerp: number = 0.17) => {
     } 
   }, [lerp, isEnabled]);
 
-  return { dotRef, ringRef, variant, label, isPressed, isVisible, isEnabled };
+  return {
+    dotRef,
+    ringRef,
+    variant: isTransitioning ? CursorVariant.Default : variant,
+    label: isTransitioning ? null : label,
+    isPressed,
+    isVisible,
+    isEnabled,
+  };
 };

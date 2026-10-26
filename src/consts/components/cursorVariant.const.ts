@@ -33,7 +33,7 @@ export const cursorVariant: Record<CursorVariant, CursorVariantConfig> = {
     hideDot: true,
   },
   [CursorVariant.Text]: {
-    ring: { width: 2, height: 28, borderRadius: 1, backgroundColor: 'var(--color-focus)' },
+    ring: { width: 2, height: 17, borderRadius: 1, backgroundColor: 'var(--color-focus)' },
     ringClassName: 'animate-pulse',
     hideDot: true,
   },

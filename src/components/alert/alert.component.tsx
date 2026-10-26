@@ -7,6 +7,7 @@ import { IoMdClose } from 'react-icons/io';
 import { alertVariantStyle } from '@/consts';
 
 import { AlertProps } from './alert.types';
+import { CursorVariant } from '@/enums';
 
 export const Alert = (props: AlertProps) => {
   const { title, message, onClose, variant, autoHideDuration } = props;
@@ -45,6 +46,7 @@ export const Alert = (props: AlertProps) => {
         <button
           aria-label='Zamknij'
           className='shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-colors duration-200 hover:bg-current/10'
+          data-cursor={CursorVariant.Link}
           onClick={onClose}
           type='button'
         >

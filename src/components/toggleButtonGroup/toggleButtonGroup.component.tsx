@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 
 import { ToggleButtonGroupProps } from './toggleButtonGroup.types';
+import { CursorVariant } from '@/enums';
 
 export const ToggleButtonGroup = (props: ToggleButtonGroupProps) => {
   const { options, onChange, value } = props;
@@ -9,6 +10,7 @@ export const ToggleButtonGroup = (props: ToggleButtonGroupProps) => {
     <div className='flex gap-3'>
       {options.map((option) => (
         <button
+          data-cursor={CursorVariant.Link}
           key={option}
           onClick={() => onChange(option)}
           aria-pressed={option === value}
