@@ -11,16 +11,16 @@ import 'swiper/css/navigation';
 
 import { GallerySliderProps } from './gallerySlider.types';
 import { useState } from 'react';
+import { CursorVariant } from '@/enums';
 
 export const GallerySlider = (props: GallerySliderProps) => {
   const { images, onSlideChange, onImageClick }: GallerySliderProps = props;
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
   return (
-    <div className='px-10 h-full relative'>
+    <div className='px-10 h-full relative' data-cursor={CursorVariant.Drag}>
       <Swiper
         effect='coverflow'
-        grabCursor
         centeredSlides
         slidesPerView='auto'
         coverflowEffect={{
@@ -37,27 +37,35 @@ export const GallerySlider = (props: GallerySliderProps) => {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index} style={{ width: 320, height: 400 }}>
-            <div className='gallery-slide-inner relative w-full h-full' onClick={() => onImageClick(index)}>
-              {image.url && (
-                <Image
-                  alt='Zdjęcie ślubne'
-                  src={image.url}
-                  fill
-                  className='object-cover rounded-lg select-none'
-                />
-              )}
-            </div>
+            {({ isActive }) => (
+              <div
+                className='gallery-slide-inner relative w-full h-full'
+                data-cursor={isActive ? CursorVariant.View : undefined}
+                onClick={() => onImageClick(index)}
+              >
+                {image.url && (
+                  <Image
+                    alt='Zdjęcie ślubne'
+                    src={image.url}
+                    fill
+                    className='object-cover rounded-lg select-none'
+                  />
+                )}
+              </div>
+            )}
           </SwiperSlide>
         ))}
       </Swiper>
       <button
         className='absolute left-2 top-1/2 z-10 h-10 w-10 place-items-center rounded-full bg-surface-raised shadow-md transition hover:scale-105'
+        data-cursor={CursorVariant.Link}
         onClick={() => swiperInstance?.slidePrev()}
       >
         <BsChevronLeft className='h-5 w-5 text-accent' />
       </button>
       <button
         className='absolute right-2 top-1/2 z-10 h-10 w-10 place-items-center rounded-full bg-surface-raised shadow-md transition hover:scale-105'
+        data-cursor={CursorVariant.Link}
         onClick={() => swiperInstance?.slideNext()}
       >
         <BsChevronRight className='h-5 w-5 text-accent' />

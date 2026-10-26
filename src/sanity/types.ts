@@ -361,6 +361,21 @@ export type SessionDataResult = {
   }> | null;
 } | null;
 
+// Source: src/sanity/queries.ts
+// Variable: sessionMetadataQuery
+// Query: *[_type == 'session' && slug.current == $slug][0]{  title,  description,  coverImage}
+export type SessionMetadataQueryResult = {
+  title: string | null;
+  description: string | null;
+  coverImage: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+} | null;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
@@ -369,5 +384,6 @@ declare module "@sanity/client" {
     "*[_type == 'about'][0]{\n  timeline[]{ year, header, description },\n  sessionTypes[]{ label, iconName }\n}": AboutDataQueryResult;
     "*[_id == 'gallery'][0]{\n  images[]{ _key, asset, alt }\n}": GalleryQueryResult;
     "*[_type == 'session' && slug.current == $slug][0]{\n  title,\n  'images': images[]{\n    'url': image.asset->url,\n    caption,\n    label,\n  }\n}": SessionDataResult;
+    "*[_type == 'session' && slug.current == $slug][0]{\n  title,\n  description,\n  coverImage\n}": SessionMetadataQueryResult;
   }
 }
