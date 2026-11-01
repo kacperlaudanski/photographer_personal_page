@@ -3,9 +3,9 @@ import { CreateEmailResponse, Resend } from 'resend';
 
 import { ContactEmailProps, ContactEmail, contactEmailSchema } from '@/emails';
 
-const resend: Resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request): Promise<Response> {
+  const resend: Resend = new Resend(process.env.RESEND_API_KEY);
   const parsed = contactEmailSchema.safeParse(await request.json());
 
   if (!parsed.success) {
