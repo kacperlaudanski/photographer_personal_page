@@ -36,7 +36,7 @@ const Portfolio = async () => {
       <div className='flex flex-col gap-2'>
         <h1 className='mt-6 font-display text-5xl md:text-6xl'>
           Wybrane {' '}
-          <span className='text-gradient-brand font-handwrite'>kadry</span>
+          <span className='text-gradient-brand font-handwrite handwrite-reveal'>kadry</span>
         </h1>
       </div>
       <div className='flex flex-col gap-20 mt-16 justify-center'>

@@ -8,7 +8,6 @@ import { LabelProps } from './label.types';
 
 export const Label = (props: LabelProps) => {
   const { text, animation } = props;
-
   const { className, ...motionProps } = labelAnimations[animation];
 
   return (

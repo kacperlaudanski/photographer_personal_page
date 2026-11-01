@@ -71,3 +71,12 @@
     transform: translateY(-4px);
   }
 }
+
+@keyframes handwrite-reveal {
+  from {
+    mask-position: 100% 0;
+  }
+  to {
+    mask-position: 0 0;
+  }
+}

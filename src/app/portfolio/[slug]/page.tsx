@@ -23,9 +23,7 @@ export const generateMetadata = async (props: PageParams<PortfolioParams>): Prom
     title: session.title ?? undefined,
     description: session.description ?? undefined,
     openGraph: ogImage
-      ? {
-          images: [{ url: ogImage, width: 1200, height: 630 }],
-        }
+      ? { images: [{ url: ogImage, width: 1200, height: 630 }] }
       : undefined,
   };
 };
@@ -43,7 +41,7 @@ const Page = async (props: PageParams<PortfolioParams>) => {
       <h1 className='leading-tight tracking-tight font-display'>
         <span className='text-4xl md:text-6xl text-default'>
           Wszystkie kadry w kategorii{' '}
-          <span className='text-gradient-brand font-handwrite'>
+          <span className='text-gradient-brand font-handwrite handwrite-reveal'>
             {session.title}
           </span>
         </span>

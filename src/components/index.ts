@@ -19,3 +19,4 @@ export { Label } from './label/label.component';
 export { MobileNavbarItem } from './mobileNavbarItem/mobileNavbarItem.component';
 export { TransitionLink } from './transitionLink/transitionLink.component';
 export { Alert } from './alert/alert.component';
+export { TypeAnimation } from './typeAnimation/typeAnimation.component';

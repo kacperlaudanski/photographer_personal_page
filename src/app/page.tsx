@@ -25,7 +25,7 @@ const Home = async () => {
         </div>
         <h1 className='text-[clamp(4rem,10vw,5rem)] md:text-[clamp(4rem,10vw,8rem)] font-display font-normal leading-none text-on-accent tracking-tight flex flex-col'>
           Aleksandra
-          <span className='text-gradient-brand font-handwrite text-[8rem]'>
+          <span className='text-gradient-brand font-handwrite text-[8rem] handwrite-reveal'>
             Robak
           </span>
         </h1>

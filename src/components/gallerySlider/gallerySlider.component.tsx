@@ -1,17 +1,18 @@
 'use client';
 import Image from 'next/image';
+import { useState } from 'react';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import { EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+import { CursorVariant } from '@/enums';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/navigation';
 
 import { GallerySliderProps } from './gallerySlider.types';
-import { useState } from 'react';
-import { CursorVariant } from '@/enums';
 
 export const GallerySlider = (props: GallerySliderProps) => {
   const { images, onSlideChange, onImageClick }: GallerySliderProps = props;

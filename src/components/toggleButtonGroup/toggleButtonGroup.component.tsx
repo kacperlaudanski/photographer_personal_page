@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 
-import { ToggleButtonGroupProps } from './toggleButtonGroup.types';
 import { CursorVariant } from '@/enums';
+
+import { ToggleButtonGroupProps } from './toggleButtonGroup.types';
 
 export const ToggleButtonGroup = (props: ToggleButtonGroupProps) => {
   const { options, onChange, value } = props;

@@ -1,4 +1,5 @@
 import { CursorVariant } from '@/enums';
+
 import { TransitionLink } from '../transitionLink/transitionLink.component';
 
 import { MobileNavbarItemProps } from './mobileNavbarItem.types';

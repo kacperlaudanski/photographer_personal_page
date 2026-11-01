@@ -1,11 +1,12 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 
+import { CursorVariant } from '@/enums';
+
 import { Label } from '../label/label.component';
 import { TransitionLink } from '../transitionLink/transitionLink.component';
 
 import { SessionCardProps } from './sessionCard.types';
-import { CursorVariant } from '@/enums';
 
 export const SessionCard = (props: SessionCardProps) => {
   const {

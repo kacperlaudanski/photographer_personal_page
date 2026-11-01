@@ -1,3 +1,4 @@
+'use client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import clsx from 'clsx';
 import { AnimatePresence } from 'motion/react';

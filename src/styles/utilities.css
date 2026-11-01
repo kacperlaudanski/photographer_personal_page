@@ -26,3 +26,15 @@
   background-size: 6px 6px;
   background-position: -1px -1px, -1px -1px, 0 0, 0 0;
 }
+
+@utility handwrite-reveal {
+  mask-image: linear-gradient(90deg, #000 45%, transparent 55%);
+  mask-size: 250% 100%;
+  mask-repeat: no-repeat;
+  animation: handwrite-reveal 1.4s ease-in-out 0.3s both;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    mask-image: none;
+  }
+}

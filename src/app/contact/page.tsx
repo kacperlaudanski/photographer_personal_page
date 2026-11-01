@@ -1,13 +1,19 @@
-'use client';
-import { motion } from 'motion/react';
+import * as motion from 'motion/react-client';
+import { Metadata } from 'next';
 import Image from 'next/image';
-import { TypeAnimation } from 'react-type-animation';
 
-import { ContactDetailsItem } from '@/components';
+import { ContactDetailsItem, TypeAnimation } from '@/components';
+import { Route } from '@/enums';
 import { ContactDetailsItem as ContactDetailsItemInterface } from '@/interfaces';
+import { getPageTitle } from '@/utils';
 
 import { Form } from './components';
 import { animatedLetters, animatedLettersFillDelays, contactItems } from './consts';
+
+export const metadata: Metadata = {
+  title: getPageTitle(Route.Contact),
+  description: 'Napisz do mnie i umówmy się na sesję zdjęciową w Poznaniu i okolicach.',
+};
 
 const Contact = () => (
   <section className='flex flex-col md:flex-row text-default px-4 md:px-10 py-4 pt-25'>

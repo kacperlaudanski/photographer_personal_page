@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
-// import { TypeAnimation } from 'react-type-animation';
 
-import { CtaBanner, PolaroidItem, StatCard, TimelineEntry } from '@/components';
+import { CtaBanner, PolaroidItem, StatCard, TimelineEntry, TypeAnimation } from '@/components';
 import { personalStats } from '@/consts';
 import { Route } from '@/enums';
 import { getAboutData } from '@/sanity';
@@ -30,20 +29,20 @@ const About = async () => {
             <span className='text-4xl md:text-6xl text-default'>
               Cześć,{' '}<br />
               jestem{' '}
-              <span className='text-gradient-brand font-handwrite'>
+              <span className='text-gradient-brand font-handwrite handwrite-reveal'>
                 Aleksandra
               </span>
             </span>
           </h1>
         </div>
         <p className='font-display text-subtle text-lg'>
-          {/* <TypeAnimation
+          <TypeAnimation
             sequence={[ 'Każde zdjęcie to okno — nie chcę pokazywać widoku, chcę pokazać kogoś, kto przez nie patrzy.' ]}
             wrapper='span'
             speed={20}
             style={{ display: 'inline-block' }}
             cursor={false}
-          /> */}
+          />
         </p>
         <div className='flex flex-col text-default gap-3 text-lg font-body'>
           <p>
