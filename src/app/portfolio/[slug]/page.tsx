@@ -30,8 +30,7 @@ export const generateMetadata = async (props: PageParams<PortfolioParams>): Prom
   };
 };
 
-
-export const Page = async (props: PageParams<PortfolioParams>) => {
+const Page = async (props: PageParams<PortfolioParams>) => {
   const { slug }: PortfolioParams = await props.params;
   const session = await client.fetch(sessionData, { slug });
 

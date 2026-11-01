@@ -90,7 +90,7 @@ export const Form = () => {
                   data-cursor={CursorVariant.Text}
                   className={clsx(
                     'h-11 border-b px-3 text-sm placeholder:text-xl placeholder:text-faint placeholder:font-handwrite bg-transparent focus:outline-none transition-colors duration-200',
-                    errors.name ? 'border-danger-soft focus:border-danger-soft' : 'border-faint focus:border-focus'
+                    errors.email ? 'border-danger-soft focus:border-danger-soft' : 'border-faint focus:border-focus'
                   )}
                   placeholder='jankowalski@email.pl'
                   type='text'
@@ -116,7 +116,7 @@ export const Form = () => {
                 data-cursor={CursorVariant.Text}
                 className={clsx(
                   'h-24 border-b px-3 text-sm placeholder:text-xl placeholder:text-faint placeholder:font-handwrite bg-transparent focus:outline-none transition-colors duration-200',
-                  errors.name ? 'border-danger-soft focus:border-danger-soft' : 'border-faint focus:border-focus'
+                  errors.message ? 'border-danger-soft focus:border-danger-soft' : 'border-faint focus:border-focus'
                 )}
                 placeholder='Wpisz wiadomość...'
               />

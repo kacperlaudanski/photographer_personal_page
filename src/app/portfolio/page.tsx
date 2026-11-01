@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: 'Wybrane sesje fotograficzne – portrety, reportaże, podróże i przyroda.',
 };
 
-export const Portfolio = async () => {
+const Portfolio = async () => {
   const sessions = await getAllSessions();
   const variants = Object.values(LabelVariant)
   const mapTagsToLabel = (tag: string, index: number) => ({

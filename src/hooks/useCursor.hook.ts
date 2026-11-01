@@ -15,13 +15,13 @@ const isCursorVariant = (value: string | undefined): value is CursorVariant => !
 export const useCursor = (lerp = 0.17) => {
   const { phase } = usePageTransition();
   const isTransitioning = phase !== TransitionPhase.Idle;
+  const magneticTargetRef = useRef<Element | null>(null);
   const getMagneticTarget = useEffectEvent(() => isTransitioning ? null : magneticTargetRef.current);
 
   const dotRef = useRef<HTMLDivElement | null>(null);
   const ringRef = useRef<HTMLDivElement | null>(null);
   const rafRef = useRef(0);
   const initializedRef = useRef(false);
-  const magneticTargetRef = useRef<Element | null>(null);
 
   const [variant, setVariant] = useState(CursorVariant.Default);
   const [label, setLabel] = useState<string | null>(null);
@@ -54,11 +54,11 @@ export const useCursor = (lerp = 0.17) => {
     };
 
     const onOver = (event: PointerEvent) => {
-      const target: EventTarget | null = event.target;
-      const element: Element | null = target instanceof Element ? target.closest('[data-cursor]') : null;
-      const cursorElement: HTMLElement | null = element instanceof HTMLElement ? element : null;
+      const target = event.target;
+      const element = target instanceof Element ? target.closest('[data-cursor]') : null;
+      const cursorElement = element instanceof HTMLElement ? element : null;
 
-      const nextVariant: CursorVariant = isCursorVariant(cursorElement?.dataset.cursor)
+      const nextVariant = isCursorVariant(cursorElement?.dataset.cursor)
         ? cursorElement.dataset.cursor
         : CursorVariant.Default;
       
@@ -70,7 +70,7 @@ export const useCursor = (lerp = 0.17) => {
     const onDown = () => setIsPressed(true);
     const onUp = () => setIsPressed(false);
 
-    const onWindowOut = (event: MouseEvent): void => {
+    const onWindowOut = (event: MouseEvent) => {
       if (!event.relatedTarget) {
         setIsVisible(false);
       }

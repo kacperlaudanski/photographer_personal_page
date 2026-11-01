@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
     <html className={`${inter.variable} ${playfair.variable} ${caveat.variable} ${jetBrains.variable}`} lang='pl'>
       <body className='relative'>
@@ -58,4 +58,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

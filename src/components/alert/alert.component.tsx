@@ -5,9 +5,9 @@ import { useEffect, useEffectEvent } from 'react';
 import { IoMdClose } from 'react-icons/io';
 
 import { alertVariantStyle } from '@/consts';
+import { CursorVariant } from '@/enums';
 
 import { AlertProps } from './alert.types';
-import { CursorVariant } from '@/enums';
 
 export const Alert = (props: AlertProps) => {
   const { title, message, onClose, variant, autoHideDuration } = props;

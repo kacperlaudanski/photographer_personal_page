@@ -1,14 +1,11 @@
 'use client';
 import clsx from 'clsx';
-import { AnimatePresence, motion, Transition } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 
 import { cursorVariant } from '@/consts';
 import { useCursor } from '@/hooks';
 
 import { Label } from './components';
-
-const ringTransition: Transition = { type: 'spring', stiffness: 350, damping: 28, mass: 0.6 };
-const PRESSED_SCALE = 0.8;
 
 export const Cursor = () => {
   const { dotRef, ringRef, variant, label, isPressed, isVisible, isEnabled } = useCursor();
@@ -35,8 +32,8 @@ export const Cursor = () => {
       >
         <motion.div
           className={clsx('relative shrink-0 flex items-center justify-center', cursorVariant[variant].ringClassName)}
-          animate={{ ...cursorVariant[variant].ring, scale: isPressed ? PRESSED_SCALE : 1 }}
-          transition={ringTransition}
+          animate={{ ...cursorVariant[variant].ring, scale: isPressed ? 0.8 : 1 }}
+          transition={{ type: 'spring', stiffness: 350, damping: 28, mass: 0.6 }}
         >
           <AnimatePresence>
             {!!label && !!cursorVariant[variant].labelAnimation && (

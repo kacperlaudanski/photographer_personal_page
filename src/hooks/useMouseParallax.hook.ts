@@ -2,9 +2,9 @@
 import { useMotionValue, useSpring } from 'motion/react';
 import { useEffect } from 'react';
 
-import { UseMouseParalax } from '@/interfaces';
+import { UseMouseParallax } from '@/interfaces';
 
-export const useMouseParalax: (strength?: number) => UseMouseParalax = (strength = 0.5): UseMouseParalax => {
+export const useMouseParallax: (strength?: number) => UseMouseParallax = (strength = 0.5): UseMouseParallax => {
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
   const smoothX = useSpring(cursorX, { stiffness: 30, damping: 15 });

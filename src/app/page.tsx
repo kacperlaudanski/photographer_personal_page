@@ -1,11 +1,9 @@
-import React from 'react';
-
 import { Gallery } from '@/components';
+import { CursorVariant } from '@/enums';
 import { GalleryImage } from '@/interfaces';
 import { GalleryQueryResult, getGallery, urlFor } from '@/sanity';
-import { CursorVariant } from '@/enums';
 
-export default async function Home() {
+const Home = async () => {
   const galleryData: GalleryQueryResult = await getGallery();
 
   const galleryImages: GalleryImage[] = (galleryData?.images ?? []).map((img) => ({
@@ -50,3 +48,5 @@ export default async function Home() {
     </main>
   );
 };
+
+export default Home;

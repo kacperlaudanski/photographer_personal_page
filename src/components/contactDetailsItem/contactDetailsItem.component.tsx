@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 
 import { ContactDetailsItemVariant, CursorVariant } from '@/enums';
-import { ContactDetailsItem as ContactDetailsItemInterface } from '@/interfaces';
 
 import { contactDetailsItemVariant } from './consts';
+import { ContactDetailsItemProps } from './contactDetailsItem.types';
 
-export const ContactDetailsItem = (props: ContactDetailsItemInterface) => {
+export const ContactDetailsItem = (props: ContactDetailsItemProps) => {
   const { icon: Icon, title, description, href, variant = ContactDetailsItemVariant.DarkPurple, index } = props;
 
   return (
