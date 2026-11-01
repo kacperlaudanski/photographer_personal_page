@@ -1,11 +1,9 @@
-import React from 'react';
-
 import { Gallery } from '@/components';
-import { gridBackground } from '@/consts';
+import { CursorVariant } from '@/enums';
 import { GalleryImage } from '@/interfaces';
 import { GalleryQueryResult, getGallery, urlFor } from '@/sanity';
 
-export default async function Home() {
+const Home = async () => {
   const galleryData: GalleryQueryResult = await getGallery();
 
   const galleryImages: GalleryImage[] = (galleryData?.images ?? []).map((img) => ({
@@ -15,7 +13,7 @@ export default async function Home() {
   }));
 
   return (
-    <main className='relative h-screen w-full' style={gridBackground}>
+    <main className='relative h-screen w-full bg-grid' data-cursor={CursorVariant.Scroll}>
       <div className='absolute inset-0 z-20 pointer-events-none bg-overlay-scrim' />
       <div className='absolute inset-0 z-30 flex flex-col gap-3 items-center justify-center text-center pointer-events-none p-6'>
         <div className='flex items-center gap-3 mb-4'>
@@ -27,7 +25,7 @@ export default async function Home() {
         </div>
         <h1 className='text-[clamp(4rem,10vw,5rem)] md:text-[clamp(4rem,10vw,8rem)] font-display font-normal leading-none text-on-accent tracking-tight flex flex-col'>
           Aleksandra
-          <span className='text-gradient-brand font-handwrite text-[8rem]'>
+          <span className='text-gradient-brand font-handwrite text-[8rem] handwrite-reveal'>
             Robak
           </span>
         </h1>
@@ -50,3 +48,5 @@ export default async function Home() {
     </main>
   );
 };
+
+export default Home;

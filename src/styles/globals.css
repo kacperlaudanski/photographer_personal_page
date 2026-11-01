@@ -13,8 +13,13 @@
 }
 
 html {
-  cursor: none;
   overscroll-behavior: none;
+}
+
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none;
+  }
 }
 
 a, button, [role="button"], input, label, select, textarea {

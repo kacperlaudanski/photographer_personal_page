@@ -1,21 +1,22 @@
 import clsx from 'clsx';
 
-import { ContactDetailsItemVariant } from '@/enums';
-import { ContactDetailsItem as ContactDetailsItemInterface } from '@/interfaces';
+import { ContactDetailsItemVariant, CursorVariant } from '@/enums';
 
 import { contactDetailsItemVariant } from './consts';
+import { ContactDetailsItemProps } from './contactDetailsItem.types';
 
-export const ContactDetailsItem = (props: ContactDetailsItemInterface) => {
+export const ContactDetailsItem = (props: ContactDetailsItemProps) => {
   const { icon: Icon, title, description, href, variant = ContactDetailsItemVariant.DarkPurple, index } = props;
 
   return (
     <a
       href={href}
       className={clsx(
-        'group relative flex flex-1 flex-col items-center gap-3 p-5 pt-6 rounded-2xl text-center cursor-pointer',
-        'transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_12px_32px_-8px_color-mix(in_oklch,var(--color-neutral-950)_15%,transparent)]',
+        'group relative flex flex-1 flex-col items-center gap-3 p-5 pt-6 rounded-2xl text-center',
+        'transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card',
         contactDetailsItemVariant[variant].bg,
       )}
+      data-cursor={CursorVariant.Link}
     >
       <span className={clsx('absolute top-3 right-4 text-[10px] tracking-widest font-mono opacity-60', contactDetailsItemVariant[variant].accent)}>
         NO. {String(index).padStart(2, '0')}

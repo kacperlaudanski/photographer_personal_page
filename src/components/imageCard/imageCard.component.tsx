@@ -1,13 +1,13 @@
 import { motion, useTransform } from 'motion/react';
 import Image from 'next/image';
 
-import { useMouseParalax } from '@/hooks';
+import { useMouseParallax } from '@/hooks';
 
 import { ImageCardProps } from './imageCard.types';
 
 export const ImageCard = (props: ImageCardProps) => {
   const { src, index, scrollProgress, total, baseX = 0, baseY = 0, rotate = 0 } = props;
-  const { x, y } = useMouseParalax();
+  const { x, y } = useMouseParallax();
   const z= useTransform(scrollProgress, (value) => {
   const offset = index / total;
   const loop = ((value + offset) % 1 + 1) % 1;

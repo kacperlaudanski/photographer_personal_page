@@ -1,12 +1,34 @@
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { PortfolioGallery, ToggleButtonGroup } from '@/components';
-import { client, sessionData } from '@/sanity';
+import { PortfolioGallery } from '@/components';
+import { client, getSessionMetadata, sessionData, urlFor } from '@/sanity';
 import { PageParams } from '@/types';
 
 import { PortfolioParams } from './types';
 
-export const Page = async (props: PageParams<PortfolioParams>) => {
+export const generateMetadata = async (props: PageParams<PortfolioParams>): Promise<Metadata> => {
+  const { slug } = await props.params;
+  const session = await getSessionMetadata(slug);
+
+  if (!session) {
+    return {};
+  }
+
+  const ogImage = session.coverImage
+    ? urlFor(session.coverImage)?.width(1200).height(630).fit('crop').auto('format').url()
+    : undefined;
+
+  return {
+    title: session.title ?? undefined,
+    description: session.description ?? undefined,
+    openGraph: ogImage
+      ? { images: [{ url: ogImage, width: 1200, height: 630 }] }
+      : undefined,
+  };
+};
+
+const Page = async (props: PageParams<PortfolioParams>) => {
   const { slug }: PortfolioParams = await props.params;
   const session = await client.fetch(sessionData, { slug });
 
@@ -19,7 +41,7 @@ export const Page = async (props: PageParams<PortfolioParams>) => {
       <h1 className='leading-tight tracking-tight font-display'>
         <span className='text-4xl md:text-6xl text-default'>
           Wszystkie kadry w kategorii{' '}
-          <span className='text-gradient-brand font-handwrite'>
+          <span className='text-gradient-brand font-handwrite handwrite-reveal'>
             {session.title}
           </span>
         </span>

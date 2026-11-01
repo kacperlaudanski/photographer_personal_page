@@ -1,21 +1,18 @@
-'use client';
-import { motion, Variants } from 'framer-motion';
+import * as motion from 'motion/react-client';
+import { Metadata } from 'next';
 import Image from 'next/image';
-import { TypeAnimation } from 'react-type-animation';
 
+import { ContactDetailsItem, TypeAnimation } from '@/components';
+import { Route } from '@/enums';
 import { ContactDetailsItem as ContactDetailsItemInterface } from '@/interfaces';
+import { getPageTitle } from '@/utils';
 
 import { Form } from './components';
 import { animatedLetters, animatedLettersFillDelays, contactItems } from './consts';
-import { ContactDetailsItem } from '@/components';
 
-const photoVariants: Variants = {
-  hidden: { opacity: 0, x: -40 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.8, ease: 'easeOut' },
-  },
+export const metadata: Metadata = {
+  title: getPageTitle(Route.Contact),
+  description: 'Napisz do mnie i umówmy się na sesję zdjęciową w Poznaniu i okolicach.',
 };
 
 const Contact = () => (
@@ -23,7 +20,14 @@ const Contact = () => (
     <div className='w-full md:w-auto flex md:hidden lg:flex justify-center md:pt-6 mb-10 mr-15 lg:sticky lg:top-0'>
       <motion.div
         className='overflow-hidden'
-        variants={photoVariants}
+        variants={{
+          hidden: { opacity: 0, x: -40 },
+          visible: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.8, ease: 'easeOut' },
+          }
+        }}
         initial='hidden'
         animate='visible'
       >
@@ -77,9 +81,9 @@ const Contact = () => (
           >
             <defs>
               <linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='0%' gradientUnits='userSpaceOnUse'>
-                <stop offset='0%' stopColor='#3b82f6' />
-                <stop offset='50%' stopColor='#a855f7' />
-                <stop offset='100%' stopColor='#ec4899' />
+                <stop offset='0%' style={{ stopColor: 'var(--color-blue-500)' }} />
+                <stop offset='50%' style={{ stopColor: 'var(--color-purple-500)' }} />
+                <stop offset='100%' style={{ stopColor: 'var(--color-pink-500)' }} />
               </linearGradient>
             </defs>
             {animatedLetters.map((letter, i) => (

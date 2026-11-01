@@ -1,10 +1,9 @@
 import clsx from 'clsx';
 
-import { LabelData } from '@/interfaces';
-
 import { labelVariantStyle } from './consts';
+import { LabelProps } from './label.types';
 
-export const Label = (props: LabelData) => {
+export const Label = (props: LabelProps) => {
   const { text, variant } = props;
 
   return (

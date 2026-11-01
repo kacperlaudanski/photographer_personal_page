@@ -10,17 +10,13 @@
     "typegen": "sanity schema extract --path=./src/sanity/extract.json && sanity typegen generate"
   },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
     "@hookform/resolvers": "^5.2.2",
-    "@mui/material": "^9.0.0",
     "@sanity/client": "^7.14.1",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^5.30.0",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.37.0",
     "motion": "^12.34.0",
-    "next": "16.1.6",
+    "next": "^16.4.2",
     "next-sanity": "^12.1.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -41,7 +37,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.1.6",
+    "eslint-config-next": "^16.4.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

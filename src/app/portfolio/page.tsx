@@ -1,10 +1,18 @@
+import { Metadata } from 'next';
+
 import { SessionCard } from '@/components';
-import { LabelVariant } from '@/enums';
+import { LabelVariant, Route } from '@/enums';
 import { getAllSessions, urlFor } from '@/sanity';
+import { getPageTitle } from '@/utils';
 
 import { SanitySessionImage } from './types';
 
-export const Portfolio = async () => {
+export const metadata: Metadata = {
+  title: getPageTitle(Route.Portfolio),
+  description: 'Wybrane sesje fotograficzne – portrety, reportaże, podróże i przyroda.',
+};
+
+const Portfolio = async () => {
   const sessions = await getAllSessions();
   const variants = Object.values(LabelVariant)
   const mapTagsToLabel = (tag: string, index: number) => ({
@@ -28,7 +36,7 @@ export const Portfolio = async () => {
       <div className='flex flex-col gap-2'>
         <h1 className='mt-6 font-display text-5xl md:text-6xl'>
           Wybrane {' '}
-          <span className='text-gradient-brand font-handwrite'>kadry</span>
+          <span className='text-gradient-brand font-handwrite handwrite-reveal'>kadry</span>
         </h1>
       </div>
       <div className='flex flex-col gap-20 mt-16 justify-center'>

@@ -1,3 +1,5 @@
+import { AlertVariant } from '@/enums';
+
 export interface FormValues {
   name: string;
   email: string;
@@ -5,6 +7,7 @@ export interface FormValues {
 }
 
 export interface AlertState {
-  severity: 'success' | 'error';
+  variant: AlertVariant;
+  title: string;
   message: string;
 }
