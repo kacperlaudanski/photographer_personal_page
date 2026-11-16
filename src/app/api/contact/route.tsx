@@ -14,7 +14,7 @@ export async function POST(request: Request): Promise<Response> {
 
   const { name, email, message }: ContactEmailProps = parsed.data;
   const { error }: CreateEmailResponse = await resend.emails.send({
-    from: 'Portfolio <onboarding@resend.dev>',
+    from: process.env.RESEND_FROM ?? 'Portfolio <onboarding@resend.dev>',
     to: process.env.CREATOR_EMAIL as string,
     replyTo: email,
     subject: `Nowa wiadomość z formularza kontaktowego od ${name}`,
